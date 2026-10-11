@@ -1,0 +1,2196 @@
+{
+ "_help": "Edit this file to keep branches and Guardians. \"branches\": one Element-Branch-Subbranch path per line (parents are created automatically; a path with no Guardian shows as a gray box). \"guardians\": profiles, each filed by its path. \"zodiacRoots\": names shown left of an element. \"overrides\": from-path => to-path. The order of first-level branches sets their top-to-bottom order in the diagram (Zodiac roots on the left follow the same order).",
+ "hiddenFields": [
+  "Date of Birth",
+  "Breast Size",
+  "Ding Dong Size"
+ ],
+ "overrides": [
+  "Earth-Soil-Verdant => Earth-Life-Verdant"
+ ],
+ "zodiacRoots": {
+  "Fire": [
+   "Leo",
+   "Aries",
+   "Sagittarius",
+   "Ophiuchus"
+  ],
+  "Earth": [
+   "Capricorn",
+   "Taurus",
+   "Virgo"
+  ],
+  "Water": [
+   "Cancer",
+   "Pisces",
+   "Scorpio"
+  ],
+  "Air": [
+   "Gemini",
+   "Libra",
+   "Aquarius"
+  ]
+ },
+ "branches": [
+  "Fire-Lumen",
+  "Fire-Lumen-Moon",
+  "Fire-Lumen-Moon-Blossom",
+  "Fire-Lumen-Moon-Blossom-Iris",
+  "Fire-Lumen-Sun",
+  "Fire-Lumen-Aurora",
+  "Fire-Lumen-Mirage",
+  "Fire-Lumen-Star",
+  "Fire-Umbra",
+  "Fire-Vitalis",
+  "Fire-Vitalis-Solace",
+  "Fire-Vitalis-Halo",
+  "Fire-Blaze",
+  "Fire-Blaze-Smoke",
+  "Fire-Blaze-Smoke-Fume",
+  "Fire-Blaze-Smoke-Fume-Yew",
+  "Fire-Blaze-Heat",
+  "Fire-Blaze-Heat-Summer",
+  "Fire-Blaze-Cinder",
+  "Fire-Blaze-Lantern",
+  "Fire-Firewall",
+  "Earth-Life",
+  "Earth-Life-Verdant",
+  "Earth-Life-Verdant-Flora",
+  "Earth-Life-Verdant-Flora-Coffea",
+  "Earth-Life-Verdant-Flora-Fractal",
+  "Earth-Life-Verdant-Flora-Aster",
+  "Earth-Life-Verdant-Flora-Marigold",
+  "Earth-Life-Verdant-EmberFlora",
+  "Earth-Life-Verdant-EmberFlora-Clover",
+  "Earth-Life-Verdant-Harvest",
+  "Earth-Life-Verdant-Harvest-Autumn",
+  "Earth-Life-Verdant-Cedar",
+  "Earth-Life-Essence",
+  "Earth-Life-Essence-Sage",
+  "Earth-Life-Essence-Sage-Unnamed",
+  "Earth-Life-Cronus",
+  "Earth-Life-Eclipsa",
+  "Earth-Life-Entoma",
+  "Earth-Life-Fauna",
+  "Earth-Life-Toxin",
+  "Earth-Life-Sauria",
+  "Earth-Soil",
+  "Earth-Soil-Meteor",
+  "Earth-Mineral",
+  "Earth-Mineral-Metal",
+  "Earth-Mineral-Metal-Forge",
+  "Earth-Mineral-Crystalis",
+  "Water-Hydro",
+  "Water-Hydro-Tidal",
+  "Water-Hydro-Tidal-Lotus",
+  "Water-Hydro-Tidal-Current",
+  "Water-Hydro-Ice",
+  "Water-Hydro-Ice-Winter",
+  "Water-Hydro-Mist",
+  "Water-Hydro-Reflection",
+  "Water-Gleam",
+  "Water-Gleam-Selene",
+  "Air-Aero",
+  "Air-Aero-Prism",
+  "Air-Aero-Prism-Chroma",
+  "Air-Aero-Zephyr",
+  "Air-Aero-Zephyr-Draft",
+  "Air-Aero-Pressure",
+  "Air-Aero-Pressure-Vacuum",
+  "Air-Aero-Thunder",
+  "Air-Resonance",
+  "Air-Resonance-Harmony",
+  "Air-Resonance-Harmony-Muse",
+  "Air-Resonance-Harmony-Rhythm",
+  "Air-Resonance-Harmony-Melody",
+  "Air-Resonance-Harmony-Beat",
+  "Air-Resonance-Chime",
+  "Air-Resonance-Chime-Spring",
+  "Air-Aether",
+  "Air-Aether-Space",
+  "Air-Aether-Space-Rift",
+  "Air-Aether-Orion"
+ ],
+ "guardians": [
+  {
+   "name": "Blossom",
+   "path": "Fire-Lumen-Moon-Blossom",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Verdant; Luma Moon is not officially registered.",
+   "role": "Attacker(Mage)",
+   "team": "Flower Sisters",
+   "guild": "Silver Veil",
+   "zodiac": "Sagittarius",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Lumina Lee Jiā Xīn (李佳昕)",
+    "Nickname": "Mimi (Family’s and Luna’s Nickname), Mini (Brother’s Nickname)",
+    "Age": "25",
+    "Gender": "Female",
+    "Zodiac": "Sagittarius",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Fire",
+    "Inherited Element": "Earth",
+    "Branch Theme": "Fire-Lumen-Moon-Blossom",
+    "Transformation Item": "Blossom-shaped charm bracelet (with a moon in the middle)",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker(Mage)",
+    "Passed Tests": "Support(Barrier, Researcher), Attacker(Mage), Strategist",
+    "Power Color": "Pink-Gold",
+    "Height": "155 cm",
+    "Weight": "55 kg",
+    "Spirit Animal": "Black Cat",
+    "Blood Type": "O-",
+    "Awakened Date": "Feb 2016",
+    "Awakened By": "Luma Verdant",
+    "Relationship": "Single; Later develops a relationship with Luma Coffea.",
+    "Family": "Fraternal Twin of Asher; Father is deceased. Has 2 older married siblings, each with 2 kids.",
+    "Team": "Flower Sisters",
+    "Guild": "Silver Veil",
+    "Close bonds": "Coffea and Fractal (university friends, now disciples)",
+    "Personality": "Kuudere with tsundere moments. Deadpan, quietly caring, doesn't ask for affection, complains about affection but never pulls away. Becomes formal and smiles more when angry. Afraid before every fight, but always looks composed, so most people believe she isn't afraid of anything."
+   },
+   "disciples": [
+    "Coffea",
+    "Fractal",
+    "Clover",
+    "Aster",
+    "Marigold",
+    "Lotus"
+   ]
+  },
+  {
+   "name": "Flora",
+   "path": "Earth-Life-Verdant-Flora",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Verdant",
+   "role": "Support (Field Healer)",
+   "team": "Flower Sisters",
+   "guild": "Silver Veil",
+   "zodiac": "Capricorn",
+   "base": "Singapore",
+   "sameAs": "EmberFlora",
+   "form": "original",
+   "info": {
+    "Civilian Name": "Sylvia Ng",
+    "Age": "25",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Inherited Element": "Fire from Luma Blossom",
+    "Branch Theme": "Earth-Life-Verdant-Flora / EmberFlora",
+    "Transformation Item": "Flower-shaped pendant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Field Healer)",
+    "Passed Tests": "Support(Field Healer, Researcher), Strategist",
+    "Relationship": "Single; Later develops a relationship with Luma Clover",
+    "Team": "Flower Sisters",
+    "Guild": "Silver Veil",
+    "Power Color": "Green / Green-Red",
+    "Height": "165 cm",
+    "Weight": "67 kg",
+    "Spirit Animal": "Golden Retriever",
+    "Blood Type": "B+",
+    "Awakened Date": "Jan 2016",
+    "Awakened By": "Luma Verdant"
+   },
+   "disciples": [
+    "Aster",
+    "Marigold",
+    "Lotus",
+    "Coffea",
+    "Fractal",
+    "Clover"
+   ]
+  },
+  {
+   "name": "EmberFlora",
+   "path": "Earth-Life-Verdant-EmberFlora",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Verdant",
+   "role": "Support (Field Healer)",
+   "team": "Flower Sisters",
+   "guild": "Silver Veil",
+   "zodiac": "Capricorn",
+   "base": "Singapore",
+   "sameAs": "Flora",
+   "form": "evolved",
+   "info": {
+    "Civilian Name": "Sylvia Ng",
+    "Age": "25",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Inherited Element": "Fire from Luma Blossom",
+    "Branch Theme": "Earth-Life-Verdant-Flora / EmberFlora",
+    "Transformation Item": "Flower-shaped pendant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Field Healer)",
+    "Passed Tests": "Support(Field Healer, Researcher), Strategist",
+    "Relationship": "Single; Later develops a relationship with Luma Clover",
+    "Team": "Flower Sisters",
+    "Guild": "Silver Veil",
+    "Power Color": "Green / Green-Red",
+    "Height": "165 cm",
+    "Weight": "67 kg",
+    "Spirit Animal": "Golden Retriever",
+    "Blood Type": "B+",
+    "Awakened Date": "Jan 2016",
+    "Awakened By": "Luma Verdant"
+   },
+   "disciples": [
+    "Aster",
+    "Marigold",
+    "Lotus",
+    "Coffea",
+    "Fractal",
+    "Clover"
+   ]
+  },
+  {
+   "name": "Coffea",
+   "path": "Earth-Life-Verdant-Flora-Coffea",
+   "rank": "Disciple",
+   "mentor": "Luma Blossom; Luma Flora is not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Taurus",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Joe Tan Nuǎn Yán (陈暖言)",
+    "Age": "27",
+    "Gender": "Male",
+    "Zodiac": "Taurus",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Inherited Element": "Fire",
+    "Branch Theme": "Earth-Life-Verdant-Flora-Coffea",
+    "Transformation Item": "Coffee-bean ring",
+    "Guardian Rank": "Disciple",
+    "Likely Primary Role": "Support(Barrier), Shadow",
+    "Relationship": "Single; Later develops a relationship with Luma Blossom",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Close bonds": "Friends with Luma Fractal, Luma Aster, Luma Marigold",
+    "Power Color": "Brown",
+    "Height": "180 cm",
+    "Weight": "77 kg",
+    "Spirit Animal": "Wolf",
+    "Blood Type": "A+",
+    "Awakened Date": "17 Oct 2025",
+    "Awakened By": "Luma Blossom",
+    "Personality": "Joe is gentle, patient and dependable, with a calm presence that makes people feel safe around him. He tends to speak softly and rarely reacts impulsively, preferring to observe first and act once he understands the situation."
+   }
+  },
+  {
+   "name": "Fractal",
+   "path": "Earth-Life-Verdant-Flora-Fractal",
+   "rank": "Disciple",
+   "mentor": "Luma Blossom; Luma Flora is not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Virgo",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Felix Ang Bó Wén (洪博文)",
+    "Age": "27",
+    "Gender": "Male",
+    "Zodiac": "Virgo",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Inherited Element": "Fire",
+    "Branch Theme": "Earth-Life-Verdant-Flora-Fractal",
+    "Transformation Item": "Geometric prism wristwatch",
+    "Guardian Rank": "Disciple",
+    "Likely Primary Role": "Strategist",
+    "Relationship": "Single; Later develops a relationship with Luma Marigold / Aurelia.",
+    "Close bonds": "Coffea, Marigold, Aster (university friends, now disciples)",
+    "Power Color": "Turquoise",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Height": "176 cm",
+    "Weight": "73 kg",
+    "Spirit Animal": "Raven",
+    "Blood Type": "B+",
+    "Awakened Date": "17 Oct 2025",
+    "Awakened By": "Luma Blossom",
+    "Personality": "Analytical, precise, and observant, with a dry sense of humor. Felix tends to overthink and prefers clear logic, but he can be surprisingly playful and expressive around people he is comfortable with. He shows care through practical actions and often gets awkward or defensive when his softer feelings are pointed out."
+   }
+  },
+  {
+   "name": "Aster",
+   "path": "Earth-Life-Verdant-Flora-Aster",
+   "rank": "Disciple",
+   "mentor": "Luma Flora; Luma Blossom and Luma Essence are not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Capricorn",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Amelia Chua Zǐ Xuān (蔡紫瑄)",
+    "Age": "24",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Verdant-Flora-Aster",
+    "Transformation Item": "Aster-shaped hairpin",
+    "Guardian Rank": "Disciple",
+    "Possible Future Role": "Support (Field Healer)",
+    "Relationship": "Single; Later develops a relationship with Luma Lotus",
+    "Family": "Twin of Aurelia,",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Close bonds": "Friends with Luma Coffea, Luma Fractal",
+    "Power Color": "Purple",
+    "Height": "162 cm",
+    "Weight": "51 kg",
+    "Spirit Animal": "Deer/Doe",
+    "Awakened Date": "17 Oct 2025",
+    "Awakened By": "Luma Flora"
+   }
+  },
+  {
+   "name": "Marigold",
+   "path": "Earth-Life-Verdant-Flora-Marigold",
+   "rank": "Disciple",
+   "mentor": "Luma Flora; Luma Blossom is not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Capricorn",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Aurelia Chua Jin Yuè (蔡金悦)",
+    "Age": "24",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Verdant-Flora-Marigold",
+    "Transformation Item": "Marigold-shaped earring",
+    "Guardian Rank": "Disciple",
+    "Relationship": "Single; Later develops a relationship with Luma Fractal",
+    "Family": "Twin of Amelia,",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Close bonds": "Friends with Luma Coffea, Luma Fractal",
+    "Possible Future Role": "Attack",
+    "Power Color": "Gold",
+    "Height": "162 cm",
+    "Weight": "55 kg",
+    "Spirit Animal": "Red Fox",
+    "Awakened Date": "17 Oct 2025",
+    "Awakened By": "Luma Flora",
+    "Personality": "courageous and likes teasing"
+   }
+  },
+  {
+   "name": "Clover",
+   "path": "Earth-Life-Verdant-EmberFlora-Clover",
+   "rank": "Disciple",
+   "mentor": "Luma Blossom; Luma Flora is not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil",
+   "zodiac": "Capricorn",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Asher Lim Ruì Qí (林瑞祺)",
+    "Age": "25",
+    "Gender": "Male",
+    "Zodiac": "Capricorn",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Self-Awakened (Blossom’s power was introduced during the awakening process)",
+    "Original Element": "Earth",
+    "Inherited Element": "Fire",
+    "Branch Theme": "Earth-Life-Verdant-EmberFlora-Clover",
+    "Transformation Item": "Clover Wrist Cuff (When deactivated, it's just a silver band)",
+    "Guardian Rank": "Disciple",
+    "Relationship": "Single; Later develops a relationship with Luma Emberflora.",
+    "Family": "Missing Fraternal Twin of Lumina(Asher was allegedly dead at birth); Biological & Adoptive father is deceased. Has 2 older biological married siblings, each with 2 kids.",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil",
+    "Power Color": "Green-Gold",
+    "Possible Future Role": "Support",
+    "Height": "180",
+    "Spirit Animal": "Red Fox",
+    "Blood Type": "O-",
+    "Awakened Date": "17 Dec 2025",
+    "Personality": "Clever • Observant • Adaptable • Independent • Dryly playful • Easily reactive when provoked • Quietly affectionate • Loyal • Practical • Mischievous around people he trusts"
+   }
+  },
+  {
+   "name": "Lotus",
+   "path": "Water-Hydro-Tidal-Lotus",
+   "rank": "Disciple",
+   "mentor": "Luma Flora; Luma Blossom, Luma Tidal are not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Pisces",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Adrian Koh Jùn Háo (许俊豪)",
+    "Age": "29",
+    "Gender": "Male",
+    "Zodiac": "Pisces",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Water",
+    "Inherited Element": "Earth",
+    "Branch Theme": "Water-Hydro-Tidal-Lotus",
+    "Transformation Item": "Lotus Pendant",
+    "Guardian Rank": "Disciple",
+    "Relationship": "Single; develops a relationship with Luma Aster / Amelia",
+    "Power Color": "Dark Blue",
+    "Possible Future Role": "Support(Healer), Strategist",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Civilian Occupation": "Systems Analyst",
+    "Spirit Animal": "Crane",
+    "Awakened Date": "2026",
+    "Personality": "Adrian is a calm, easygoing man with a dry sense of humour. He is friendly without being loud, enjoys lightly teasing people he is close to, and is equally comfortable sitting in silence."
+   }
+  },
+  {
+   "name": "Iris",
+   "path": "Fire-Lumen-Moon-Blossom-Iris",
+   "rank": "Disciple",
+   "mentor": "Luma Ophiuchus; Luma Blossom and Luma Flora are not officially registered.",
+   "team": "Wildflowers",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Leo",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Mira Tan",
+    "Age": "39",
+    "Gender": "Female",
+    "Zodiac": "Leo",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen-Moon-Blossom-Iris",
+    "Transformation Item": "Iris-frame glasses",
+    "Guardian Rank": "Disciple",
+    "Relationship": "Married; Wife of Luma Chroma (Married her husband at 32 years old)",
+    "Power Color": "Red",
+    "Likely Primary Role": "Shadow, Strategist (Works behind the scenes)",
+    "Team": "Wildflowers",
+    "Guild": "Silver Veil (Originally);",
+    "Civilian Occupation": "A Software Engineer, Team Supervisor at LumaSoft",
+    "Height": "164 cm",
+    "Weight": "60 kg"
+   }
+  },
+  {
+   "name": "Chroma",
+   "path": "Air-Aero-Prism-Chroma",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Ophiuchus; Luma Prism is not officially registered.",
+   "role": "Support",
+   "team": "- / Wildflowers Associate",
+   "guild": "Silver Veil;",
+   "zodiac": "Gemini",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Marcus Tan",
+    "Age": "41",
+    "Gender": "Male",
+    "Zodiac": "Gemini",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Prism-Chroma",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Relationship": "Married; Husband of Luma Iris",
+    "Power Color": "Rainbow…?",
+    "Primary Role": "Support",
+    "Passed Tests": "Support, Ophiuchus",
+    "Team": "- / Wildflowers Associate",
+    "Guild": "Silver Veil;",
+    "Civilian Occupation": "Freelance Graphic Designer",
+    "Height": "179 cm",
+    "Weight": "75 kg",
+    "Spirit Animal": "Chameleon"
+   }
+  },
+  {
+   "name": "Lumen",
+   "path": "Fire-Lumen",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Leo",
+   "role": "Support (Barrier)",
+   "team": "Eclipse",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Sagittarius",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Elaine Lu",
+    "Age": "800; physically appears around 30",
+    "Gender": "Female",
+    "Zodiac": "Sagittarius",
+    "Ethnicity": "Japanese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen",
+    "Transformation Item": "Radiant crystal pendant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Barrier)",
+    "Passed Tests": "Support, Attacker, Strategist, Shadow",
+    "Relationship": "Single; Situationship with Luma Umbra?",
+    "Power Color": "Silver-White",
+    "Team": "Eclipse",
+    "Guild": "Silver Veil (Originally);",
+    "Civilian Occupation": "Senior Executive at LumaSoft",
+    "Height": "163 cm",
+    "Weight": "60 kg",
+    "Awakened Date": "Year 1246",
+    "Awakened By": "Luma Leo"
+   },
+   "disciples": [
+    "Moon",
+    "Sun",
+    "Star",
+    "Mirage",
+    "Aurora",
+    "Prism"
+   ]
+  },
+  {
+   "name": "Umbra",
+   "path": "Fire-Umbra",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Leo",
+   "role": "Shadow",
+   "team": "Eclipse",
+   "guild": "Silver Veil (Originally);",
+   "zodiac": "Aries",
+   "base": "Singapore",
+   "noDisc": true,
+   "info": {
+    "Civilian Name": "Erebus Ang (洪)",
+    "Age": "800; physically appears around 30",
+    "Gender": "Male",
+    "Zodiac": "Aries",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Umbra",
+    "Transformation Item": "Black signet ring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Attacker(Physical-Assassin), Strategist, Shadow",
+    "Relationship": "Acts as Lumen’s Strategist",
+    "Power Color": "Dark Purple",
+    "Team": "Eclipse",
+    "Guild": "Silver Veil (Originally);",
+    "Civilian Occupation": "Senior Executive at LumaSoft",
+    "Height": "190 cm",
+    "Weight": "77 kg",
+    "Spirit Animal": "Wolf",
+    "Awakened Date": "Year 1246",
+    "Awakened By": "Luma Leo"
+   }
+  },
+  {
+   "name": "Moon",
+   "path": "Fire-Lumen-Moon",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen",
+   "role": "Attacker(Mage)",
+   "team": "Celestials",
+   "guild": "Silver Veil & [Tokyo Guild]",
+   "base": "Japan",
+   "info": {
+    "Civilian Name": "Serena Tsukino",
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Ethnicity": "Japanese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen-Moon",
+    "Transformation Item": "Crescent-moon brooch",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker(Mage)",
+    "Passed Tests": "Attacker, Support (Healer)",
+    "Relationship": "Wife of Luma Sun",
+    "Power Color": "Pink",
+    "Team": "Celestials",
+    "Guild": "Silver Veil & [Tokyo Guild]",
+    "Height": "150 cm",
+    "Weight": "50 kg"
+   },
+   "disciples": [
+    "Blossom"
+   ]
+  },
+  {
+   "name": "Yew",
+   "path": "Fire-Blaze-Smoke-Fume-Yew",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Ophiuchus, Luma Cedar (deceased); Luma Fume (unofficial mentor)",
+   "role": "Strategist",
+   "team": "-",
+   "zodiac": "Sagittarius",
+   "info": {
+    "Civilian Name": "Cassian Vale",
+    "Age": "270; physically appears around 40",
+    "Gender": "Male",
+    "Zodiac": "Sagittarius",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Fire",
+    "Inherited Element": "Earth",
+    "Branch Theme": "Fire-Blaze-Smoke-Fume-Yew",
+    "Transformation Item": "Dark yew-berry ring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Shadow, Attacker",
+    "Relationship": "Mother, Father deceased from Monster",
+    "Power Color": "murky greens"
+   }
+  },
+  {
+   "name": "Cedar",
+   "path": "Earth-Life-Verdant-Cedar",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Verdant",
+   "role": "Shadow",
+   "team": "-",
+   "zodiac": "Capricorn",
+   "status": "deceased",
+   "info": {
+    "Civilian Name": "Elias Corwin",
+    "Age": "Around 300 at the time of his death; physically appeared around 55",
+    "Gender": "Male",
+    "Zodiac": "Capricorn",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Verdant-Cedar",
+    "Transformation Item": "Cedar-leaf clasp",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Shadow, Attacker",
+    "Power Color": "Cedar (Pinkish-Red)"
+   },
+   "disciples": [
+    "Yew"
+   ]
+  },
+  {
+   "name": "Verdant",
+   "path": "Earth-Life-Verdant",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "role": "Support (Healer)",
+   "team": "-",
+   "zodiac": "Capricorn",
+   "info": {
+    "Age": "600; physically appears around 30",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Verdant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Healer)",
+    "Passed Tests": "Support (Healer, Researcher),",
+    "Height": "160 cm",
+    "Weight": "57 kg"
+   },
+   "disciples": [
+    "Flora",
+    "Blossom"
+   ]
+  },
+  {
+   "name": "Tidal",
+   "path": "Water-Hydro-Tidal",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Hydro",
+   "role": "Attacker",
+   "guild": "Silver Veil",
+   "base": "Singapore",
+   "info": {
+    "Age": "400",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Hydro-Tidal",
+    "Transformation Item": "Bracelet",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Relationship": "Trained together with Luma Mist, Luma Reflection",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Attacker, Support",
+    "Guild": "Silver Veil",
+    "Height": "160 cm",
+    "Weight": "57 kg"
+   },
+   "disciples": [
+    "Current",
+    "Lotus"
+   ]
+  },
+  {
+   "name": "Summer",
+   "path": "Fire-Blaze-Heat-Summer",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Heat",
+   "role": "Attacker",
+   "team": "Seasons",
+   "guild": "Daybreak",
+   "base": "Singapore",
+   "info": {
+    "Gender": "Female",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Blaze-Heat-Summer",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Team": "Seasons",
+    "Guild": "Daybreak",
+    "Height": "157 cm",
+    "Weight": "58 kg",
+    "Awakened Date": "2008"
+   }
+  },
+  {
+   "name": "Spring",
+   "path": "Air-Resonance-Chime-Spring",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Resonance",
+   "role": "Support (Healer)",
+   "team": "Seasons",
+   "guild": "Daybreak",
+   "base": "Singapore",
+   "info": {
+    "Gender": "Female",
+    "Ethnicity": "Eurasian",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Resonance-Chime-Spring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Healer)",
+    "Team": "Seasons",
+    "Guild": "Daybreak",
+    "Height": "160 cm",
+    "Weight": "58 kg",
+    "Awakened Date": "2008"
+   }
+  },
+  {
+   "name": "Winter",
+   "path": "Water-Hydro-Ice-Winter",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Ice",
+   "role": "Support (Barrier)",
+   "team": "Seasons",
+   "guild": "Daybreak",
+   "base": "Singapore",
+   "info": {
+    "Gender": "Female",
+    "Ethnicity": "Malay",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Hydro-Ice-Winter",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Barrier)",
+    "Team": "Seasons",
+    "Guild": "Daybreak",
+    "Height": "160 cm",
+    "Weight": "58 kg",
+    "Awakened Date": "2008"
+   }
+  },
+  {
+   "name": "Autumn",
+   "path": "Earth-Life-Verdant-Harvest-Autumn",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Autumn",
+   "role": "Strategist",
+   "team": "Seasons",
+   "guild": "Daybreak",
+   "base": "Singapore",
+   "info": {
+    "Gender": "Female",
+    "Ethnicity": "Chinese",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Verdant-Harvest-Autumn",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Shadow, Strategist",
+    "Team": "Seasons",
+    "Guild": "Daybreak",
+    "Height": "162 cm",
+    "Weight": "56 kg",
+    "Awakened Date": "2008"
+   }
+  },
+  {
+   "name": "Solace",
+   "path": "Fire-Vitalis-Solace",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Vitalis",
+   "role": "Support (Guardian Physician)",
+   "zodiac": "Sagittarius",
+   "info": {
+    "Civilian Name": "Tina Lim",
+    "Age": "60 (Physically 30)",
+    "Gender": "Female",
+    "Zodiac": "Sagittarius",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Vitalis-Solace",
+    "Transformation Item": "Pen",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Guardian Physician)",
+    "Passed Tests": "Support (Guardian Physician, Field Healer)",
+    "Relationship": "Blossom’s allocated healer; also medically cleared to know Flora’s civilian identity due to the Flower Sisters’ frequent joint missions.",
+    "Civilian Occupation": "Doctor - Family Medicine / General Practitioner",
+    "Height": "162 cm",
+    "Weight": "58 kg"
+   }
+  },
+  {
+   "name": "Sage",
+   "path": "Earth-Life-Essence-Sage",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Essence",
+   "role": "Support (Guardian Physician, Field Healer)",
+   "zodiac": "Taurus",
+   "info": {
+    "Civilian Name": "Janice Low",
+    "Age": "54 (Physically 29)",
+    "Gender": "Female",
+    "Zodiac": "Taurus",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Essence-Sage",
+    "Transformation Item": "Ring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Guardian Physician, Field Healer)",
+    "Passed Tests": "Support (Guardian Physician, Field Healer)",
+    "Relationship": "Flora's allocated healer; also medically cleared to know Blossom’s civilian identity due to the Flower Sisters’ frequent joint missions.",
+    "Civilian Occupation": "Diagnostic Physician",
+    "Height": "162 cm",
+    "Weight": "58 kg"
+   }
+  },
+  {
+   "name": "Essence",
+   "path": "Earth-Life-Essence",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "role": "Support (Guardian Physician)",
+   "zodiac": "Capricorn",
+   "info": {
+    "Civilian Name": "Mandy Yeo",
+    "Age": "650 (Physically 40)",
+    "Gender": "Female",
+    "Zodiac": "Capricorn",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Essence",
+    "Transformation Item": "Watch",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Guardian Physician)",
+    "Passed Tests": "Support (Guardian Physician, Field Healer)",
+    "Relationship": "Verdant's allocated healer; also knows Blossom’s and Flora’s civilian identities - was their first temporary Healer",
+    "Civilian Occupation": "Physiotherapist",
+    "Height": "162 cm",
+    "Weight": "58 kg"
+   },
+   "disciples": [
+    "Sage",
+    "Remedy",
+    "Cure"
+   ]
+  },
+  {
+   "name": "Hydro",
+   "path": "Water-Hydro",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Cancer",
+   "team": "Elements",
+   "info": {
+    "Age": "800; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Water-Hydro",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Elements",
+    "Civilian Occupation": "Freelancer -",
+    "Height": "180 cm",
+    "Weight": "73 kg"
+   }
+  },
+  {
+   "name": "Soil",
+   "path": "Earth-Soil",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Taurus",
+   "team": "Elements",
+   "info": {
+    "Age": "800; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Soil",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Elements"
+   },
+   "disciples": [
+    "Lithos",
+    "Tellus",
+    "Dune",
+    "Meteor"
+   ]
+  },
+  {
+   "name": "Blaze",
+   "path": "Fire-Blaze",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Sagittarius",
+   "team": "Elements",
+   "info": {
+    "Age": "800; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Blaze",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Elements"
+   },
+   "disciples": [
+    "Cinder",
+    "Smoke"
+   ]
+  },
+  {
+   "name": "Aero",
+   "path": "Air-Aero",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma",
+   "team": "Elements",
+   "info": {
+    "Age": "800; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Elements"
+   }
+  },
+  {
+   "name": "Sun",
+   "path": "Fire-Lumen-Sun",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen; Luma Umbra is unofficial.",
+   "role": "Attacker(Mage)",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen-Sun",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker(Mage)",
+    "Passed Tests": "Attacker,",
+    "Relationship": "Husband of Luma Moon",
+    "Team": "Celestials",
+    "Civilian Occupation": "Freelancer -",
+    "Height": "190 cm",
+    "Weight": "85 kg"
+   }
+  },
+  {
+   "name": "Mist",
+   "path": "Water-Hydro-Mist",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Hydro",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Civilian Name": "Ami",
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Hydro-Mist",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Attacker",
+    "Team": "Celestials",
+    "Civilian Occupation": "Doctor",
+    "Height": "157 cm",
+    "Weight": "50 kg"
+   }
+  },
+  {
+   "name": "Cinder",
+   "path": "Fire-Blaze-Cinder",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Sagittarius",
+   "role": "Attacker",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Blaze-Cinder",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Attacker, Strategist",
+    "Team": "Celestials",
+    "Civilian Occupation": "priestess/Shrine Maiden",
+    "Height": "160 cm",
+    "Weight": "55 kg"
+   },
+   "disciples": [
+    "Ash"
+   ]
+  },
+  {
+   "name": "Meteor",
+   "path": "Earth-Soil-Meteor",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Soil",
+   "role": "Attacker",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Soil-Meteor",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Attacker, Strategist",
+    "Team": "Celestials",
+    "Civilian Occupation": "Idol",
+    "Height": "155 cm",
+    "Weight": "60 kg"
+   }
+  },
+  {
+   "name": "Thunder",
+   "path": "Air-Aero-Thunder",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aero",
+   "role": "Attacker",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Thunder",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Attacker, Strategist",
+    "Team": "Celestials",
+    "Civilian Occupation": "Owner of a Flower Shop & Cake Shop",
+    "Height": "170 cm",
+    "Weight": "65 kg"
+   }
+  },
+  {
+   "name": "Selene",
+   "path": "Water-Gleam-Selene",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Gleam",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Gleam-Selene",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support",
+    "Team": "Celestials",
+    "Height": "145 cm",
+    "Weight": "45 kg",
+    "Spirit Animal": "Black Cat"
+   }
+  },
+  {
+   "name": "Orion",
+   "path": "Air-Aether-Orion",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aether",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aether-Orion",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support",
+    "Team": "Celestials",
+    "Height": "160 cm",
+    "Weight": "60 kg",
+    "Spirit Animal": "Cat"
+   }
+  },
+  {
+   "name": "Space",
+   "path": "Air-Aether-Space",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aether",
+   "role": "Attacker",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Male",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aether-Space",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Attacker, Shadow",
+    "Relationship": "Husband of Reflection",
+    "Team": "Celestials",
+    "Height": "180 cm",
+    "Weight": "77 kg"
+   },
+   "disciples": [
+    "Rift"
+   ]
+  },
+  {
+   "name": "Reflection",
+   "path": "Water-Hydro-Reflection",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Hydro",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Hydro-Reflection",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support, Attacker",
+    "Team": "Celestials",
+    "Height": "163 cm",
+    "Weight": "60 kg"
+   },
+   "disciples": [
+    "Bubbles"
+   ]
+  },
+  {
+   "name": "Cronus",
+   "path": "Earth-Life-Cronus",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Hydro",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Male",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Cronus",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support",
+    "Team": "Celestials",
+    "Height": "185 cm",
+    "Weight": "81 kg"
+   },
+   "disciples": [
+    "Lag"
+   ]
+  },
+  {
+   "name": "Eclipsa",
+   "path": "Earth-Life-Eclipsa",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Hydro",
+   "role": "Strategist",
+   "team": "Celestials",
+   "base": "Japan",
+   "info": {
+    "Age": "400; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Eclipsa",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support",
+    "Team": "Celestials",
+    "Height": "140 cm",
+    "Weight": "45 kg"
+   }
+  },
+  {
+   "name": "Star",
+   "path": "Fire-Lumen-Star",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen",
+   "role": "Attacker(Mage)",
+   "team": "Champions",
+   "zodiac": "Libra",
+   "base": "United States (LA)",
+   "info": {
+    "Civilian Name": "Luxanna Crownguard",
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Zodiac": "Libra",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire-Lumen-Star",
+    "Transformation Item": "Four-pointed star brooch",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker(Mage)",
+    "Passed Tests": "Attacker, Support (Barrier)",
+    "Team": "Champions",
+    "Civilian Occupation": "Freelancer -",
+    "Height": "160 cm",
+    "Weight": "50 kg",
+    "Spirit Animal": "Black Cat"
+   }
+  },
+  {
+   "name": "Muse",
+   "path": "Air-Resonance-Harmony-Muse",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Harmony",
+   "team": "Idols",
+   "base": "Korea",
+   "info": {
+    "Age": "300; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Branch Theme": "Air-Resonance-Harmony-Muse",
+    "Transformation Item": "Microphone",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Idols"
+   }
+  },
+  {
+   "name": "Rhythm",
+   "path": "Air-Resonance-Harmony-Rhythm",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Harmony",
+   "team": "Idols",
+   "base": "Korea",
+   "info": {
+    "Age": "50; physically appears around 21",
+    "Gender": "Female",
+    "Awakening Type": "Emergency Awakened",
+    "Branch Theme": "Air-Resonance-Harmony-Rhythm",
+    "Transformation Item": "Microphone",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Idols"
+   }
+  },
+  {
+   "name": "Melody",
+   "path": "Air-Resonance-Harmony-Melody",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Harmony",
+   "team": "Idols",
+   "base": "Korea",
+   "info": {
+    "Age": "50; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Branch Theme": "Air-Resonance-Harmony-Melody",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Idols"
+   }
+  },
+  {
+   "name": "Beat",
+   "path": "Air-Resonance-Harmony-Beat",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Harmony",
+   "team": "Idols",
+   "base": "Korea",
+   "info": {
+    "Age": "50; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Branch Theme": "Air-Resonance-Harmony-Beat",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Idols"
+   },
+   "disciples": [
+    "Drum",
+    "Bass"
+   ]
+  },
+  {
+   "name": "Joy",
+   "path": "",
+   "element": "",
+   "reason": "Branch left blank",
+   "rank": "Full-Fledged Guardian",
+   "team": "Emotions",
+   "base": "France",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Emotions"
+   }
+  },
+  {
+   "name": "Fear",
+   "path": "",
+   "element": "",
+   "reason": "Branch left blank",
+   "rank": "Full-Fledged Guardian",
+   "team": "Emotions",
+   "base": "France",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Emotions"
+   }
+  },
+  {
+   "name": "Rage",
+   "path": "",
+   "element": "",
+   "reason": "Branch left blank",
+   "rank": "Full-Fledged Guardian",
+   "team": "Emotions",
+   "base": "France",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Emergency Awakened",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Emotions"
+   }
+  },
+  {
+   "name": "Sorrow",
+   "path": "",
+   "element": "",
+   "reason": "Branch left blank",
+   "rank": "Full-Fledged Guardian",
+   "team": "Emotions",
+   "base": "France",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Self-Awakened",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Emotions"
+   }
+  },
+  {
+   "name": "Passion",
+   "path": "",
+   "element": "Fire",
+   "reason": "Branch left blank",
+   "rank": "Full-Fledged Guardian",
+   "team": "Emotions",
+   "base": "France",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Fire",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Team": "Emotions"
+   }
+  },
+  {
+   "name": "Firewall",
+   "path": "Fire-Firewall",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Ophiuchus",
+   "role": "Strategist",
+   "guild": "Silver Veil (Registered Guild Leader)",
+   "zodiac": "Leo",
+   "base": "Singapore",
+   "info": {
+    "Civilian Name": "Hafiz Rahman",
+    "Age": "450; physically appears around 40",
+    "Gender": "Male",
+    "Zodiac": "Leo",
+    "Ethnicity": "Malay",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Firewall",
+    "Transformation Item": "Brass compass pendant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Strategist, Support (Barrier)",
+    "Power Color": "Slate Grey",
+    "Guild": "Silver Veil (Registered Guild Leader)",
+    "Civilian Occupation": "Director of a private security consultancy in Woodlands (the Northern Guild Hall's public cover)",
+    "Height": "178 cm",
+    "Weight": "80 kg",
+    "Spirit Animal": "Owl"
+   },
+   "disciples": [
+    "Glitch",
+    "Static"
+   ]
+  },
+  {
+   "name": "Current",
+   "path": "Water-Hydro-Tidal-Current",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Tidal",
+   "role": "Support",
+   "guild": "Crucible",
+   "base": "Singapore",
+   "info": {
+    "Age": "35",
+    "Gender": "Male",
+    "Ethnicity": "Chinese",
+    "Original Element": "Water",
+    "Branch Theme": "Water-Hydro-Tidal-Current",
+    "Transformation Item": "Ring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support",
+    "Passed Tests": "Support, Attacker",
+    "Power Color": "Blue",
+    "Height": "170 cm",
+    "Weight": "65 kg",
+    "Awakened Date": "2016",
+    "Awakened By": "Luma Hydro",
+    "Relationship": "Single;",
+    "Guild": "Crucible",
+    "Personality": "calm, practical, quick to understand tactical instructions"
+   }
+  },
+  {
+   "name": "Zephyr",
+   "path": "Air-Aero-Zephyr",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aero",
+   "role": "Shadow",
+   "guild": "Five-Foot Way",
+   "base": "Singapore",
+   "info": {
+    "Age": "300",
+    "Gender": "Female",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Zephyr",
+    "Transformation Item": "Pendant",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Shadow, Attacker",
+    "Height": "160 cm",
+    "Weight": "55 kg",
+    "Guild": "Five-Foot Way"
+   }
+  },
+  {
+   "name": "Draft",
+   "path": "Air-Aero-Zephyr-Draft",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Zephyr",
+   "role": "Shadow",
+   "guild": "Five-Foot Way",
+   "base": "Singapore",
+   "info": {
+    "Age": "29",
+    "Gender": "Female",
+    "Ethnicity": "Malay",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Zephyr-Draft",
+    "Transformation Item": "Fan",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Shadow, Attacker",
+    "Height": "160 cm",
+    "Weight": "55 kg",
+    "Awakened Date": "2017",
+    "Guild": "Five-Foot Way",
+    "Personality": "cheerful, street-smart and slightly mischievous. Much less formal than Blossom or Autumn."
+   }
+  },
+  {
+   "name": "Lantern",
+   "path": "Fire-Blaze-Lantern",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen; Luma Umbra unofficially;",
+   "role": "Shadow",
+   "guild": "Five-Foot Way",
+   "base": "Singapore",
+   "info": {
+    "Age": "60; physically appears around 30",
+    "Gender": "Male",
+    "Ethnicity": "Chinese",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Blaze-Lantern",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Support, Shadow",
+    "Height": "170 cm",
+    "Weight": "65 kg",
+    "Awakened Date": "2017",
+    "Guild": "Five-Foot Way"
+   }
+  },
+  {
+   "name": "Forge",
+   "path": "Earth-Mineral-Metal-Forge",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Metal",
+   "role": "Attacker",
+   "guild": "Crucible",
+   "base": "Singapore",
+   "info": {
+    "Age": "30",
+    "Gender": "Male",
+    "Ethnicity": "Indian",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Mineral-Metal-Forge",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Support, Attacker",
+    "Height": "170 cm",
+    "Weight": "65 kg",
+    "Awakened Date": "2017",
+    "Guild": "Crucible"
+   }
+  },
+  {
+   "name": "Life",
+   "path": "Earth-Life",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Capricorn",
+   "role": "Support (Guardian Physician, Researcher)",
+   "info": {
+    "Age": "820; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Guardian Physician, Researcher)",
+    "Passed Tests": "Support (Guardian Physician, Field Healer, Researcher), Strategist"
+   },
+   "disciples": [
+    "Cronus",
+    "Eclipsa",
+    "Verdant",
+    "Essence",
+    "Entoma",
+    "Fauna",
+    "Fossil",
+    "Mythos"
+   ]
+  },
+  {
+   "name": "Mineral",
+   "path": "Earth-Mineral",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Virgo",
+   "info": {
+    "Age": "820; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Mineral",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Crystalis"
+   ]
+  },
+  {
+   "name": "Crystalis",
+   "path": "Earth-Mineral-Crystalis",
+   "rank": "Full-Fledged Guardian",
+   "info": {
+    "Age": "690; physically appears around 30",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Mineral-Crystalis",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Quartz",
+    "Geode"
+   ]
+  },
+  {
+   "name": "Entoma",
+   "path": "Earth-Life-Entoma",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Entoma",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Monarch",
+    "Vespa",
+    "Moth",
+    "Cicada",
+    "Scarab",
+    "Firefly"
+   ]
+  },
+  {
+   "name": "Fauna",
+   "path": "Earth-Life-Fauna",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "role": "Strategist",
+   "info": {
+    "Age": "600; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Fauna",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Support, Strategist, Attacker"
+   },
+   "disciples": [
+    "Lupus",
+    "Aquila",
+    "Lynx"
+   ]
+  },
+  {
+   "name": "Sauria",
+   "path": "Earth-Life-Sauria",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "role": "Strategist",
+   "info": {
+    "Age": "550; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Sauria",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Support, Strategist, Attacker"
+   },
+   "disciples": [
+    "Viper",
+    "Gecko",
+    "Chameleon",
+    "Varanus",
+    "Draco"
+   ]
+  },
+  {
+   "name": "Toxin",
+   "path": "Earth-Life-Toxin",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Life",
+   "role": "Strategist",
+   "info": {
+    "Age": "540; physically appears around 50",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Toxin",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Support, Strategist, Attacker"
+   },
+   "disciples": [
+    "Venom",
+    "Nightshade",
+    "Spore"
+   ]
+  },
+  {
+   "name": "Resonance",
+   "path": "Air-Resonance",
+   "rank": "Full-Fledged Guardian",
+   "info": {
+    "Age": "700; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Resonance",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Sentia",
+    "Harmony"
+   ]
+  },
+  {
+   "name": "Harmony",
+   "path": "Air-Resonance-Harmony",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Resonance",
+   "info": {
+    "Age": "550; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Resonance-Harmony",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Muse",
+    "Rhythm",
+    "Melody",
+    "Beat",
+    "Sonata"
+   ]
+  },
+  {
+   "name": "Aether",
+   "path": "Air-Aether",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Libra",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aether",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Space",
+    "Orion"
+   ]
+  },
+  {
+   "name": "Rift",
+   "path": "Air-Aether-Space-Rift",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Space",
+   "info": {
+    "Age": "350; physically appears around 30",
+    "Gender": "Male",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aether-Space-Rift",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Traverse"
+   ]
+  },
+  {
+   "name": "Prism",
+   "path": "Air-Aero-Prism",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aero",
+   "role": "Support",
+   "info": {
+    "Age": "500; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Prism",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support"
+   }
+  },
+  {
+   "name": "Aurora",
+   "path": "Fire-Lumen-Aurora",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen",
+   "role": "Strategist",
+   "info": {
+    "Age": "600; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen-Aurora",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Support, Strategist"
+   }
+  },
+  {
+   "name": "Mirage",
+   "path": "Fire-Lumen-Mirage",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Lumen",
+   "role": "Strategist",
+   "info": {
+    "Age": "600; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Lumen-Mirage",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Strategist",
+    "Passed Tests": "Support, Strategist"
+   }
+  },
+  {
+   "name": "Vitalis",
+   "path": "Fire-Vitalis",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "Luma Aries",
+   "role": "Support(Healer)",
+   "info": {
+    "Age": "800; physically appears around 20",
+    "Gender": "Female",
+    "Awakening Type": "Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Vitalis",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support(Healer)",
+    "Passed Tests": "Support(Healer)"
+   },
+   "disciples": [
+    "Solace",
+    "Pulse",
+    "Dawn",
+    "Radiance",
+    "Hearth"
+   ]
+  },
+  {
+   "name": "Ophiuchus",
+   "path": "Fire",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "role": "Shadow",
+   "zodiac": "Sagittarius in public record, Ophiuchus internal record",
+   "info": {
+    "Age": "1000; physically appears around 50",
+    "Gender": "Male",
+    "Zodiac": "Sagittarius in public record, Ophiuchus internal record",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire",
+    "Transformation Item": "Dark Snake Ring",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Shadow",
+    "Passed Tests": "Attacker, Shadow, Strategist",
+    "Relationship": "One of the First Guardians. But hidden from the public.",
+    "Height": "190 cm",
+    "Weight": "93 kg"
+   },
+   "disciples": [
+    "Yew"
+   ]
+  },
+  {
+   "name": "Leo",
+   "path": "Fire",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "role": "Attacker (Close Range, Physical)",
+   "zodiac": "Leo",
+   "info": {
+    "Civilian Name": "Diana Ardent",
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Leo",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire",
+    "Transformation Item": "Ring with a lion head?",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker (Close Range, Physical)",
+    "Passed Tests": "Attacker, Shadow",
+    "Height": "180 cm",
+    "Weight": "73 kg"
+   },
+   "disciples": [
+    "Lumen",
+    "Umbra"
+   ]
+  },
+  {
+   "name": "Aries",
+   "path": "Fire",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "role": "Support (Healer)",
+   "zodiac": "Aries",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Aries",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Support (Healer)",
+    "Passed Tests": "Support,",
+    "Height": "180 cm",
+    "Weight": "73 kg"
+   },
+   "disciples": [
+    "Vitalis"
+   ]
+  },
+  {
+   "name": "Sagittarius",
+   "path": "Fire",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "role": "Attacker (Long Range, Magical)",
+   "zodiac": "Sagittarius",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Male",
+    "Zodiac": "Sagittarius",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Primary Role": "Attacker (Long Range, Magical)",
+    "Passed Tests": "Attacker (Long Range, Magical)"
+   }
+  },
+  {
+   "name": "Scorpio",
+   "path": "Water",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Scorpio",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Male",
+    "Zodiac": "Scorpio",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water",
+    "Guardian Rank": "Full-Fledged Guardian",
+    "Passed Tests": "Attacker"
+   }
+  },
+  {
+   "name": "Pisces",
+   "path": "Water",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Pisces",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Male",
+    "Zodiac": "Pisces",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Gleam"
+   ]
+  },
+  {
+   "name": "Cancer",
+   "path": "Water",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Cancer",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Cancer",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Water",
+    "Branch Theme": "Water",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Gleam"
+   ]
+  },
+  {
+   "name": "Aquarius",
+   "path": "Air",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Aquarius",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Aquarius",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air",
+    "Guardian Rank": "Full-Fledged Guardian"
+   }
+  },
+  {
+   "name": "Libra",
+   "path": "Air",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Libra",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Libra",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Aether",
+    "Equilibrium"
+   ]
+  },
+  {
+   "name": "Gemini",
+   "path": "Air",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Gemini",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Gemini",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air",
+    "Guardian Rank": "Full-Fledged Guardian"
+   },
+   "disciples": [
+    "Aero",
+    "Resonance"
+   ]
+  },
+  {
+   "name": "Taurus",
+   "path": "Earth",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Taurus",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Male",
+    "Zodiac": "Taurus",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth",
+    "Guardian Rank": "Full-Fledged Guardian"
+   }
+  },
+  {
+   "name": "Virgo",
+   "path": "Earth",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Virgo",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Female",
+    "Zodiac": "Virgo",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth",
+    "Guardian Rank": "Full-Fledged Guardian"
+   }
+  },
+  {
+   "name": "Capricorn",
+   "path": "Earth",
+   "rank": "Full-Fledged Guardian",
+   "mentor": "-",
+   "zodiac": "Capricorn",
+   "info": {
+    "Age": "1000; physically appears around 45",
+    "Gender": "Male",
+    "Zodiac": "Capricorn",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth",
+    "Guardian Rank": "Full-Fledged Guardian"
+   }
+  },
+  {
+   "name": "Halo",
+   "path": "Fire-Vitalis-Halo",
+   "rank": "Disciple",
+   "info": {
+    "Gender": "Male",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Fire",
+    "Branch Theme": "Fire-Vitalis-Halo",
+    "Guardian Rank": "Disciple",
+    "Height": "176 cm",
+    "Weight": "73 kg"
+   }
+  },
+  {
+   "name": "Unnamed",
+   "path": "Earth-Life-Essence-Sage-Unnamed",
+   "rank": "Disciple",
+   "info": {
+    "Gender": "Male",
+    "Awakening Type": "Emergency Awakened",
+    "Original Element": "Earth",
+    "Branch Theme": "Earth-Life-Essence-Sage-",
+    "Guardian Rank": "Disciple",
+    "Relationship": "Would be Coffea’s Personal Healer in the future",
+    "Height": "176 cm",
+    "Weight": "73 kg"
+   }
+  },
+  {
+   "name": "Vacuum",
+   "path": "Air-Aero-Pressure-Vacuum",
+   "rank": "Former Full-Fledged Guardian",
+   "mentor": "Luma Ophiuchus, Luma Pressure",
+   "role": "Attacker",
+   "team": "-",
+   "zodiac": "Gemini",
+   "status": "deceased",
+   "info": {
+    "Civilian Name": "Undecided",
+    "Gender": "Male",
+    "Zodiac": "Gemini",
+    "Awakening Type": "Self-Awakened",
+    "Original Element": "Air",
+    "Branch Theme": "Air-Aero-Pressure-Vacuum",
+    "Transformation Item": "Undecided",
+    "Guardian Rank": "Former Full-Fledged Guardian",
+    "Primary Role": "Attacker",
+    "Passed Tests": "Ophiuchus, Attacker",
+    "Civilian Occupation": "Undecided"
+   }
+  }
+ ]
+}

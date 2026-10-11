@@ -1,0 +1,10 @@
+{
+ "_help": "Optional extras for a Guardian's wiki page, keyed by Guardian name. Most story text comes from story.md automatically; use this for things the doc does not have. Fields: image (path or URL, e.g. images/blossom.png in wiki/), caption, quote, quoteBy, summary, appearance, personality, history, abilities, relationships, trivia (list), sections ([{title, text}]). Text: blank line = new paragraph, '- ' = bullet, **bold**, *italic*, [[Name]] links a Guardian.",
+ "_example": {
+  "image": "images/blossom.png",
+  "caption": "Luma Blossom in Guardian form",
+  "quote": "A line she is known for.",
+  "quoteBy": "Luma Blossom",
+  "trivia": ["A fact about her."]
+ }
+}

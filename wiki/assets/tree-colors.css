@@ -1,0 +1,180 @@
+/* ==========================================================================
+   tree-colors.css - box colours for the branch tree (tree.html).
+   Edit this file only; tree.html and tree.js do not need to change.
+
+   Every box has these classes:
+     el-fire | el-earth | el-water | el-air   the element
+     shade-0 ... shade-7                      shade slot, spread across the first-level branches
+                                              (the first branch listed in branches.json gets shade-0, the last gets shade-7)
+     b-<name>                                 the first-level branch, e.g. b-lumen, b-umbra
+     root                                     the element box and the Zodiac roots
+     gray                                     a known branch with no profile imported yet (styled in tree.css)
+
+   Each colour set uses six variables:
+     --lf  fill        --ls  border        --lt  text      (light mode)
+     --df  fill        --ds  border        --dt  text      (dark mode)
+
+   To change one shade for every element, edit the matching .shade-N rule.
+   To recolour a single branch, add or edit a rule in the PER-BRANCH section at the bottom.
+   ========================================================================== */
+
+/* Tab and page accents */
+:root{--fire:#D85A30;--earth:#1D9E75;--water:#378ADD;--air:#7F77DD}
+
+/* ---- Fire: 8 shade slots, lightest to deepest ---- */
+.root.el-fire{--lf:#FAECE7;--ls:#993C1D;--lt:#712B13;--df:#563A2F;--ds:#EF9F27;--dt:#F4EFE9}
+.el-fire.shade-0{--lf:#FAC775;--ls:#8A6D40;--lt:#1F1A14;--df:#6B5635;--ds:#FAC775;--dt:#F4EFE9}
+.el-fire.shade-1{--lf:#F4B048;--ls:#866128;--lt:#1F1A14;--df:#694D24;--ds:#F4B048;--dt:#F4EFE9}
+.el-fire.shade-2{--lf:#EF9E33;--ls:#83571C;--lt:#1F1A14;--df:#67471C;--ds:#EF9E33;--dt:#F4EFE9}
+.el-fire.shade-3{--lf:#F09B63;--ls:#845536;--lt:#1F1A14;--df:#68452E;--ds:#F09B63;--dt:#F4EFE9}
+.el-fire.shade-4{--lf:#E98766;--ls:#804A38;--lt:#1F1A14;--df:#653E2F;--ds:#E98766;--dt:#F4EFE9}
+.el-fire.shade-5{--lf:#DB633B;--ls:#783620;--lt:#1F1A14;--df:#60301F;--ds:#DB633B;--dt:#F4EFE9}
+.el-fire.shade-6{--lf:#BD4D28;--ls:#682A16;--lt:#FBF7F2;--df:#542818;--ds:#BD4D28;--dt:#F4EFE9}
+.el-fire.shade-7{--lf:#993C1D;--ls:#542110;--lt:#FBF7F2;--df:#472114;--ds:#993C1D;--dt:#F4EFE9}
+
+/* ---- Earth: 8 shade slots, lightest to deepest ---- */
+.root.el-earth{--lf:#E1F5EE;--ls:#0F6E56;--lt:#085041;--df:#173B2D;--ds:#5DCAA5;--dt:#F4EFE9}
+.el-earth.shade-0{--lf:#9FE1CB;--ls:#577C70;--lt:#1F1A14;--df:#496056;--ds:#9FE1CB;--dt:#F4EFE9}
+.el-earth.shade-1{--lf:#79D4B5;--ls:#437564;--lt:#1F1A14;--df:#3A5B4D;--ds:#79D4B5;--dt:#F4EFE9}
+.el-earth.shade-2{--lf:#54C49E;--ls:#2E6C57;--lt:#1F1A14;--df:#2C5545;--ds:#54C49E;--dt:#F4EFE9}
+.el-earth.shade-3{--lf:#2FAB83;--ls:#1A5E48;--lt:#1F1A14;--df:#1E4C3A;--ds:#2FAB83;--dt:#F4EFE9}
+.el-earth.shade-4{--lf:#19906C;--ls:#0E4F3B;--lt:#1F1A14;--df:#164132;--ds:#19906C;--dt:#F4EFE9}
+.el-earth.shade-5{--lf:#11755A;--ls:#094032;--lt:#FBF7F2;--df:#13372B;--ds:#11755A;--dt:#F4EFE9}
+.el-earth.shade-6{--lf:#0C614D;--ls:#07352A;--lt:#FBF7F2;--df:#112F26;--ds:#0C614D;--dt:#F4EFE9}
+.el-earth.shade-7{--lf:#085041;--ls:#042C24;--lt:#FBF7F2;--df:#0F2921;--ds:#085041;--dt:#F4EFE9}
+
+/* ---- Water: 8 shade slots, lightest to deepest ---- */
+.root.el-water{--lf:#E6F1FB;--ls:#185FA5;--lt:#0C447C;--df:#1E354C;--ds:#85B7EB;--dt:#F4EFE9}
+.el-water.shade-0{--lf:#B5D4F4;--ls:#647586;--lt:#1F1A14;--df:#515B65;--ds:#B5D4F4;--dt:#F4EFE9}
+.el-water.shade-1{--lf:#9AC3EF;--ls:#556B83;--lt:#1F1A14;--df:#475564;--ds:#9AC3EF;--dt:#F4EFE9}
+.el-water.shade-2{--lf:#7AB1E9;--ls:#436180;--lt:#1F1A14;--df:#3B4E61;--ds:#7AB1E9;--dt:#F4EFE9}
+.el-water.shade-3{--lf:#4D97E1;--ls:#2A537C;--lt:#1F1A14;--df:#2A445E;--ds:#4D97E1;--dt:#F4EFE9}
+.el-water.shade-4{--lf:#2E7ECD;--ls:#194571;--lt:#FBF7F2;--df:#1E3A57;--ds:#2E7ECD;--dt:#F4EFE9}
+.el-water.shade-5{--lf:#1C65AD;--ls:#0F385F;--lt:#FBF7F2;--df:#17314A;--ds:#1C65AD;--dt:#F4EFE9}
+.el-water.shade-6{--lf:#135393;--ls:#0A2E51;--lt:#FBF7F2;--df:#142A41;--ds:#135393;--dt:#F4EFE9}
+.el-water.shade-7{--lf:#0C447C;--ls:#072544;--lt:#FBF7F2;--df:#112438;--ds:#0C447C;--dt:#F4EFE9}
+
+/* ---- Air: 8 shade slots, lightest to deepest ---- */
+.root.el-air{--lf:#EEEDFE;--ls:#534AB7;--lt:#3C3489;--df:#34304C;--ds:#AFA9EC;--dt:#F4EFE9}
+.el-air.shade-0{--lf:#CECBF6;--ls:#717087;--lt:#1F1A14;--df:#5B5866;--ds:#CECBF6;--dt:#F4EFE9}
+.el-air.shade-1{--lf:#BCB8F0;--ls:#676584;--lt:#1F1A14;--df:#545064;--ds:#BCB8F0;--dt:#F4EFE9}
+.el-air.shade-2{--lf:#A8A2EA;--ls:#5C5981;--lt:#1F1A14;--df:#4C4862;--ds:#A8A2EA;--dt:#F4EFE9}
+.el-air.shade-3{--lf:#8D85E1;--ls:#4E497C;--lt:#1F1A14;--df:#423D5E;--ds:#8D85E1;--dt:#F4EFE9}
+.el-air.shade-4{--lf:#726AD2;--ls:#3F3A74;--lt:#1F1A14;--df:#383358;--ds:#726AD2;--dt:#F4EFE9}
+.el-air.shade-5{--lf:#5950BC;--ls:#312C67;--lt:#FBF7F2;--df:#2E2950;--ds:#5950BC;--dt:#F4EFE9}
+.el-air.shade-6{--lf:#4941A3;--ls:#28245A;--lt:#FBF7F2;--df:#282347;--ds:#4941A3;--dt:#F4EFE9}
+.el-air.shade-7{--lf:#3C3489;--ls:#211D4B;--lt:#FBF7F2;--df:#231E3D;--ds:#3C3489;--dt:#F4EFE9}
+
+
+/* ==========================================================================
+   ZODIAC COLOURS - a Zodiac root and its first-generation disciples (and
+   everything under them) share one colour. Example: Leo, Lumen and Umbra.
+   A branch picks its Zodiac from its own Mentor line, or from a Zodiac's
+   Disciple line. Branches with no known Zodiac keep the shade-N colours above.
+   Class names: z-<zodiac>, e.g. .node.z-leo. Change a hex value to recolour.
+   ========================================================================== */
+/* Fire */
+.node.z-leo,.sw.z-leo{--lf:#A32A2A;--ls:#5A1717;--lt:#FBF7F2;--df:#501C1A;--ds:#A32A2A;--dt:#F4EFE9}
+.node.z-sagittarius,.sw.z-sagittarius{--lf:#EE8A2E;--ls:#834C19;--lt:#1F1A14;--df:#70441B;--ds:#EE8A2E;--dt:#F4EFE9}
+.node.z-aries,.sw.z-aries{--lf:#E0502F;--ls:#7B2C1A;--lt:#1F1A14;--df:#6A2B1C;--ds:#E0502F;--dt:#F4EFE9}
+.node.z-ophiuchus,.sw.z-ophiuchus{--lf:#F4B942;--ls:#866624;--lt:#1F1A14;--df:#725824;--ds:#F4B942;--dt:#F4EFE9}
+/* Earth */
+.node.z-capricorn,.sw.z-capricorn{--lf:#0F6E56;--ls:#083C2F;--lt:#FBF7F2;--df:#12382C;--ds:#0F6E56;--dt:#F4EFE9}
+.node.z-taurus,.sw.z-taurus{--lf:#2FAF8A;--ls:#1A604C;--lt:#1F1A14;--df:#1F5342;--ds:#2FAF8A;--dt:#F4EFE9}
+.node.z-virgo,.sw.z-virgo{--lf:#8EDDC0;--ls:#4E7A6A;--lt:#1F1A14;--df:#476759;--ds:#8EDDC0;--dt:#F4EFE9}
+/* Water */
+.node.z-scorpio,.sw.z-scorpio{--lf:#A9D2F5;--ls:#5D7487;--lt:#1F1A14;--df:#53626F;--ds:#A9D2F5;--dt:#F4EFE9}
+.node.z-pisces,.sw.z-pisces{--lf:#4B93E0;--ls:#29517B;--lt:#1F1A14;--df:#2B4866;--ds:#4B93E0;--dt:#F4EFE9}
+.node.z-cancer,.sw.z-cancer{--lf:#1F5FA8;--ls:#11345C;--lt:#FBF7F2;--df:#19324F;--ds:#1F5FA8;--dt:#F4EFE9}
+/* Air */
+.node.z-aquarius,.sw.z-aquarius{--lf:#CFCBF7;--ls:#727088;--lt:#1F1A14;--df:#635F70;--ds:#CFCBF7;--dt:#F4EFE9}
+.node.z-libra,.sw.z-libra{--lf:#8E85E0;--ls:#4E497B;--lt:#1F1A14;--df:#474266;--ds:#8E85E0;--dt:#F4EFE9}
+.node.z-gemini,.sw.z-gemini{--lf:#4A3FA8;--ls:#29235C;--lt:#FBF7F2;--df:#2B244F;--ds:#4A3FA8;--dt:#F4EFE9}
+
+
+/* ==========================================================================
+   GENERATION GRADIENT - 1st-generation disciples use the Zodiac colour above.
+   From the 2nd generation onward each generation fades lighter (gen-2 ... gen-5;
+   anything deeper uses gen-5). Class names look like .node.z-leo.gen-2.
+   Change a hex value to adjust one step for one Zodiac.
+   ========================================================================== */
+.node.z-leo.gen-2,.sw.z-leo.gen-2{--lf:#B75959;--ls:#621919;--lt:#1F1A14;--df:#552E2C;--ds:#B75959;--dt:#F4EFE9}
+.node.z-leo.gen-3,.sw.z-leo.gen-3{--lf:#C87F7F;--ls:#621919;--lt:#1F1A14;--df:#5C3D3B;--ds:#C87F7F;--dt:#F4EFE9}
+.node.z-leo.gen-4,.sw.z-leo.gen-4{--lf:#D69F9F;--ls:#621919;--lt:#1F1A14;--df:#624A48;--ds:#D69F9F;--dt:#F4EFE9}
+.node.z-leo.gen-5,.sw.z-leo.gen-5{--lf:#E2BBBB;--ls:#621919;--lt:#1F1A14;--df:#665553;--ds:#E2BBBB;--dt:#F4EFE9}
+.node.z-sagittarius.gen-2,.sw.z-sagittarius.gen-2{--lf:#F2A45C;--ls:#8F531C;--lt:#1F1A14;--df:#6D4C2D;--ds:#F2A45C;--dt:#F4EFE9}
+.node.z-sagittarius.gen-3,.sw.z-sagittarius.gen-3{--lf:#F5B982;--ls:#8F531C;--lt:#1F1A14;--df:#6E543C;--ds:#F5B982;--dt:#F4EFE9}
+.node.z-sagittarius.gen-4,.sw.z-sagittarius.gen-4{--lf:#F7CAA1;--ls:#8F531C;--lt:#1F1A14;--df:#6F5B49;--ds:#F7CAA1;--dt:#F4EFE9}
+.node.z-sagittarius.gen-5,.sw.z-sagittarius.gen-5{--lf:#FADABC;--ls:#8F531C;--lt:#1F1A14;--df:#706154;--ds:#FADABC;--dt:#F4EFE9}
+.node.z-aries.gen-2,.sw.z-aries.gen-2{--lf:#E7765D;--ls:#86301C;--lt:#1F1A14;--df:#68392E;--ds:#E7765D;--dt:#F4EFE9}
+.node.z-aries.gen-3,.sw.z-aries.gen-3{--lf:#EC9682;--ls:#86301C;--lt:#1F1A14;--df:#6A463C;--ds:#EC9682;--dt:#F4EFE9}
+.node.z-aries.gen-4,.sw.z-aries.gen-4{--lf:#F1B0A1;--ls:#86301C;--lt:#1F1A14;--df:#6C5149;--ds:#F1B0A1;--dt:#F4EFE9}
+.node.z-aries.gen-5,.sw.z-aries.gen-5{--lf:#F5C7BC;--ls:#86301C;--lt:#1F1A14;--df:#6E5A54;--ds:#F5C7BC;--dt:#F4EFE9}
+.node.z-ophiuchus.gen-2,.sw.z-ophiuchus.gen-2{--lf:#F6C86C;--ls:#926F28;--lt:#1F1A14;--df:#6E5A34;--ds:#F6C86C;--dt:#F4EFE9}
+.node.z-ophiuchus.gen-3,.sw.z-ophiuchus.gen-3{--lf:#F8D58E;--ls:#926F28;--lt:#1F1A14;--df:#6F5F41;--ds:#F8D58E;--dt:#F4EFE9}
+.node.z-ophiuchus.gen-4,.sw.z-ophiuchus.gen-4{--lf:#FAE0AA;--ls:#926F28;--lt:#1F1A14;--df:#70644C;--ds:#FAE0AA;--dt:#F4EFE9}
+.node.z-ophiuchus.gen-5,.sw.z-ophiuchus.gen-5{--lf:#FBE9C3;--ls:#926F28;--lt:#1F1A14;--df:#706756;--ds:#FBE9C3;--dt:#F4EFE9}
+.node.z-capricorn.gen-2,.sw.z-capricorn.gen-2{--lf:#448E7B;--ls:#094234;--lt:#1F1A14;--df:#27433A;--ds:#448E7B;--dt:#F4EFE9}
+.node.z-capricorn.gen-3,.sw.z-capricorn.gen-3{--lf:#6FA89A;--ls:#094234;--lt:#1F1A14;--df:#384D46;--ds:#6FA89A;--dt:#F4EFE9}
+.node.z-capricorn.gen-4,.sw.z-capricorn.gen-4{--lf:#93BEB3;--ls:#094234;--lt:#1F1A14;--df:#475650;--ds:#93BEB3;--dt:#F4EFE9}
+.node.z-capricorn.gen-5,.sw.z-capricorn.gen-5{--lf:#B2D1C9;--ls:#094234;--lt:#1F1A14;--df:#535E59;--ds:#B2D1C9;--dt:#F4EFE9}
+.node.z-taurus.gen-2,.sw.z-taurus.gen-2{--lf:#5DC1A4;--ls:#1C6953;--lt:#1F1A14;--df:#31574A;--ds:#5DC1A4;--dt:#F4EFE9}
+.node.z-taurus.gen-3,.sw.z-taurus.gen-3{--lf:#82CFB9;--ls:#1C6953;--lt:#1F1A14;--df:#405D52;--ds:#82CFB9;--dt:#F4EFE9}
+.node.z-taurus.gen-4,.sw.z-taurus.gen-4{--lf:#A1DBCA;--ls:#1C6953;--lt:#1F1A14;--df:#4C6259;--ds:#A1DBCA;--dt:#F4EFE9}
+.node.z-taurus.gen-5,.sw.z-taurus.gen-5{--lf:#BCE5DA;--ls:#1C6953;--lt:#1F1A14;--df:#576660;--ds:#BCE5DA;--dt:#F4EFE9}
+.node.z-virgo.gen-2,.sw.z-virgo.gen-2{--lf:#A7E4CE;--ls:#558573;--lt:#1F1A14;--df:#4F655B;--ds:#A7E4CE;--dt:#F4EFE9}
+.node.z-virgo.gen-3,.sw.z-virgo.gen-3{--lf:#BBEBD9;--ls:#558573;--lt:#1F1A14;--df:#57685F;--ds:#BBEBD9;--dt:#F4EFE9}
+.node.z-virgo.gen-4,.sw.z-virgo.gen-4{--lf:#CCF0E3;--ls:#558573;--lt:#1F1A14;--df:#5E6A63;--ds:#CCF0E3;--dt:#F4EFE9}
+.node.z-virgo.gen-5,.sw.z-virgo.gen-5{--lf:#DBF4EB;--ls:#558573;--lt:#1F1A14;--df:#646C66;--ds:#DBF4EB;--dt:#F4EFE9}
+.node.z-scorpio.gen-2,.sw.z-scorpio.gen-2{--lf:#BCDCF7;--ls:#657E93;--lt:#1F1A14;--df:#57626B;--ds:#BCDCF7;--dt:#F4EFE9}
+.node.z-scorpio.gen-3,.sw.z-scorpio.gen-3{--lf:#CBE4F9;--ls:#657E93;--lt:#1F1A14;--df:#5D656C;--ds:#CBE4F9;--dt:#F4EFE9}
+.node.z-scorpio.gen-4,.sw.z-scorpio.gen-4{--lf:#D8EBFA;--ls:#657E93;--lt:#1F1A14;--df:#62686C;--ds:#D8EBFA;--dt:#F4EFE9}
+.node.z-scorpio.gen-5,.sw.z-scorpio.gen-5{--lf:#E3F1FC;--ls:#657E93;--lt:#1F1A14;--df:#676B6D;--ds:#E3F1FC;--dt:#F4EFE9}
+.node.z-pisces.gen-2,.sw.z-pisces.gen-2{--lf:#73ABE7;--ls:#2D5886;--lt:#1F1A14;--df:#3A4F65;--ds:#73ABE7;--dt:#F4EFE9}
+.node.z-pisces.gen-3,.sw.z-pisces.gen-3{--lf:#93BEEC;--ls:#2D5886;--lt:#1F1A14;--df:#475667;--ds:#93BEEC;--dt:#F4EFE9}
+.node.z-pisces.gen-4,.sw.z-pisces.gen-4{--lf:#AECEF1;--ls:#2D5886;--lt:#1F1A14;--df:#525D69;--ds:#AECEF1;--dt:#F4EFE9}
+.node.z-pisces.gen-5,.sw.z-pisces.gen-5{--lf:#C5DCF5;--ls:#2D5886;--lt:#1F1A14;--df:#5B626A;--ds:#C5DCF5;--dt:#F4EFE9}
+.node.z-cancer.gen-2,.sw.z-cancer.gen-2{--lf:#5082BB;--ls:#133965;--lt:#1F1A14;--df:#2C3E53;--ds:#5082BB;--dt:#F4EFE9}
+.node.z-cancer.gen-3,.sw.z-cancer.gen-3{--lf:#799FCB;--ls:#133965;--lt:#1F1A14;--df:#3C4A5A;--ds:#799FCB;--dt:#F4EFE9}
+.node.z-cancer.gen-4,.sw.z-cancer.gen-4{--lf:#9AB7D8;--ls:#133965;--lt:#1F1A14;--df:#4A535F;--ds:#9AB7D8;--dt:#F4EFE9}
+.node.z-cancer.gen-5,.sw.z-cancer.gen-5{--lf:#B7CCE3;--ls:#133965;--lt:#1F1A14;--df:#555C63;--ds:#B7CCE3;--dt:#F4EFE9}
+.node.z-aquarius.gen-2,.sw.z-aquarius.gen-2{--lf:#DAD6F9;--ls:#7C7A94;--lt:#1F1A14;--df:#63606C;--ds:#DAD6F9;--dt:#F4EFE9}
+.node.z-aquarius.gen-3,.sw.z-aquarius.gen-3{--lf:#E2E0FA;--ls:#7C7A94;--lt:#1F1A14;--df:#66646C;--ds:#E2E0FA;--dt:#F4EFE9}
+.node.z-aquarius.gen-4,.sw.z-aquarius.gen-4{--lf:#E9E8FB;--ls:#7C7A94;--lt:#1F1A14;--df:#69676D;--ds:#E9E8FB;--dt:#F4EFE9}
+.node.z-aquarius.gen-5,.sw.z-aquarius.gen-5{--lf:#F0EEFC;--ls:#7C7A94;--lt:#1F1A14;--df:#6C696D;--ds:#F0EEFC;--dt:#F4EFE9}
+.node.z-libra.gen-2,.sw.z-libra.gen-2{--lf:#A7A0E7;--ls:#555086;--lt:#1F1A14;--df:#4F4A65;--ds:#A7A0E7;--dt:#F4EFE9}
+.node.z-libra.gen-3,.sw.z-libra.gen-3{--lf:#BBB6EC;--ls:#555086;--lt:#1F1A14;--df:#575367;--ds:#BBB6EC;--dt:#F4EFE9}
+.node.z-libra.gen-4,.sw.z-libra.gen-4{--lf:#CCC8F1;--ls:#555086;--lt:#1F1A14;--df:#5E5A69;--ds:#CCC8F1;--dt:#F4EFE9}
+.node.z-libra.gen-5,.sw.z-libra.gen-5{--lf:#DBD8F5;--ls:#555086;--lt:#1F1A14;--df:#64616A;--ds:#DBD8F5;--dt:#F4EFE9}
+.node.z-gemini.gen-2,.sw.z-gemini.gen-2{--lf:#7269BB;--ls:#2C2665;--lt:#1F1A14;--df:#3A3453;--ds:#7269BB;--dt:#F4EFE9}
+.node.z-gemini.gen-3,.sw.z-gemini.gen-3{--lf:#928CCB;--ls:#2C2665;--lt:#1F1A14;--df:#46425A;--ds:#928CCB;--dt:#F4EFE9}
+.node.z-gemini.gen-4,.sw.z-gemini.gen-4{--lf:#AEA9D8;--ls:#2C2665;--lt:#1F1A14;--df:#524E5F;--ds:#AEA9D8;--dt:#F4EFE9}
+.node.z-gemini.gen-5,.sw.z-gemini.gen-5{--lf:#C5C2E3;--ls:#2C2665;--lt:#1F1A14;--df:#5B5863;--ds:#C5C2E3;--dt:#F4EFE9}
+
+/* ==========================================================================
+   STATUS COLOURS - override the Zodiac colour for retired or deceased
+   Guardians. Boxes also carry a small badge (R or a dagger) so the status is
+   not shown by colour alone. Set a status in the doc with "(retired)" or
+   "(deceased)" after a name in a Mentor/Disciple line, a "Status:" line on the
+   profile, or "status" in branches.json.
+   ========================================================================== */
+.node.node.st-retired,.sw.sw.st-retired,.badge.st-retired{--lf:#B8A77E;--ls:#6B5D3A;--lt:#1F1A14;--df:#4A4230;--ds:#B8A77E;--dt:#F4EFE9}
+.node.node.st-deceased,.sw.sw.st-deceased,.badge.st-deceased{--lf:#3A3A44;--ls:#15151B;--lt:#F4EFE9;--df:#26262E;--ds:#8C8C99;--dt:#F4EFE9}
+
+/* ==========================================================================
+   PER-BRANCH colours (these win over the shade slots above).
+   Uncomment a rule and change the hex values. Use .node.b-<name> so it beats the slots.
+   First-level branches currently in branches.json:
+     Fire: b-lumen, b-blaze, b-vitalis, b-umbra, b-firewall
+     Earth: b-life, b-mineral, b-soil
+     Water: b-hydro, b-gleam
+     Air: b-resonance, b-aero, b-aether
+   ========================================================================== */
+
+/* Example: make Lumen a warmer, lighter gold
+.node.b-lumen{--lf:#FFE2A8;--ls:#B9770E;--lt:#3B2400;--df:#6B4A10;--ds:#FFE2A8;--dt:#F4EFE9}
+*/
+
+/* Example: make the whole Umbra family a deeper orange
+.node.b-umbra{--lf:#E8791A;--ls:#7A3B05;--lt:#FFF4E6;--df:#6B3305;--ds:#E8791A;--dt:#F4EFE9}
+*/

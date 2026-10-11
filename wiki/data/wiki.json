@@ -1,0 +1,20 @@
+{
+ "_help": "Wiki settings. featured: a Guardian name to pin on the home page (blank = a different one each day). hideFields: profile fields never shown on the wiki and stripped from the story doc by tools/update-story.ps1 (branches.json hiddenFields are always added). storyDocId: the Google Doc that tools/update-story.ps1 downloads. storyExcludeTabs: doc tabs left out of the wiki.",
+ "title": "Luma Guardian Wiki",
+ "tagline": "The encyclopedia of the Luma Guardians: every Guardian, branch, team and stronghold across Fire, Earth, Water and Air.",
+ "featured": "Blossom",
+ "dataUrl": "data/branches.json",
+ "hideFields": [
+  "Civilian Name",
+  "Date of Birth",
+  "Height",
+  "Weight",
+  "Blood Type",
+  "Breast Size",
+  "Ding Dong Size"
+ ],
+ "storyDocId": "1wRlhqEvxgIdP9Ox-T8VFVPk7vv8Ao7DXZ77xNeTn8FI",
+ "storyExcludeTabs": [
+  "Tab 19"
+ ]
+}

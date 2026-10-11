@@ -1,0 +1,89 @@
+/* Branch tree page. Base look (header, buttons, cards, colours) comes from wiki.css; box colours from tree-colors.css. */
+:root{
+  --focus:#534AB7;--warn-bg:#FBF1DC;--warn-ink:#633806;
+  --lf-gray:#ECEAE3;--ls-gray:#8A8780;--lt-gray:#5F5E5A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--focus:#AFA9EC;--warn-bg:#3A2D12;--warn-ink:#FAC775;--lf-gray:#2A2926;--ls-gray:#888780;--lt-gray:#B4B2A9}
+}
+:root[data-theme="dark"]{--focus:#AFA9EC;--warn-bg:#3A2D12;--warn-ink:#FAC775;--lf-gray:#2A2926;--ls-gray:#888780;--lt-gray:#B4B2A9}
+
+.toggles{display:flex;flex-wrap:wrap;gap:6px 22px;margin:2px 0 10px}
+.toggles .chk{margin-top:0}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:14px;margin-top:10px}
+.chk input{margin-top:4px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 14px}
+.tab{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 15px;cursor:pointer;font-weight:600;font-size:14px;display:inline-flex;gap:8px;align-items:center;min-height:36px}
+.tab .dot{width:10px;height:10px;border-radius:50%;background:var(--c,var(--none))}
+.tab .n{font-weight:500;color:var(--muted);font-size:13px}
+.tab[aria-selected="true"]{border-color:var(--c,var(--ink));background:var(--surface2)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--muted);margin-bottom:12px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:16px;height:11px;border-radius:3px;border:1px solid}
+.sw.has{background:var(--lf);border-color:var(--ls)}
+.sw.none{background:var(--lf-gray);border-color:var(--ls-gray);border-style:dashed}
+.sw.alias-sw{width:0;height:14px;border:0;border-left:2px dashed var(--muted);border-radius:0;margin:0 6px}
+.lg{font-weight:600;color:var(--ink)}
+
+/* Diagram */
+.diagram{overflow-x:auto;padding:4px 2px 8px}
+.diagram svg{display:block}
+.node{cursor:pointer}
+.node rect{fill:var(--lf,var(--surface2));stroke:var(--ls,var(--line));stroke-width:1}
+.node text{fill:var(--lt,var(--ink));font-family:"Manrope",system-ui,sans-serif;font-size:13px;font-weight:600;pointer-events:none}
+.node.gray rect{fill:var(--lf-gray);stroke:var(--ls-gray);stroke-dasharray:4 3}
+.node.gray text{fill:var(--lt-gray)}
+.node.sel rect{stroke-width:2.5}
+.node:hover rect{stroke-width:2}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .node:not(.gray) rect{fill:var(--df,var(--surface2));stroke:var(--ds,var(--line))}
+  :root:not([data-theme="light"]) .node:not(.gray) text{fill:var(--dt,var(--ink))}
+}
+:root[data-theme="dark"] .node:not(.gray) rect{fill:var(--df,var(--surface2));stroke:var(--ds,var(--line))}
+:root[data-theme="dark"] .node:not(.gray) text{fill:var(--dt,var(--ink))}
+.markbg{fill:var(--ink);stroke:var(--surface);stroke-width:1.5;pointer-events:none}
+.mark{fill:var(--bg);font-family:"Manrope",system-ui,sans-serif;font-size:10px;font-weight:700;pointer-events:none}
+.link{fill:none;stroke:var(--line);stroke-width:1.5}
+:root[data-theme="light"] .link{stroke:#BDB9D3}
+.alias{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 3}
+.aliaslabel{fill:var(--muted);font-family:"Manrope",system-ui,sans-serif;font-size:11px}
+.elblock{margin-top:22px}
+.elh{font-size:16px;display:flex;gap:8px;align-items:center;margin:0 0 8px}
+.elh .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+
+/* Profile card under the tabs */
+.detail{margin-top:14px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);min-height:64px;font-size:14px}
+.detail.sticky{position:sticky;top:calc(var(--head-h) + 8px);z-index:3;margin:0 0 4px;box-shadow:0 6px 12px -8px rgba(0,0,0,.35)}
+.detail h3{font-size:16px;margin-bottom:4px}
+.detail dl{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;margin:8px 0 0}
+.detail dt{color:var(--muted)}
+.detail dd{margin:0}
+.detail .hint{color:var(--muted)}
+.stdcard+.stdcard{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.stdcard .sh,.fh{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.stdcard .wikilink{display:inline-flex;align-items:center;min-height:40px;font-weight:600;font-size:14px;margin-left:6px}
+dl.std{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:8px 0 10px}
+dl.std dt{color:var(--muted);font-size:13px}
+dl.std dd{margin:0;overflow-wrap:anywhere}
+dl.std dd.unk{color:var(--muted);font-style:italic}
+.same{margin:0 0 10px;color:var(--muted);font-size:13px}
+.badge{font-size:12px;font-weight:600;border-radius:999px;padding:1px 10px;background:var(--lf,var(--surface2));color:var(--lt,var(--ink));border:1px solid var(--ls,var(--line))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .badge{background:var(--df,var(--surface2));color:var(--dt,var(--ink));border-color:var(--ds,var(--line))}}
+:root[data-theme="dark"] .badge{background:var(--df,var(--surface2));color:var(--dt,var(--ink));border-color:var(--ds,var(--line))}
+
+/* Full-info dialog */
+dialog#full{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:20px 22px;width:min(640px,calc(100vw - 24px));max-height:calc(100vh - 40px)}
+dialog#full::backdrop{background:rgba(10,8,20,.55)}
+dialog#full h2{font-size:20px}
+dialog#full h4{margin:16px 0 2px;font-family:"Sora","Manrope",sans-serif;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.fclose{margin-top:16px;text-align:right}
+
+/* No-branch and check tabs */
+.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.group{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
+.group h3{font-size:15px;display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.group h3 .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);background:var(--surface2);border-radius:8px;padding:6px 10px;margin-top:6px;font-size:14px}
+.chip small{color:var(--muted);font-size:12px;align-self:center}
+.warns{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.warns li{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:9px 12px;font-size:14px}
