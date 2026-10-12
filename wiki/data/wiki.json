@@ -5,8 +5,6 @@
  "featured": "Blossom",
  "dataUrl": "data/branches.json",
  "hideFields": [
-  "Civilian Name",
-  "Date of Birth",
   "Height",
   "Weight",
   "Blood Type",

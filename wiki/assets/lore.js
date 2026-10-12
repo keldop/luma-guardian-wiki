@@ -1,67 +1,102 @@
-/* Lore: one article per tab of the story doc, plus full-text search across all of them. */
+/* Lore: topic articles grouped by data/lore-layout.json, a team directory, and full-text search.
+   lore.html = all articles, lore.html?a=crystals = one article, lore.html?q=astral = search.
+   Old links (lore.html?tab=<doc tab>) still work. */
 (async function(){
 const W=window.Wiki,{esc}=W;
 const data=await W.boot('lore');
 const main=document.getElementById('main');
-let story;
-try{story=await Story.load();}
+let lore;
+try{lore=await Story.loadLore();}
 catch(e){main.innerHTML=`<div class="err"><b>The story file is missing.</b><br>${esc(e.message)}<br><span class="muted">Create it with wiki/tools/update-story.ps1 (see wiki/README.md).</span></div>`;return;}
 
 const p=W.params();
-const tab=story.bySlug.get(p.get('tab')||'');
+const want=p.get('a')||p.get('tab')||'';
+const art=lore.bySlug.get(want)||lore.bySlug.get(lore.fromTab.get(want)||'');
 const q=(p.get('q')||'').trim();
+const url=a=>'lore.html?a='+a.slug;
 
-const firstText=md=>{for(const l of md.split('\n')){const t=l.replace(/[#*_>~`\\]/g,'').trim();if(t.length>40&&!/^\[?https?:/.test(t)) return t;}return '';};
+const firstText=md=>{for(const l of md.split('\n')){const t=l.replace(/[#*_>~`\\]/g,'').trim();if(t.length>40&&!/^\[?https?:/.test(t)&&!/^Members:/.test(t)) return t;}return '';};
 const sidebar=()=>`<aside class="lore-side" aria-label="Lore articles">
   <form class="lore-search" action="lore.html" role="search"><label class="sr" for="lq">Search the lore</label><input type="search" id="lq" name="q" placeholder="Search the lore…" value="${esc(q)}"></form>
   <label class="sr" for="lsel">Article</label>
-  <select id="lsel" class="lore-select"><option value="">All articles</option>${story.tabs.map(t=>`<option value="${t.slug}"${tab===t?' selected':''}>${esc(t.title)}</option>`).join('')}</select>
-  <nav class="lore-nav"><a href="lore.html"${!tab&&!q?' aria-current="page"':''}>All articles</a>${story.tabs.map(t=>`<a href="lore.html?tab=${t.slug}"${tab===t?' aria-current="page"':''}>${esc(t.title)}</a>`).join('')}</nav>
+  <select id="lsel" class="lore-select"><option value="">All articles</option>${lore.groups.map(g=>`<optgroup label="${esc(g.title)}">${g.articles.map(a=>`<option value="${a.slug}"${art===a?' selected':''}>${esc(a.title)}</option>`).join('')}</optgroup>`).join('')}</select>
+  <nav class="lore-nav"><a href="lore.html"${!art&&!q?' aria-current="page"':''}>All articles</a>${lore.groups.map(g=>`<span class="lore-group">${esc(g.title)}</span>${g.articles.map(a=>`<a href="${url(a)}"${art===a?' aria-current="page"':''}>${esc(a.title)}</a>`).join('')}`).join('')}</nav>
 </aside>`;
-const crumbs=extra=>`<div class="crumbs"><a href="index.html">Home</a><span class="sep">›</span>${extra?`<a href="lore.html">Lore</a><span class="sep">›</span><span>${esc(extra)}</span>`:'<span>Lore</span>'}</div>`;
+const crumbs=(group,leaf)=>`<div class="crumbs"><a href="index.html">Home</a><span class="sep">›</span>${leaf?`<a href="lore.html">Lore</a><span class="sep">›</span>${group?`<span>${esc(group)}</span><span class="sep">›</span>`:''}<span>${esc(leaf)}</span>`:'<span>Lore</span>'}</div>`;
+const shell=(group,leaf,inner)=>{main.innerHTML=`${crumbs(group,leaf)}<div class="lore">${sidebar()}<article class="prose lore-body">${inner}</article></div>`;
+  const s=document.getElementById('lsel');s.addEventListener('change',()=>{location.href=s.value?'lore.html?a='+s.value:'lore.html';});};
 
-function wire(){
-  const s=document.getElementById('lsel');
-  s.addEventListener('change',()=>{location.href=s.value?'lore.html?tab='+s.value:'lore.html';});
+// Contents box. With only a few main sections, their sub-sections are listed under them.
+function tocFor(root){
+  const label=h=>esc(h.dataset.label||h.textContent);
+  const h2=[...root.querySelectorAll('h2')];
+  const all=[...root.querySelectorAll('h2,h3')];
+  let items,count;
+  if(h2.length>=2&&h2.length<6&&all.length>h2.length){
+    items=h2.map(h=>{
+      const subs=[];
+      for(let i=all.indexOf(h)+1;i<all.length&&all[i].tagName==='H3';i++) subs.push(all[i]);
+      return `<li><a href="#${h.id}">${label(h)}</a>${subs.length?`<ol>${subs.map(s=>`<li><a href="#${s.id}">${label(s)}</a></li>`).join('')}</ol>`:''}</li>`;
+    }).join('');
+    count=all.length;
+  }else{
+    const heads=h2.length>=2?h2:[...root.querySelectorAll('h3')];
+    items=heads.map(h=>`<li><a href="#${h.id}">${label(h)}</a></li>`).join('');
+    count=heads.length;
+  }
+  return count>=3?`<details class="toc" ${count>14?'':'open'}><summary>Contents (${count})</summary><ol>${items}</ol></details>`:'';
+}
+function pager(a){
+  const i=lore.articles.indexOf(a),prev=lore.articles[i-1],next=lore.articles[i+1];
+  return `<nav class="pager">${prev?`<a href="${url(prev)}">← ${esc(prev.title)}</a>`:'<span></span>'}${next?`<a href="${url(next)}">${esc(next.title)} →</a>`:''}</nav>`;
+}
+const jump=()=>{if(location.hash){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t) t.scrollIntoView();}};
+
+// Team directory: each team's intro from the doc plus member cards linking to the profiles.
+async function teamsHtml(){
+  const out=[];
+  for(const g of lore.teams){
+    const intro=g.intro.trim()?(await Story.render(g.intro,data)).innerHTML:'';
+    const cards=g.members.map(n=>{
+      const gd=data.byName.get(n.toLowerCase());
+      return gd?W.card(gd):`<a class="ccard noprof el-None" href="character.html?name=${encodeURIComponent(n)}"><span class="ava el-None" style="--s:48px" aria-hidden="true">${esc(n[0].toUpperCase())}</span><span class="t"><b>${esc(n)}</b><small>Story profile only</small></span></a>`;
+    }).join('');
+    out.push(`<h2 id="${W.slug(g.name)}" data-label="${esc(g.name)}">${esc(g.name)}${g.base?` <span class="pill">${esc(g.base)}</span>`:''}</h2>${intro}<div class="grid team-grid">${cards}</div>`);
+  }
+  return out.join('');
 }
 
-async function showTab(){
-  document.title=`${tab.title} · Lore · Luma Guardian Wiki`;
-  main.innerHTML=`${crumbs(tab.title)}<div class="lore">${sidebar()}<article class="prose lore-body"><h1 class="lore-title">${esc(tab.title)}</h1><div class="loading">Loading…</div></article></div>`;
-  wire();
-  // Shift headings so the article's top level becomes h2, whatever level the doc used.
-  const top=Math.min(...(tab.md.match(/^#{1,6}(?=\s)/gm)||['##']).map(h=>h.length));
-  const body=await Story.render(tab.md,data,{shift:2-top});
-  // A tab often opens with a heading that repeats its own name.
-  const h=body.firstElementChild;
-  if(h&&/^H[1-6]$/.test(h.tagName)&&W.slug(h.textContent)===tab.slug) h.remove();
-  // "Luma X" headings get a link to that Guardian's wiki profile.
-  body.querySelectorAll('h2,h3,h4').forEach(hd=>{
-    const m=hd.textContent.replace(/\(.*?\)/g,'').trim().match(/^Luma\s+(\S.*)$/i);
-    const g=m&&data.byName.get(m[1].split('/')[0].trim().toLowerCase());
-    if(g) hd.insertAdjacentHTML('beforeend',` <a class="hlink" href="${W.charUrl(g)}">Wiki profile →</a>`);
-  });
-  let heads=[...body.querySelectorAll('h2')];
-  if(heads.length<2) heads=[...body.querySelectorAll('h3')];
-  const art=main.querySelector('.lore-body');
-  art.querySelector('.loading').remove();
-  if(heads.length>=3){
-    art.insertAdjacentHTML('beforeend',`<details class="toc" ${heads.length>14?'':'open'}><summary>Contents (${heads.length})</summary><ol>${heads.map(h=>`<li><a href="#${h.id}">${esc(h.textContent.replace(/Wiki profile →/,'').trim())}</a></li>`).join('')}</ol></details>`);
+async function showArticle(){
+  document.title=`${art.title} · Lore · Luma Guardian Wiki`;
+  shell(art.group.title,art.title,`<h1 class="lore-title">${esc(art.title)}</h1><div class="loading">Loading…</div>`);
+  const box=main.querySelector('.lore-body');
+  let body;
+  if(art.special==='teams'){
+    body=document.createElement('div');
+    body.innerHTML=`<p class="lead">Every team and group in the story. Each Guardian's full write-up is on their profile page.</p>`+await teamsHtml();
+  }else{
+    body=await Story.render(art.md,data);
+    // "Luma X" headings link to that Guardian's profile.
+    body.querySelectorAll('h2,h3,h4').forEach(hd=>{
+      const m=hd.textContent.replace(/\(.*?\)/g,'').trim().match(/^Luma\s+(\S.*)$/i);
+      const g=m&&data.byName.get(m[1].split('/')[0].trim().toLowerCase());
+      if(g){hd.dataset.label=hd.textContent;hd.insertAdjacentHTML('beforeend',` <a class="hlink" href="${W.charUrl(g)}">Wiki profile →</a>`);}
+    });
   }
-  art.append(body);
-  const i=story.tabs.indexOf(tab),prev=story.tabs[i-1],next=story.tabs[i+1];
-  art.insertAdjacentHTML('beforeend',`<nav class="pager">${prev?`<a href="lore.html?tab=${prev.slug}">← ${esc(prev.title)}</a>`:'<span></span>'}${next?`<a href="lore.html?tab=${next.slug}">${esc(next.title)} →</a>`:''}</nav>`);
-  if(location.hash){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t) t.scrollIntoView();}
+  box.querySelector('.loading').remove();
+  box.insertAdjacentHTML('beforeend',tocFor(body));
+  box.append(body);
+  box.insertAdjacentHTML('beforeend',pager(art));
+  jump();
 }
 
 async function showSearch(){
   document.title=`“${q}” · Lore · Luma Guardian Wiki`;
-  main.innerHTML=`${crumbs('Search')}<div class="lore">${sidebar()}<section class="lore-body"><h1 class="lore-title">Search: “${esc(q)}”</h1><div class="loading">Searching…</div></section></div>`;
-  wire();
+  shell('','Search',`<h1 class="lore-title">Search: “${esc(q)}”</h1><div class="loading">Searching…</div>`);
   const words=q.toLowerCase().split(/\s+/).filter(Boolean);
   const hits=[];
-  for(const t of story.tabs){
-    const body=await Story.render(t.md,null,{shift:1});
+  for(const a of lore.articles){
+    const body=await Story.render(a.md,null);
     // Split each article into sections at its headings, then score each section.
     let cur={head:null,text:''};const secs=[cur];
     for(const n of body.children){
@@ -69,34 +104,35 @@ async function showSearch(){
       else cur.text+=' '+n.textContent;
     }
     for(const s of secs){
-      const ht=s.head?s.head.textContent:t.title;
+      const ht=s.head?s.head.textContent:a.title;
       const hay=(ht+' '+s.text).toLowerCase();
       if(!words.every(w=>hay.includes(w))) continue;
-      const score=words.reduce((a,w)=>a+(ht.toLowerCase().includes(w)?10:0)+hay.split(w).length-1,0);
+      const score=words.reduce((n,w)=>n+(ht.toLowerCase().includes(w)?10:0)+hay.split(w).length-1,0);
       const at=Math.max(0,s.text.toLowerCase().indexOf(words[0])-80);
-      hits.push({t,id:s.head&&s.head.id,ht,score,snip:s.text.slice(at,at+220).trim()});
+      hits.push({a,id:s.head&&s.head.id,ht,score,snip:s.text.slice(at,at+220).trim()});
     }
   }
-  hits.sort((a,b)=>b.score-a.score);
+  hits.sort((x,y)=>y.score-x.score);
   const hl=s=>{let h=esc(s);for(const w of words) h=h.replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>');return h;};
-  const sec=main.querySelector('.lore-body');
-  sec.querySelector('.loading').remove();
+  const box=main.querySelector('.lore-body');
+  box.querySelector('.loading').remove();
   const guardians=data.guardians.filter(g=>words.every(w=>g.name.toLowerCase().includes(w)));
-  sec.insertAdjacentHTML('beforeend',
+  box.insertAdjacentHTML('beforeend',
     (guardians.length?`<h2 style="font-size:17px;margin:4px 0 10px">Guardians</h2><div class="grid" style="margin-bottom:22px">${guardians.slice(0,6).map(W.card).join('')}</div>`:'')+
     `<p class="count">${hits.length} section${hits.length===1?'':'s'} found</p>`+
-    (hits.length?`<ol class="hits">${hits.slice(0,80).map(h=>`<li><a href="lore.html?tab=${h.t.slug}${h.id?'#'+h.id:''}"><b>${hl(h.ht)}</b><small>${esc(h.t.title)}</small></a>${h.snip?`<p>…${hl(h.snip)}…</p>`:''}</li>`).join('')}</ol>`:'<div class="empty">Nothing in the lore matches that.</div>'));
+    (hits.length?`<ol class="hits">${hits.slice(0,80).map(h=>`<li><a href="${url(h.a)}${h.id?'#'+h.id:''}"><b>${hl(h.ht)}</b><small>${esc(h.a.group.title)} › ${esc(h.a.title)}</small></a>${h.snip?`<p>…${hl(h.snip)}…</p>`:''}</li>`).join('')}</ol>`:'<div class="empty">Nothing in the lore matches that.</div>'));
 }
 
 function showIndex(){
   document.title='Lore · Luma Guardian Wiki';
-  main.innerHTML=`${crumbs('')}<div class="lore">${sidebar()}<section class="lore-body">
-    <h1 class="lore-title">Lore</h1>
-    <p class="muted" style="margin:0 0 18px">The story bible: world rules, power system, organisations, events and every character write-up, one article per section of the story document.</p>
-    <div class="lore-cards">${story.tabs.map(t=>{const n=(t.md.match(/^#{1,2}\s/gm)||[]).length;const s=firstText(t.md);return `<a class="lore-card" href="lore.html?tab=${t.slug}"><b>${esc(t.title)}</b><span>${esc(s.length>140?s.slice(0,137)+'…':s)}</span><small>${n} section${n===1?'':'s'}</small></a>`;}).join('')}</div>
-  </section></div>`;
-  wire();
+  shell('','',`<h1 class="lore-title">Lore</h1>
+    <p class="muted" style="margin:0 0 6px">The story bible, organised by topic. Each Guardian's own write-up is on their <a href="characters.html">profile page</a>.</p>
+    ${lore.groups.map(g=>`<section class="lore-sec"><h2>${esc(g.title)}</h2>${g.blurb?`<p class="muted">${esc(g.blurb)}</p>`:''}
+      <div class="lore-cards">${g.articles.map(a=>{
+        const n=a.special==='teams'?lore.teams.length:(a.md.match(/^##\s/gm)||[]).length;
+        const s=a.special==='teams'?lore.teams.map(t=>t.name).join(', '):firstText(a.md);
+        return `<a class="lore-card" href="${url(a)}"><b>${esc(a.title)}</b><span>${esc(s.length>140?s.slice(0,137)+'…':s)}</span>${n?`<small>${n} ${a.special==='teams'?'group':'section'}${n===1?'':'s'}</small>`:''}</a>`;}).join('')}</div></section>`).join('')}`);
 }
 
-if(q) await showSearch(); else if(tab) await showTab(); else showIndex();
+if(q) await showSearch(); else if(art) await showArticle(); else showIndex();
 })();

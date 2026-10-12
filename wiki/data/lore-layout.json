@@ -1,0 +1,73 @@
+{
+ "_help": "How the Lore pages are organised. Each group is a heading on the Lore page; each article is one page (lore.html?a=<slug>). An article is built from one or more parts: {\"tab\": \"Doc tab name\"} takes the whole tab, adding \"section\": \"Heading\" takes just that section of the tab, {\"special\": \"teams\"} builds the team directory from the character tabs. characterTabs are left out of Lore because each character has a wiki profile. Doc tabs not used anywhere here appear under 'More from the story' so nothing new is lost after a refresh.",
+ "characterTabs": ["Characters", "Other Characters", "Zodiacs", "Disciples", "Fallen Stars"],
+ "groups": [
+  {
+   "title": "The World",
+   "blurb": "How the world of the Luma Guardians works and where Guardian power comes from.",
+   "articles": [
+    {"slug": "world", "title": "The World and the 13 Zodiacs", "parts": [{"tab": "World Lore"}]}
+   ]
+  },
+  {
+   "title": "Powers and Transformation",
+   "blurb": "Awakening, elements, branches and everything a Guardian can do.",
+   "articles": [
+    {"slug": "power-system", "title": "Power System", "parts": [{"tab": "Power System"}]},
+    {"slug": "transformation", "title": "Transformation", "parts": [
+      {"tab": "Additional Info", "section": "Transformation Item"},
+      {"tab": "Transformation Speech", "title": "Transformation Speeches"}
+    ]},
+    {"slug": "inheritance-insignia", "title": "Inheritance Insignia", "parts": [{"tab": "Inheritance Insignia"}]},
+    {"slug": "ageing", "title": "Ageing and the Fresh Core", "parts": [
+      {"tab": "Additional Info", "section": "Ageing"},
+      {"tab": "Additional Info", "section": "Fresh Core"}
+    ]},
+    {"slug": "spatial-space", "title": "Spatial Space", "parts": [{"tab": "Spatial Space"}]}
+   ]
+  },
+  {
+   "title": "Organisations",
+   "blurb": "Who runs the Guardian world, how Guardians are ranked and tested, and where they work.",
+   "articles": [
+    {"slug": "command-system", "title": "The Command System", "parts": [{"tab": "Command System"}]},
+    {"slug": "guardian-tests", "title": "Guardian Tests", "parts": [{"tab": "Guardian Tests"}]},
+    {"slug": "guilds", "title": "Guilds", "parts": [{"tab": "Guild"}]},
+    {"slug": "lumasoft", "title": "LumaSoft", "parts": [{"tab": "Lumasoft"}]}
+   ]
+  },
+  {
+   "title": "Crystals and Artefacts",
+   "blurb": "The magical materials and objects of the Guardian world.",
+   "articles": [
+    {"slug": "crystals", "title": "Crystals", "parts": [{"tab": "Crystal"}]},
+    {"slug": "artefacts", "title": "Artefacts", "parts": [{"tab": "Artefacts"}]}
+   ]
+  },
+  {
+   "title": "Events",
+   "blurb": "Competitions and assessments held by Command.",
+   "articles": [
+    {"slug": "astral-games", "title": "The Astral Games", "parts": [{"tab": "The Astral Games"}]},
+    {"slug": "disciple-assessment", "title": "Annual Disciple Assessment", "parts": [{"tab": "Annual Disciple Assessment"}]},
+    {"slug": "command-events", "title": "Command Events", "parts": [{"tab": "Command Events"}]}
+   ]
+  },
+  {
+   "title": "People",
+   "blurb": "Teams, the civilians around the Guardians, and who is paired with whom. Each Guardian's own write-up is on their profile.",
+   "articles": [
+    {"slug": "teams", "title": "Teams and Groups", "parts": [{"special": "teams"}]},
+    {"slug": "civilians", "title": "Civilians", "parts": [{"tab": "Civilians"}]},
+    {"slug": "pairings", "title": "Pairings", "parts": [{"tab": "Pairings"}]}
+   ]
+  },
+  {
+   "title": "Behind the Story",
+   "blurb": "Where Luma Guardians came from and what it is about.",
+   "articles": [
+    {"slug": "inspiration", "title": "Inspiration and Themes", "parts": [{"tab": "Inspiration"}]}
+   ]
+  }
+ ]
+}

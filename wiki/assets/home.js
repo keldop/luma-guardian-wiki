@@ -75,9 +75,9 @@ document.getElementById('random').addEventListener('click',()=>{location.href=W.
 
 if(window.Story){
   try{
-    const story=await Story.load();
+    const lore=await Story.loadLore();
     document.getElementById('lorebox').innerHTML=`<div class="sec-h"><h2>Explore the lore</h2><a href="lore.html">All articles →</a></div>
-      <div class="teams">${story.tabs.map(t=>`<a href="lore.html?tab=${t.slug}">${esc(t.title)}</a>`).join('')}</div>`;
+      <div class="lore-cards">${lore.groups.map(g=>`<div class="lore-card"><b>${esc(g.title)}</b><span>${g.articles.map(a=>`<a href="lore.html?a=${a.slug}">${esc(a.title)}</a>`).join(' · ')}</span></div>`).join('')}</div>`;
   }catch(e){/* no story.md yet */}
 }
 })();

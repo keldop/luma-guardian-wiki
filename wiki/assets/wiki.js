@@ -6,7 +6,7 @@
 const ELEMENTS=['Fire','Earth','Water','Air'];
 // The wiki folder, worked out from this script's own address, so links work wherever the site is hosted.
 const BASE=new URL('..',document.currentScript.src).href;
-const EMPTY=new Set(['','-','–','—','none','n/a','na','?','unknown','tbd']);
+const EMPTY=new Set(['','-','–','—','none','n/a','na','?','unknown','tbd','undecided']);
 
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
@@ -52,7 +52,7 @@ function glyph(el){
 
 /* ---------- header / footer ---------- */
 function chrome(active){
-  const links=[['home','index.html','Home'],['characters','characters.html','Characters'],['lore','lore.html','Lore'],['map','map.html','Map'],['tree','tree.html','Branch tree']].map(([k,h,t])=>[k,new URL(h,BASE).href,t]);
+  const links=[['home','index.html','Home'],['characters','characters.html','Characters'],['lore','lore.html','Lore'],['map','map.html','Map'],['tree','tree.html','Branch tree'],['create','create.html','Create']].map(([k,h,t])=>[k,new URL(h,BASE).href,t]);
   const head=document.createElement('header');
   head.className='topbar';
   head.innerHTML=`<div class="in">
@@ -166,28 +166,41 @@ function normalise(raw,config,lore){
   }
   const names=guardians.map(g=>g.name).sort((a,b)=>b.length-a.length);
   const nameRe=names.length?new RegExp('\\b(?:Luma\\s+)?('+names.map(reEsc).join('|')+')\\b','g'):null;
-  return {raw,config,guardians,byName,byId,nameRe,zodiacRoots:raw.zodiacRoots||{}};
+  return {raw,config,guardians,byName,byId,nameRe,hide,zodiacRoots:raw.zodiacRoots||{}};
 }
 
 let DATA=null;
 async function load(){
   if(DATA) return DATA;
   const config=await getJSON(BASE+'data/wiki.json',{});
-  const [raw,lore,locations]=await Promise.all([
+  const [raw,lore,locations,chars]=await Promise.all([
     getJSON(new URL(config.dataUrl||'data/branches.json',BASE).href),
     getJSON(BASE+'data/lore.json',{}),
-    getJSON(BASE+'data/locations.json',{places:[]})
+    getJSON(BASE+'data/locations.json',{places:[]}),
+    getJSON(BASE+'data/characters/index.json',{characters:[]})
   ]);
   DATA=normalise(raw,config,lore);
   DATA.locations=locations;
+  // Character files (data/characters/<name>.json) listed in the index, found by any of the character's names.
+  DATA.profileFields=chars.fields||[];
+  DATA.profiles=new Map();
+  for(const c of chars.characters||[]) for(const n of c.names||[c.name]) DATA.profiles.set(String(n).toLowerCase(),c);
+  for(const g of DATA.guardians){
+    g.profileRef=DATA.profiles.get(g.name.toLowerCase())||null;
+    g.portrait=g.profileRef&&g.profileRef.image||'';
+  }
   return DATA;
 }
+
+// One character's full file, from an index entry.
+function loadCharacter(ref){return ref?getJSON(BASE+'data/characters/'+ref.file,null):Promise.resolve(null);}
+const asset=src=>src?new URL(src,BASE).href:'';
 
 /* ---------- render helpers ---------- */
 function charUrl(g){return BASE+'character.html?id='+encodeURIComponent(typeof g==='string'?slug(g):g.id);}
 function initials(n){const p=String(n).replace(/[^\p{L}\p{N} ]/gu,'').trim().split(/\s+/);return ((p[0]||'?')[0]+(p[1]?p[1][0]:'')).toUpperCase();}
 function avatar(g,size,sq){
-  const img=g.lore&&g.lore.image;
+  const img=(g.lore&&g.lore.image)||g.portrait;
   return `<span class="ava${sq?' sq':''} el-${g.element}" style="--s:${size||56}px" aria-hidden="true">${img?`<img src="${esc(new URL(img,BASE).href)}" alt="" loading="lazy">`:esc(initials(g.name))}</span>`;
 }
 function subtitle(g){return [g.role,g.team].filter(Boolean).join(' · ')||g.rank||g.element;}
@@ -242,5 +255,5 @@ async function boot(active){
   }
 }
 
-window.Wiki={ELEMENTS,boot,load,esc,slug,clean,groupKey,stripParen,charUrl,avatar,card,stub,statusPill,linkify,markup,glyph,params,pickDaily,subtitle,isDark,lsGet,lsSet,$};
+window.Wiki={ELEMENTS,boot,load,loadCharacter,asset,getJSON,esc,slug,clean,groupKey,stripParen,charUrl,avatar,card,stub,statusPill,linkify,markup,glyph,params,pickDaily,subtitle,isDark,lsGet,lsSet,$};
 })();

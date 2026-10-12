@@ -1,0 +1,807 @@
+{
+ "_help": "List of character files in this folder, built by tools/build-characters.ps1. fields = the Guardian template fields each file uses, in order.",
+ "fields": [
+  "Civilian Name",
+  "Guardian Name",
+  "Evolved Guardian Name",
+  "Nickname",
+  "Gender",
+  "Sexuality",
+  "Age (counted as of 2025)",
+  "Date of Birth",
+  "Ethnicity",
+  "Zodiac",
+  "Home Country",
+  "Hometown",
+  "Languages",
+  "Education",
+  "Civilian Occupation",
+  "Civilian Appearance",
+  "Guardian Appearance",
+  "Guardian Rank",
+  "Guardian Status",
+  "Duty Status",
+  "Star Index",
+  "Awakening Type",
+  "Original Element",
+  "Inherited Element",
+  "Branch Theme",
+  "Transformation Item",
+  "Primary Role",
+  "Passed Tests",
+  "Signature Ability",
+  "Weapon/Medium",
+  "Strengths",
+  "Weaknesses",
+  "Fear",
+  "Power Color",
+  "Artefact",
+  "Awakened Date",
+  "Awakened by",
+  "Full-Fledged Date",
+  "Evolution Date",
+  "Mentor",
+  "Disciple",
+  "Team",
+  "Guild",
+  "Stationed at",
+  "Relationship",
+  "Family",
+  "Close bonds",
+  "Rivals",
+  "Spirit Animal",
+  "Loves",
+  "Likes",
+  "Dislikes",
+  "Hates",
+  "Hobbies",
+  "MBTI",
+  "Catchphrase",
+  "Theme Song",
+  "Personality",
+  "Personality Example",
+  "Core Idea of character",
+  "Quotes",
+  "Background",
+  "Transformation Phrase",
+  "Awakening Speech"
+ ],
+ "characters": [
+  {
+   "name": "Blossom",
+   "names": ["Blossom"],
+   "type": "guardian",
+   "file": "blossom.json",
+   "group": "Flower Sisters",
+   "image": ""
+  },
+  {
+   "name": "Flora",
+   "names": ["Flora", "EmberFlora"],
+   "type": "guardian",
+   "file": "flora.json",
+   "group": "Flower Sisters",
+   "image": ""
+  },
+  {
+   "name": "Coffea",
+   "names": ["Coffea"],
+   "type": "guardian",
+   "file": "coffea.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Fractal",
+   "names": ["Fractal"],
+   "type": "guardian",
+   "file": "fractal.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Aster",
+   "names": ["Aster"],
+   "type": "guardian",
+   "file": "aster.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Marigold",
+   "names": ["Marigold"],
+   "type": "guardian",
+   "file": "marigold.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Clover",
+   "names": ["Clover"],
+   "type": "guardian",
+   "file": "clover.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Lotus",
+   "names": ["Lotus"],
+   "type": "guardian",
+   "file": "lotus.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Iris",
+   "names": ["Iris"],
+   "type": "guardian",
+   "file": "iris.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Chroma",
+   "names": ["Chroma"],
+   "type": "guardian",
+   "file": "chroma.json",
+   "group": "WildFlowers",
+   "image": ""
+  },
+  {
+   "name": "Lumen",
+   "names": ["Lumen"],
+   "type": "guardian",
+   "file": "lumen.json",
+   "group": "Eclipse",
+   "image": ""
+  },
+  {
+   "name": "Umbra",
+   "names": ["Umbra"],
+   "type": "guardian",
+   "file": "umbra.json",
+   "group": "Eclipse",
+   "image": ""
+  },
+  {
+   "name": "Moon",
+   "names": ["Moon"],
+   "type": "guardian",
+   "file": "moon.json",
+   "group": "Others",
+   "image": ""
+  },
+  {
+   "name": "Yew",
+   "names": ["Yew"],
+   "type": "guardian",
+   "file": "yew.json",
+   "group": "Others",
+   "image": ""
+  },
+  {
+   "name": "Cedar",
+   "names": ["Cedar"],
+   "type": "guardian",
+   "file": "cedar.json",
+   "group": "Others",
+   "image": ""
+  },
+  {
+   "name": "Verdant",
+   "names": ["Verdant"],
+   "type": "guardian",
+   "file": "verdant.json",
+   "group": "Others",
+   "image": ""
+  },
+  {
+   "name": "Tidal",
+   "names": ["Tidal"],
+   "type": "guardian",
+   "file": "tidal.json",
+   "group": "Others",
+   "image": ""
+  },
+  {
+   "name": "Summer",
+   "names": ["Summer"],
+   "type": "guardian",
+   "file": "summer.json",
+   "group": "Seasons",
+   "image": ""
+  },
+  {
+   "name": "Spring",
+   "names": ["Spring"],
+   "type": "guardian",
+   "file": "spring.json",
+   "group": "Seasons",
+   "image": ""
+  },
+  {
+   "name": "Winter",
+   "names": ["Winter"],
+   "type": "guardian",
+   "file": "winter.json",
+   "group": "Seasons",
+   "image": ""
+  },
+  {
+   "name": "Autumn",
+   "names": ["Autumn"],
+   "type": "guardian",
+   "file": "autumn.json",
+   "group": "Seasons",
+   "image": ""
+  },
+  {
+   "name": "Solace",
+   "names": ["Solace"],
+   "type": "guardian",
+   "file": "solace.json",
+   "group": "Guardian Healers",
+   "image": ""
+  },
+  {
+   "name": "Sage",
+   "names": ["Sage"],
+   "type": "guardian",
+   "file": "sage.json",
+   "group": "Guardian Healers",
+   "image": ""
+  },
+  {
+   "name": "Essence",
+   "names": ["Essence"],
+   "type": "guardian",
+   "file": "essence.json",
+   "group": "Guardian Healers",
+   "image": ""
+  },
+  {
+   "name": "Hydro",
+   "names": ["Hydro"],
+   "type": "guardian",
+   "file": "hydro.json",
+   "group": "Elements",
+   "image": ""
+  },
+  {
+   "name": "Soil",
+   "names": ["Soil"],
+   "type": "guardian",
+   "file": "soil.json",
+   "group": "Elements",
+   "image": ""
+  },
+  {
+   "name": "Blaze",
+   "names": ["Blaze"],
+   "type": "guardian",
+   "file": "blaze.json",
+   "group": "Elements",
+   "image": ""
+  },
+  {
+   "name": "Aero",
+   "names": ["Aero"],
+   "type": "guardian",
+   "file": "aero.json",
+   "group": "Elements",
+   "image": ""
+  },
+  {
+   "name": "Sun",
+   "names": ["Sun"],
+   "type": "guardian",
+   "file": "sun.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Mist",
+   "names": ["Mist"],
+   "type": "guardian",
+   "file": "mist.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Cinder",
+   "names": ["Cinder"],
+   "type": "guardian",
+   "file": "cinder.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Meteor",
+   "names": ["Meteor"],
+   "type": "guardian",
+   "file": "meteor.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Thunder",
+   "names": ["Thunder"],
+   "type": "guardian",
+   "file": "thunder.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Selene",
+   "names": ["Selene"],
+   "type": "guardian",
+   "file": "selene.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Orion",
+   "names": ["Orion"],
+   "type": "guardian",
+   "file": "orion.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Space",
+   "names": ["Space"],
+   "type": "guardian",
+   "file": "space.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Reflection",
+   "names": ["Reflection"],
+   "type": "guardian",
+   "file": "reflection.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Cronus",
+   "names": ["Cronus"],
+   "type": "guardian",
+   "file": "cronus.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Eclipsa",
+   "names": ["Eclipsa"],
+   "type": "guardian",
+   "file": "eclipsa.json",
+   "group": "Celestials",
+   "image": ""
+  },
+  {
+   "name": "Star",
+   "names": ["Star"],
+   "type": "guardian",
+   "file": "star.json",
+   "group": "Champions",
+   "image": ""
+  },
+  {
+   "name": "Muse",
+   "names": ["Muse"],
+   "type": "guardian",
+   "file": "muse.json",
+   "group": "Idol Group",
+   "image": ""
+  },
+  {
+   "name": "Rhythm",
+   "names": ["Rhythm"],
+   "type": "guardian",
+   "file": "rhythm.json",
+   "group": "Idol Group",
+   "image": ""
+  },
+  {
+   "name": "Melody",
+   "names": ["Melody"],
+   "type": "guardian",
+   "file": "melody.json",
+   "group": "Idol Group",
+   "image": ""
+  },
+  {
+   "name": "Beat",
+   "names": ["Beat"],
+   "type": "guardian",
+   "file": "beat.json",
+   "group": "Idol Group",
+   "image": ""
+  },
+  {
+   "name": "Joy",
+   "names": ["Joy"],
+   "type": "guardian",
+   "file": "joy.json",
+   "group": "Emotions",
+   "image": ""
+  },
+  {
+   "name": "Fear",
+   "names": ["Fear"],
+   "type": "guardian",
+   "file": "fear.json",
+   "group": "Emotions",
+   "image": ""
+  },
+  {
+   "name": "Rage",
+   "names": ["Rage"],
+   "type": "guardian",
+   "file": "rage.json",
+   "group": "Emotions",
+   "image": ""
+  },
+  {
+   "name": "Sorrow",
+   "names": ["Sorrow"],
+   "type": "guardian",
+   "file": "sorrow.json",
+   "group": "Emotions",
+   "image": ""
+  },
+  {
+   "name": "Passion",
+   "names": ["Passion"],
+   "type": "guardian",
+   "file": "passion.json",
+   "group": "Emotions",
+   "image": ""
+  },
+  {
+   "name": "Forge",
+   "names": ["Forge"],
+   "type": "guardian",
+   "file": "forge.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Life",
+   "names": ["Life"],
+   "type": "guardian",
+   "file": "life.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Mineral",
+   "names": ["Mineral"],
+   "type": "guardian",
+   "file": "mineral.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Crystalis",
+   "names": ["Crystalis"],
+   "type": "guardian",
+   "file": "crystalis.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Entoma",
+   "names": ["Entoma"],
+   "type": "guardian",
+   "file": "entoma.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Fauna",
+   "names": ["Fauna"],
+   "type": "guardian",
+   "file": "fauna.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Sauria",
+   "names": ["Sauria"],
+   "type": "guardian",
+   "file": "sauria.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Toxin",
+   "names": ["Toxin"],
+   "type": "guardian",
+   "file": "toxin.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Venom",
+   "names": ["Venom"],
+   "type": "guardian",
+   "file": "venom.json",
+   "group": "Earth Branch",
+   "image": ""
+  },
+  {
+   "name": "Resonance",
+   "names": ["Resonance"],
+   "type": "guardian",
+   "file": "resonance.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Harmony",
+   "names": ["Harmony"],
+   "type": "guardian",
+   "file": "harmony.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Aether",
+   "names": ["Aether"],
+   "type": "guardian",
+   "file": "aether.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Rift",
+   "names": ["Rift"],
+   "type": "guardian",
+   "file": "rift.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Prism",
+   "names": ["Prism"],
+   "type": "guardian",
+   "file": "prism.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Zephyr",
+   "names": ["Zephyr"],
+   "type": "guardian",
+   "file": "zephyr.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Draft",
+   "names": ["Draft"],
+   "type": "guardian",
+   "file": "draft.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Gale",
+   "names": ["Gale"],
+   "type": "guardian",
+   "file": "gale.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Crosswind",
+   "names": ["Crosswind"],
+   "type": "guardian",
+   "file": "crosswind.json",
+   "group": "Air Branch",
+   "image": ""
+  },
+  {
+   "name": "Aurora",
+   "names": ["Aurora"],
+   "type": "guardian",
+   "file": "aurora.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Mirage",
+   "names": ["Mirage"],
+   "type": "guardian",
+   "file": "mirage.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Vitalis",
+   "names": ["Vitalis"],
+   "type": "guardian",
+   "file": "vitalis.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Firewall",
+   "names": ["Firewall"],
+   "type": "guardian",
+   "file": "firewall.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Lantern",
+   "names": ["Lantern"],
+   "type": "guardian",
+   "file": "lantern.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Quell",
+   "names": ["Quell"],
+   "type": "guardian",
+   "file": "quell.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Quench",
+   "names": ["Quench"],
+   "type": "guardian",
+   "file": "quench.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Nullfire",
+   "names": ["Nullfire"],
+   "type": "guardian",
+   "file": "nullfire.json",
+   "group": "Fire Branch",
+   "image": ""
+  },
+  {
+   "name": "Current",
+   "names": ["Current"],
+   "type": "guardian",
+   "file": "current.json",
+   "group": "Water Branch",
+   "image": ""
+  },
+  {
+   "name": "Clarity",
+   "names": ["Clarity"],
+   "type": "guardian",
+   "file": "clarity.json",
+   "group": "Water Branch",
+   "image": ""
+  },
+  {
+   "name": "Ophiuchus",
+   "names": ["Ophiuchus"],
+   "type": "guardian",
+   "file": "ophiuchus.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Leo",
+   "names": ["Leo"],
+   "type": "guardian",
+   "file": "leo.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Aries",
+   "names": ["Aries"],
+   "type": "guardian",
+   "file": "aries.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Sagittarius",
+   "names": ["Sagittarius"],
+   "type": "guardian",
+   "file": "sagittarius.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Scorpio",
+   "names": ["Scorpio"],
+   "type": "guardian",
+   "file": "scorpio.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Pisces",
+   "names": ["Pisces"],
+   "type": "guardian",
+   "file": "pisces.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Cancer",
+   "names": ["Cancer"],
+   "type": "guardian",
+   "file": "cancer.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Aquarius",
+   "names": ["Aquarius"],
+   "type": "guardian",
+   "file": "aquarius.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Libra",
+   "names": ["Libra"],
+   "type": "guardian",
+   "file": "libra.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Gemini",
+   "names": ["Gemini"],
+   "type": "guardian",
+   "file": "gemini.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Taurus",
+   "names": ["Taurus"],
+   "type": "guardian",
+   "file": "taurus.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Virgo",
+   "names": ["Virgo"],
+   "type": "guardian",
+   "file": "virgo.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Capricorn",
+   "names": ["Capricorn"],
+   "type": "guardian",
+   "file": "capricorn.json",
+   "group": "Zodiacs",
+   "image": ""
+  },
+  {
+   "name": "Halo",
+   "names": ["Halo"],
+   "type": "guardian",
+   "file": "halo.json",
+   "group": "Disciples",
+   "image": ""
+  },
+  {
+   "name": "Vacuum",
+   "names": ["Vacuum"],
+   "type": "guardian",
+   "file": "vacuum.json",
+   "group": "Fallen Stars",
+   "image": ""
+  }
+ ]
+}

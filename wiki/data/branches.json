@@ -1,7 +1,6 @@
 {
  "_help": "Edit this file to keep branches and Guardians. \"branches\": one Element-Branch-Subbranch path per line (parents are created automatically; a path with no Guardian shows as a gray box). \"guardians\": profiles, each filed by its path. \"zodiacRoots\": names shown left of an element. \"overrides\": from-path => to-path. The order of first-level branches sets their top-to-bottom order in the diagram (Zodiac roots on the left follow the same order).",
  "hiddenFields": [
-  "Date of Birth",
   "Breast Size",
   "Ding Dong Size"
  ],

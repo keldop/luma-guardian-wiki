@@ -14,13 +14,31 @@ function libs(){return libsP||(libsP=Promise.all([window.marked?0:loadScript(MAR
 
 // Google Docs Markdown quirks: bold inside headings, escaped divider lines.
 const cleanHeading=t=>t.replace(/\\-{3,}/g,'').replace(/\*\*/g,'').replace(/~~/g,'').replace(/\\([\[\]()*_#-])/g,'$1').replace(/\s+/g,' ').trim();
+// "Label: value" profile lines, bold or not. Group 1 = label, group 2 = value.
+const FIELD=/^\s*(?:\*\*)?([A-Z][A-Za-z /'&,.-]{0,40}?(?:\s*\([^)]*\))?)\s*:\s*(?:\*\*)?\s*(.*?)\s*$/;
+const emptyVal=v=>!v.replace(/\*\*/g,'').replace(/\\/g,'').trim()||/^[-–—]+$/.test(v.replace(/[*\\\s]/g,''));
 function tidy(md){
-  return md.split('\n').map(l=>{
+  const lines=md.split('\n').map(l=>{
     const m=l.match(/^(#{1,6})\s+(.*)$/);
     if(m){const t=cleanHeading(m[2]);return t?m[1]+' '+t:'';}
     if(/^\s*\\?-{3,}\s*$/.test(l)) return '\n---\n';
     return l;
-  }).join('\n');
+  });
+  const out=[];
+  for(let i=0;i<lines.length;i++){
+    const f=lines[i].match(FIELD);
+    if(!f||/^https?$/i.test(f[1])){out.push(lines[i]);continue;}
+    if(emptyVal(f[2])){
+      // An empty label is kept only when text follows it (like "Personality:" then a paragraph).
+      let j=i+1;while(j<lines.length&&!lines[j].trim()) j++;
+      const next=lines[j]||'';
+      if(!next||/^#/.test(next)||FIELD.test(next)) continue;
+      out.push(`**${f[1]}:**`,'');continue;
+    }
+    // One field per paragraph, label in bold.
+    out.push(`**${f[1]}:** ${f[2].replace(/^\*\*\s*/,'')}`,'');
+  }
+  return out.join('\n');
 }
 
 let STORY=null;
@@ -45,7 +63,7 @@ async function load(){
     for(let i=0;i<lines.length;i++){
       const m=lines[i].match(/^(#{1,3})\s+(.*)$/);
       if(!m) continue;
-      const names=m[2].replace(/\(.*?\)/g,'').split('/').map(s=>(s.trim().match(/^Luma\s+(\S.*)$/i)||[])[1]).filter(Boolean).map(s=>s.trim());
+      const names=lumaNames(m[2]);
       if(!names.length) continue;
       let j=i+1;
       while(j<lines.length){const h=lines[j].match(/^(#{1,6})\s/);if(h&&h[1].length<=m[1].length) break;j++;}
@@ -53,8 +71,117 @@ async function load(){
       for(const n of names) if(!chars.has(n.toLowerCase())) chars.set(n.toLowerCase(),sec);
     }
   }
-  STORY={tabs,chars,bySlug:new Map(tabs.map(t=>[t.slug,t]))};
+  STORY={tabs,chars,bySlug:new Map(tabs.map(t=>[t.slug,t])),byTitle:new Map(tabs.map(t=>[t.title.toLowerCase(),t]))};
   return STORY;
+}
+
+// "Luma Flora / Luma EmberFlora" -> ["Flora","EmberFlora"]; "(Antagonist) Luma Yew" -> ["Yew"]; other headings -> [].
+function lumaNames(heading){
+  return heading.replace(/\(.*?\)/g,'').split('/').map(s=>(s.trim().match(/^Luma\s+(\S.*)$/i)||[])[1]).filter(Boolean).map(s=>s.trim());
+}
+
+/* ---------- Lore articles (data/lore-layout.json) ---------- */
+const headLevels=md=>(md.match(/^#{1,6}(?=\s)/gm)||[]).map(h=>h.length);
+// Move every heading so the highest one sits at level `top`.
+function shiftTo(md,top){
+  const ls=headLevels(md);if(!ls.length) return md;
+  const d=top-Math.min(...ls);
+  return d?md.replace(/^(#{1,6})(\s)/gm,(m,h,s)=>'#'.repeat(Math.max(1,Math.min(6,h.length+d)))+s):md;
+}
+// Drop a leading heading that only repeats the article or tab name, unless other headings sit
+// at its level (then it is a real section, like "# Artefacts" next to "# Planned Artefact").
+function dropTitle(md,title){
+  const m=md.match(/^\s*(#{1,6})\s+(.*)\n?/);
+  if(!m||W.slug(m[2])!==W.slug(title)) return md;
+  const rest=md.slice(m[0].length);
+  return headLevels(rest).some(l=>l<=m[1].length)?md:rest;
+}
+// One heading of a tab and everything under it, up to the next heading at the same level or higher.
+function sectionOf(tab,name){
+  const lines=tab.md.split('\n'),want=W.slug(name);
+  for(let i=0;i<lines.length;i++){
+    const m=lines[i].match(/^(#{1,6})\s+(.*)$/);
+    if(!m||W.slug(m[2])!==want) continue;
+    let j=i+1;
+    while(j<lines.length){const h=lines[j].match(/^(#{1,6})\s/);if(h&&h[1].length<=m[1].length) break;j++;}
+    return {title:m[2],md:lines.slice(i+1,j).join('\n')};
+  }
+  return null;
+}
+
+// Team directory from the character tabs: "# Flower Sisters - Base in Singapore", its intro, then its "Luma X" members.
+function teamsFrom(story,tabNames){
+  const groups=[];
+  for(const name of tabNames){
+    const tab=story.byTitle.get(name.toLowerCase());if(!tab) continue;
+    let cur=null,mode='';
+    const start=title=>{
+      const m=title.match(/^(.*?)\s*[-–—]\s*Based?\s+in\s+(.*)$/i);
+      cur={name:(m?m[1]:title).trim(),base:m?m[2].trim():'',intro:'',members:[],tab:tab.title};
+      groups.push(cur);mode='intro';
+    };
+    for(const line of tab.md.split('\n')){
+      const h=line.match(/^(#{1,6})\s+(.*)$/);
+      if(h){
+        const names=lumaNames(h[2]);
+        if(names.length){if(!cur) start(tab.title);for(const n of names) if(!cur.members.includes(n)) cur.members.push(n);mode='member';}
+        else if(h[1].length===1) start(h[2]);
+        continue;
+      }
+      if(mode==='intro'&&cur) cur.intro+=line+'\n';
+    }
+  }
+  return groups.filter(g=>g.members.length);
+}
+
+let LORE=null;
+async function loadLore(){
+  if(LORE) return LORE;
+  const story=await load();
+  let layout=null;
+  try{const r=await fetch('data/lore-layout.json',{cache:'no-cache'});if(r.ok) layout=await r.json();}catch(e){}
+  layout=layout||{groups:[],characterTabs:[]};
+  const charTabs=layout.characterTabs||[];
+  const teams=teamsFrom(story,charTabs);
+  const usedTabs=new Set(charTabs.map(t=>t.toLowerCase()));
+  const articles=[],bySlug=new Map(),fromTab=new Map();
+
+  const build=(a,group)=>{
+    const parts=[];let special='';
+    for(const p of a.parts||[]){
+      if(p.special==='teams'){
+        special='teams';
+        parts.push({title:'',md:teams.map(g=>`## ${g.name}\n\n${g.base?'Based in '+g.base+'.\n\n':''}${g.intro.trim()}\n\nMembers: ${g.members.map(n=>'Luma '+n).join(', ')}`).join('\n\n')});
+        continue;
+      }
+      const tab=story.byTitle.get(String(p.tab||'').toLowerCase());if(!tab) continue;
+      usedTabs.add(tab.title.toLowerCase());
+      if(!fromTab.has(tab.slug)) fromTab.set(tab.slug,a.slug);
+      const sec=p.section?sectionOf(tab,p.section):{title:p.title||tab.title,md:dropTitle(tab.md,tab.title)};
+      if(sec&&sec.md.trim()) parts.push({title:p.title||sec.title,md:sec.md.trim()});
+    }
+    if(!parts.length) return;
+    const md=special||parts.length===1?shiftTo(dropTitle(parts[0].md,a.title),2)
+      :parts.map(p=>`## ${p.title}\n\n${shiftTo(p.md,3)}`).join('\n\n');
+    const art={slug:a.slug||W.slug(a.title),title:a.title,group,md,special};
+    articles.push(art);bySlug.set(art.slug,art);group.articles.push(art);
+  };
+
+  const groups=[];
+  for(const g of layout.groups||[]){
+    const group={title:g.title,blurb:g.blurb||'',articles:[]};
+    for(const a of g.articles||[]) build(a,group);
+    if(group.articles.length) groups.push(group);
+  }
+  // Doc tabs nobody placed yet, so a new tab in the doc still shows up.
+  const rest={title:'More from the story',blurb:'Doc tabs that are not placed in a group yet (see data/lore-layout.json).',articles:[]};
+  for(const t of story.tabs) if(!usedTabs.has(t.title.toLowerCase())) build({slug:t.slug,title:t.title,parts:[{tab:t.title}]},rest);
+  if(rest.articles.length) groups.push(rest);
+  // Old links (lore.html?tab=characters) land on the team directory.
+  for(const t of charTabs){const tab=story.byTitle.get(t.toLowerCase());if(tab&&bySlug.has('teams')) fromTab.set(tab.slug,'teams');}
+
+  LORE={story,groups,articles,bySlug,fromTab,teams};
+  return LORE;
 }
 
 /* Render Markdown to a sanitised element. shift moves headings down (# becomes h2 when shift=1). */
@@ -100,5 +227,5 @@ function linkNames(root,data){
   }
 }
 
-window.Story={load,render,libs,cleanHeading};
+window.Story={load,loadLore,render,libs,cleanHeading};
 })();

@@ -95,7 +95,7 @@ function select(p,fly){
     <h2>${esc(p.name)}</h2>
     <span class="pill" style="--c:${esc(l.color)}"><span class="dot"></span>${esc(l.name)}</span>
     ${p.text?`<p style="margin:10px 0">${W.linkify(p.text,data)}</p>`:''}
-    ${p.lore?`<p style="margin:0 0 10px"><a href="lore.html?tab=${encodeURIComponent(p.lore.tab)}${p.lore.anchor?'#'+encodeURIComponent(p.lore.anchor):''}">Read more in the lore →</a></p>`:''}
+    ${p.lore?`<p style="margin:0 0 10px"><a href="lore.html?a=${encodeURIComponent(p.lore.article)}${p.lore.anchor?'#'+encodeURIComponent(p.lore.anchor):''}">Read more in the lore →</a></p>`:''}
     ${p.people.length?`<h3 style="font-size:15px;margin-top:14px">Guardians here (${p.people.length})</h3><ul class="mini">${p.people.map(card).join('')}</ul>`:''}`;
   document.getElementById('back').addEventListener('click',()=>{if(current&&markers.get(current.id)) markers.get(current.id).setIcon(icon(current,false));const u=new URLSearchParams(location.search);u.delete('place');history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''));list();});
   if(window.matchMedia('(max-width:900px)').matches&&!fly) document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'start'});

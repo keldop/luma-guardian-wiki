@@ -60,3 +60,6 @@ $md = ($out -join "`n") -replace "\n{3,}", "`n`n"
 $dest = Join-Path $wiki 'data\story.md'
 [IO.File]::WriteAllText($dest, $md.Trim() + "`n", $utf8)
 Write-Host "Wrote $dest : $([Math]::Max($tabs,1)) tabs, $removed hidden-field lines removed."
+
+# Character profiles (data/characters.json) are rebuilt from the new story.
+& (Join-Path $PSScriptRoot 'build-characters.ps1')
