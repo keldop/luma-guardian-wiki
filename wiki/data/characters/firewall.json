@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Firewall",
  "names": ["Firewall"],
  "type": "guardian",
  "group": "Fire Branch",
  "base": "",
- "tab": "Other Characters",
+ "tab": "Fire Branch",
  "profile": {
   "Civilian Name": "Hafiz Rahman",
   "Guardian Name": "Luma Firewall",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "Firewall is calm, steady and deliberately unremarkable. He is the kind of leader people trust without being able to explain why.\nHe listens more than he speaks, remembers every member's Guardian Name and role, and makes a point of knowing nothing else about them unless they choose to share it.\nHe has no interest in fame. He is completely comfortable being overshadowed by Luma Lumen, and quietly prefers it.\nHe has a dry sense of humour that most people miss the first time.\nHe is protective of his members, but never loud about it. When someone breaks the Identity Code, he doesn't raise his voice. He simply asks them to sit down and explain themselves.\nRole in the Northern Guild:\nFirewall is the guild leader in Command's records. He attends Guild Leader Meetings at LumaSoft Bishan, signs the reports, accepts Command Directives and assigns missions.\nIn reality, the guild was founded by Luma Ophiuchus, who guides it from behind the scenes. The Identity Code is Ophiuchus's rule. Firewall enforces it.\nVery few members know Ophiuchus is involved at all.\nConnection to Ophiuchus:\nOphiuchus trained Firewall unofficially, alongside his official mentor.\nBecause Ophiuchus-affiliated Guardians usually remain Grey Stars, their connection was never recorded. This allowed Firewall to rise normally through the Star Index to Clear Star.\nFirewall is one of the few Guardians who knows who Ophiuchus really is.\nWhy Firewall agreed to act as the registered leader: (To be decided)\nCross-Border Work:\nFirewall's security consultancy has clients on both sides of the Causeway. This gives him a natural reason to travel between Singapore and Johor Bahru, which supports the guild's cross-border missions.\nRelationship with Luma Lumen:\nLumen is the guild's most famous member, and the reason many Guardians want to join.\nFirewall and Lumen have worked together for a long time.\nLumen knows about Ophiuchus's involvement of the guild",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

@@ -1,6 +1,6 @@
 /* Character profile: one dynamic page for every Guardian.
    character.html?id=blossom  or  character.html?name=Blossom  (also character.html#blossom).
-   Fields come from data/characters.json (Profile Template, built from the story doc); structure
+   Fields come from data/characters/<name>.json (built from the characters doc); structure
    (branch, mentors, disciples) comes from data/branches.json. Empty fields are never shown. */
 (async function(){
 const W=window.Wiki,{esc}=W;
@@ -19,9 +19,11 @@ function resolve(){
 }
 
 // The team a character is listed under in the story, linked to its place in Lore › Teams and Groups.
-function teamLink(name){
-  const t=lore&&lore.teams.find(x=>x.members.some(m=>m.toLowerCase()===name.toLowerCase()));
-  return t?{name:t.name,href:`lore.html?a=teams#${W.slug(t.name)}`}:null;
+// Civilians link to their group in Lore › Civilians instead.
+function teamLink(name,civ){
+  const dir=civ?'civilians':'teams';
+  const t=lore&&(lore.dirs[dir]||[]).find(x=>x.members.some(m=>m.toLowerCase()===name.toLowerCase()));
+  return t?{name:t.name,href:`lore.html?a=${dir}#${W.slug(t.name)}`}:null;
 }
 
 // A character with a file in data/characters/ but not in branches.json: build the same shape so it gets a full page.
@@ -72,6 +74,8 @@ function paras(s,g){
 
 async function render(g){
   const c=g.profile||await W.loadCharacter(g.profileRef),pf=(c&&c.profile)||{};
+  // Civilians use the Civilian template: no element, branch or Guardian fields.
+  const civ=!!(c&&c.type==='civilian');
   const gallery=((c&&c.gallery)||[]).filter(x=>x&&x.src);
   const has=v=>Array.isArray(v)?v.some(x=>String(x).trim()):!!W.clean(v);
   // A Profile Template field, or the same field in branches.json when the profile has none.
@@ -118,7 +122,20 @@ async function render(g){
       const cap=lore.caption||(!lore.image&&!(c&&c.image)&&gallery[0]&&gallery[0].caption)||'';
       return `<div class="ib-img">${src?`<img class="full" src="${esc(W.asset(src))}" alt="${esc(lore.imageAlt||title)}">`:W.avatar(g,160,true)}</div>${cap?`<div class="ib-cap">${esc(cap)}</div>`:''}`;
     })()}
-    ${group('Biographical',[
+    ${civ?group('Biographical',[
+      row('Alignment','Civilian',true),
+      row('Full name',P('Full Name')),row('Nickname',P('Nickname')),
+      row('Gender',P('Gender')),row('Sexuality',P('Sexuality')),
+      row('Age',P('Age (counted as of 2025)')),row('Date of birth',P('Date of Birth')),
+      row('Ethnicity',P('Ethnicity')),row('Zodiac',esc(P('Zodiac')),true),
+      row('Home country',P('Home Country')),row('Hometown',P('Hometown')),
+      row('Languages',P('Languages')),row('Education',P('Education')),
+      row('Occupation',P('Occupation')),row('Department',P('Department')),row('Spirit animal',P('Spirit Animal'))
+    ])+group('Connections',[
+      row('Role in story',P('Role in Story')),row('Relationship',P('Relationship')),
+      row('Family',P('Family')),row('Close bonds',P('Close bonds'))
+    ]):''}
+    ${civ?'':group('Biographical',[
       row('Civilian name',P('Civilian Name','Civilian Name')),row('Nickname',P('Nickname','Nickname')),
       row('Gender',P('Gender','Gender')),row('Sexuality',P('Sexuality')),
       row('Age',P('Age (counted as of 2025)','Age')),row('Date of birth',P('Date of Birth','Date of Birth')),
@@ -127,7 +144,7 @@ async function render(g){
       row('Languages',P('Languages')),row('Education',P('Education')),
       row('Occupation',P('Civilian Occupation','Civilian Occupation')),row('Spirit animal',P('Spirit Animal','Spirit Animal'))
     ])}
-    ${group('Guardian',[
+    ${civ?'':group('Guardian',[
       el!=='None'?row('Element',`<span class="pill el-${el}"><span class="dot"></span>${el}</span>`,true):row('Element',P('Original Element','Original Element')),
       row('Inherited',P('Inherited Element','Inherited Element')),
       row('Branch',branchHtml,true),
@@ -141,7 +158,7 @@ async function render(g){
       row('Item',P('Transformation Item','Transformation Item')),row('Power colour',P('Power Color','Power Color')),
       row('Artefact',P('Artefact'))
     ])}
-    ${group('Affiliation',[
+    ${civ?'':group('Affiliation',[
       row('Team',g.team?`<a href="characters.html?team=${encodeURIComponent(W.groupKey(g.team))}">${esc(g.team)}</a>`:'',true),
       row('Guild',g.guild),
       row('Stationed at',base?`<a href="map.html?place=${encodeURIComponent(base)}">${esc(base)}</a>`:'',true),
@@ -157,7 +174,8 @@ async function render(g){
   const sub=(name,v)=>v?`<h3>${esc(name)}</h3>${paras(v,g)}`:'';
   const list=v=>v&&v.length?`<ul>${v.map(x=>`<li>${inline(x,g)}</li>`).join('')}</ul>`:'';
 
-  const overview=lore.summary?W.markup(lore.summary,data):(()=>{
+  // Civilians have no opening sentence; the infobox already says who they are.
+  const overview=lore.summary?W.markup(lore.summary,data):civ?'':(()=>{
     const bits=[];
     bits.push(`<b>${esc(title)}</b> ${was} ${/^[aeiou]/i.test(g.rank||'Guardian')?'an':'a'} ${esc(g.rank||'Guardian')}${el!=='None'?` of the <b>${el}</b> element`:''}${g.segs.length>1?`, in the ${esc(g.segs.slice(1).join(' › '))} branch`:''}.`);
     const m=g.mentors.length?g.mentors.map(x=>`<a href="${W.charUrl(x)}">${esc(x.name)}</a>`).join(' and '):(g.mentor?inline(g.mentor.split(';')[0],g):'');
@@ -169,9 +187,10 @@ async function render(g){
   })();
   const core=P('Core Idea of character');
 
-  add('appearance','Appearance',sub('Civilian',P('Civilian Appearance'))+sub('Guardian',P('Guardian Appearance'))+(lore.appearance?W.markup(lore.appearance,data):''));
+  add('appearance','Appearance',paras(P('Appearance'),g)+sub('Civilian',P('Civilian Appearance'))+sub('Guardian',P('Guardian Appearance'))+(lore.appearance?W.markup(lore.appearance,data):''));
   add('personality','Personality',paras(P('Personality','Personality'),g)+(lore.personality?W.markup(lore.personality,data):'')
     +(P('Personality Example').length?`<h3>In practice</h3>${list(P('Personality Example'))}`:'')
+    +sub('When feverish',P('Fever Behaviour'))+sub('When intoxicated',P('Intoxicated Behaviour'))
     +facts([['MBTI',P('MBTI')],['Catchphrase',P('Catchphrase')],['Theme song',P('Theme Song')],['Loves',P('Loves')],['Likes',P('Likes')],
       ['Dislikes',P('Dislikes')],['Hates',P('Hates')],['Hobbies',P('Hobbies')],['Fear',P('Fear')]]));
   add('background','Background',paras(P('Background'),g)+(lore.history?W.markup(lore.history,data):''));
@@ -214,13 +233,17 @@ async function render(g){
   add('gallery','Gallery',gallery.length?`<div class="gallery">${gallery.map((x,i)=>`<figure><button type="button" class="gthumb" data-i="${i}" aria-label="View ${esc(x.caption||'image '+(i+1))} larger"><img src="${esc(W.asset(x.src))}" alt="${esc(x.alt||x.caption||title)}" loading="lazy"></button>${x.caption?`<figcaption>${esc(x.caption)}</figcaption>`:''}</figure>`).join('')}</div>`:'');
   add('more','Other information',facts(extra));
 
-  const t=teamLink(title);
+  const t=teamLink(title,civ);
   const toc=secs.length>=3?`<details class="toc" open><summary>Contents</summary><ol>${secs.map(s=>`<li><a href="#${s.id}">${esc(s.title)}</a></li>`).join('')}</ol></details>`:'';
+  const crumbs=civ?`<a href="lore.html?a=civilians">Civilians</a><span class="sep">›</span>`
+    :`<a href="characters.html">Guardians</a><span class="sep">›</span>${el!=='None'?`<a href="characters.html?element=${el}">${el}</a><span class="sep">›</span>`:''}`;
+  const tags=civ?'<span class="pill">Civilian</span>'
+    :`<span class="pill el-${el}"><span class="dot"></span>${el==='None'?'No branch yet':el}</span>${g.rank?`<span class="pill">${esc(g.rank)}</span>`:''}${W.statusPill(g)}`;
   main.innerHTML=`
-  <div class="crumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="characters.html">Guardians</a><span class="sep">›</span>${el!=='None'?`<a href="characters.html?element=${el}">${el}</a><span class="sep">›</span>`:''}<span>${esc(title)}</span></div>
+  <div class="crumbs"><a href="index.html">Home</a><span class="sep">›</span>${crumbs}<span>${esc(title)}</span></div>
   <div class="prof-head el-${el}">
     <h1>${esc(title)}</h1>
-    <div class="tags"><span class="pill el-${el}"><span class="dot"></span>${el==='None'?'No branch yet':el}</span>${g.rank?`<span class="pill">${esc(g.rank)}</span>`:''}${W.statusPill(g)}${t?`<a class="pill" href="${t.href}">${esc(t.name)}</a>`:''}</div>
+    <div class="tags">${tags}${t?`<a class="pill" href="${t.href}">${esc(t.name)}</a>`:''}</div>
   </div>
   <div class="prof el-${el}">
     ${infobox}
@@ -230,7 +253,6 @@ async function render(g){
       ${overview}
       ${toc}
       ${secs.map(s=>`<h2 id="${s.id}">${esc(s.title)}</h2>${s.html}`).join('')}
-      <p class="muted" style="font-size:13px;margin-top:32px">${c?'Profile fields come from <code>data/characters.json</code>, built from the story doc.':'This Guardian has no write-up in the story doc yet, so only <code>branches.json</code> data is shown.'}${g.storyOnly?' Not in <code>branches.json</code> yet, so there is no branch tree data.':''}</p>
     </article>
   </div>`;
   if(gallery.length) lightbox(gallery,title);

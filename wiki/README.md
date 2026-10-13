@@ -23,7 +23,7 @@ Every page follows the same pattern: a short `.html` file, its script in `assets
 | Folder | Holds |
 | --- | --- |
 | `assets/` | `wiki.css`, `wiki.js` (header, search, theme toggle, data loading), `story.js` (story doc reader), one script per page, plus `tree.css` and `tree-colors.css` for the branch tree |
-| `data/` | All content: `branches.json`, `characters/` (one file per character), `templates.json`, `story.md`, `lore.json`, `lore-layout.json`, `locations.json`, `wiki.json` |
+| `data/` | All content: `branches.json`, `characters/` (one file per character), `templates.json`, `story.md`, `people.json`, `lore.json`, `lore-layout.json`, `locations.json`, `wiki.json` |
 | `tools/` | `update-story.ps1` (refresh the story), `build-characters.ps1` (rebuild `data/characters/`; run by `update-story.ps1`), `serve.ps1` (local preview) |
 | `images/characters/<name>/` | Character pictures for galleries (create the folders as you need them) |
 
@@ -32,8 +32,9 @@ Every page follows the same pattern: a short `.html` file, its script in `assets
 | File | Holds | Edit it to |
 | --- | --- | --- |
 | `data/branches.json` | Guardians, branches, mentors, disciples, Zodiac roots | Add a Guardian and their wiki page and tree box appear |
-| `data/story.md` | The story doc (Luma Guardian About), made by `tools/update-story.ps1` | Do not edit by hand. Edit the Google Doc, then refresh (below) |
-| `data/characters/<name>.json` | One character each, fields in the order of the Profile Template, built from `story.md` by `tools/build-characters.ps1`. `index.json` lists them all | Profile text: edit the Google Doc and re-import. **Gallery and portrait: edit here** (see below); they are kept on every rebuild |
+| `data/story.md` | The story doc (Luma Guardian About): world, powers, organisations, events. Made by `tools/update-story.ps1` | Do not edit by hand. Edit the Google Doc, then refresh (below) |
+| `data/people.json` | From the characters doc (LG Characters): every team with its intro and members, and the civilian groups and family lists. Made by `tools/build-characters.ps1` | Do not edit by hand. Edit the Google Doc, then refresh (below) |
+| `data/characters/<name>.json` | One character each (Guardians and civilians), fields in the order of their template (Guardian or Civilian), built from the characters doc by `tools/build-characters.ps1`. `index.json` lists them all | Profile text: edit the Google Doc and re-import. **Gallery and portrait: edit here** (see below); they are kept on every rebuild |
 | `data/templates.json` | The Guardian and Civilian templates (field names, order, sections, suggestions, private fields) | Add or rename template fields. Used by the Create page and the import script |
 | `data/lore.json` | Optional extras per Guardian: image, quote, trivia, extra sections | Add a portrait: `"Blossom": {"image": "images/blossom.png"}` |
 | `data/locations.json` | Map places and layers | Add a place, move a pin, or swap to your own drawn map (`"mode": "image"`) |
@@ -71,13 +72,22 @@ Each profile page reads that character's file in `data/characters/` (matched by 
 
 The profile page shows a Gallery section; click a picture to see it large (arrow keys move between pictures). Re-importing the story keeps `image` and `gallery`.
 
-## Refreshing the story from the Google Doc
+## Refreshing from the Google Docs
 
-Google's own download only saves the open tab, so the simplest refresh is to ask Claude (with Google Drive connected) to re-import the doc into `data/story.md`.
+The wiki is built from two docs (their IDs are in `data/wiki.json`):
 
-If you have a Markdown copy of the whole doc, where each tab starts with a `# Tab name` line ending in two spaces:
+- **Luma Guardian About**: the story. Becomes `data/story.md` and the Lore pages.
+- **LG Characters**: the characters. Becomes the character files (`data/characters/`) and `data/people.json` (Teams and Civilians pages). The doc itself is not copied into the repo.
 
-    powershell -ExecutionPolicy Bypass -File wiki\tools\update-story.ps1 -Source "path\to\Luma Guardian About.md"
+Google's own download only saves the open tab, so the simplest refresh is to ask Claude (with Google Drive connected) to re-import the docs.
+
+If you have Markdown copies of the whole docs, where each tab starts with a `# Tab name` line ending in two spaces:
+
+    powershell -ExecutionPolicy Bypass -File wiki\tools\update-story.ps1 -Source "path\to\Luma Guardian About.md" -CharactersSource "path\to\LG Characters.md"
+
+To keep a tab out of the wiki, put `[Hidden Tab]` anywhere in it (like the Pairings tab), or add its name to `storyExcludeTabs` in `data/wiki.json`.
+
+A new character also needs a line in `data/branches.json` to appear in the Guardians list and the Branch tree. Without it, they still get a profile page.
 
 ## Privacy
 

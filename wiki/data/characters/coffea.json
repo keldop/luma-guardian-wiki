@@ -1,5 +1,4 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Coffea",
  "names": ["Coffea"],
  "type": "guardian",
@@ -71,6 +70,8 @@
    "Around Lumina, Joe occasionally attempts to tease or flirt with her, only to discover that her completely unintentional responses are far more effective at making him flustered.",
    "When a teammate insists they are fine despite obvious exhaustion, Joe does not argue endlessly. He simply takes over part of their responsibility and calmly tells them to rest."
   ],
+  "Fever Behaviour": "Coffea becomes unusually clingy and dependent on Lumina when feverish, insisting on keeping her within his sight at all times. He develops an irrational fear that she might disappear the moment he looks away, becoming visibly anxious whenever she leaves the room. He often reaches for her hand or holds onto her clothing for reassurance. As his fever worsens, he becomes more restless and distressed, occasionally pleading with her not to leave him, even when she is only stepping away briefly.",
+  "Intoxicated Behaviour": "Joe becomes unusually affectionate, clingy, and physically expressive when intoxicated, particularly toward Lumina. He frequently pats her head, hugs her from behind, and buries his face in her hair, occasionally breathing in her familiar scent for comfort. He becomes reluctant to let her go, often following her around or pulling her closer whenever she moves away. His usual emotional restraint disappears, making his affection for her much more obvious, although he rarely realises how openly he is displaying it.",
   "Core Idea of character": "Coffee, loyalty, protection and quiet devotion.",
   "Quotes": [
    "“She chose to stand between the world and everyone behind her. I chose to stand beside her.”",

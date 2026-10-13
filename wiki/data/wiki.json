@@ -1,5 +1,5 @@
 {
- "_help": "Wiki settings. featured: a Guardian name to pin on the home page (blank = a different one each day). hideFields: profile fields never shown on the wiki and stripped from the story doc by tools/update-story.ps1 (branches.json hiddenFields are always added). storyDocId: the Google Doc that tools/update-story.ps1 downloads. storyExcludeTabs: doc tabs left out of the wiki.",
+ "_help": "Wiki settings. featured: a Guardian name to pin on the home page (blank = a different one each day). hideFields: profile fields never shown on the wiki and stripped from the story doc by tools/update-story.ps1 (branches.json hiddenFields are always added). storyDocId / charactersDocId: the story doc and the characters doc (LG Characters) that the wiki is built from. Tabs containing '[Hidden Tab' are always left out. storyExcludeTabs: doc tabs left out of the wiki.",
  "title": "Luma Guardian Wiki",
  "tagline": "The encyclopedia of the Luma Guardians: every Guardian, branch, team and stronghold across Fire, Earth, Water and Air.",
  "featured": "Blossom",
@@ -12,6 +12,7 @@
   "Ding Dong Size"
  ],
  "storyDocId": "1wRlhqEvxgIdP9Ox-T8VFVPk7vv8Ao7DXZ77xNeTn8FI",
+ "charactersDocId": "1_ROwbTWrJKPaYkqbyeZx7B3HX0GhR3W3zGjwRDUaXKw",
  "storyExcludeTabs": [
   "Tab 19"
  ]

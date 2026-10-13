@@ -1,5 +1,4 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Marigold",
  "names": ["Marigold"],
  "type": "guardian",
@@ -70,6 +69,8 @@
    "When attempting to create a defensive barrier, Marigold accidentally launches it across the training hall and into a reinforced wall. After being told that it was not a proper barrier, she argues that the attack technically stopped the wall from being a threat.",
    "When Aster successfully maintains her barrier using her newly formed staff, Marigold becomes so excited that she shouts in celebration and immediately hugs her sister, nearly startling the staff out of her hands."
   ],
+  "Fever Behaviour": "Aurelia becomes noticeably quieter and less energetic when feverish, a stark contrast to her usual playful and competitive personality. She loses interest in teasing others or engaging in conversations, preferring to rest quietly. Although she rarely complains, her lack of enthusiasm makes it obvious that she is unwell. She may become unusually cooperative and obedient, lacking the energy to argue or protest.",
+  "Intoxicated Behaviour": "Aurelia becomes unusually affectionate, sentimental, and emotional when intoxicated. Her usual competitive and teasing personality softens, and she begins showering everyone with compliments and openly expressing how much she appreciates them. She becomes easily moved by even the smallest gestures, occasionally tearing up over trivial things. However, her competitive spirit remains, and she may suddenly challenge others to ridiculous competitions, only to become emotional again moments later.",
   "Core Idea of character": "A courageous friend who moves the moment an opening appears.",
   "Quotes": [],
   "Background": "She was Emergency Awakened by Luma Flora on 17 October 2025 during the Graduation Attack. Before awakening, Aurelia demonstrated her courage by working alongside her twin sister Amelia to rescue a lecturer trapped beneath debris, acting without magical abilities or hesitation.\nHer Earth magic developed towards offensive techniques, manifesting as powerful bursts of orange-gold energy and flower-shaped attacks. During her early training, Aurelia demonstrated an unusual aptitude for learning new abilities quickly, although her tendency to release excessive power initially made control difficult. Unlike Fractal and Aster, her magic responds naturally through her body without requiring a separate medium.\nWithin Wildflowers, Marigold gradually develops into an Attacker, using her courage and quick reactions to protect her teammates. She shares a close bond with Amelia and frequently teases Felix, whose analytical nature contrasts with her impulsive behaviour. Over time, their friendship develops into a romantic relationship.",

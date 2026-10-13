@@ -1,0 +1,183 @@
+{
+ "_help": "Built from the characters doc by tools/build-characters.ps1. Do not edit by hand. teams: every team heading with its intro and members. civilians: civilian groups (members have their own files) and family lists (intro only). tabs: doc tabs without any write-ups, used as Lore articles.",
+ "teams": [
+  {
+   "name": "Flower Sisters",
+   "base": "Singapore",
+   "intro": "They are not actually sisters in real life. But their synergy makes people wonder.",
+   "members": ["Blossom", "Flora", "EmberFlora"],
+   "notes": ""
+  },
+  {
+   "name": "WildFlowers",
+   "base": "Singapore",
+   "intro": "- “Apparently because we have a habit of turning up where nobody planted us.”\n\n  - “You’re all flower Guardians, but you're all different flowers… like the wildflowers near my house.”\n\n  - “Command has its Guardians. The people have the Wildflowers.”",
+   "members": ["Coffea", "Fractal", "Aster", "Marigold", "Clover", "Lotus", "Iris", "Chroma"],
+   "notes": ""
+  },
+  {
+   "name": "Eclipse",
+   "base": "Singapore",
+   "intro": "",
+   "members": ["Lumen", "Umbra"],
+   "notes": ""
+  },
+  {
+   "name": "Seasons",
+   "base": "Singapore",
+   "intro": "",
+   "members": ["Summer", "Spring", "Winter", "Autumn"],
+   "notes": ""
+  },
+  {
+   "name": "Celestials",
+   "base": "Japan",
+   "intro": "",
+   "members": ["Moon", "Sun", "Mist", "Cinder", "Meteor", "Thunder", "Selene", "Orion", "Space", "Reflection", "Cronus", "Eclipsa"],
+   "notes": ""
+  },
+  {
+   "name": "Elements",
+   "base": "",
+   "intro": "",
+   "members": ["Hydro", "Soil", "Blaze", "Aero"],
+   "notes": ""
+  },
+  {
+   "name": "Champions",
+   "base": "US, LA",
+   "intro": "",
+   "members": ["Star"],
+   "notes": ""
+  },
+  {
+   "name": "Emotions",
+   "base": "France",
+   "intro": "",
+   "members": ["Joy", "Fear", "Rage", "Sorrow", "Passion"],
+   "notes": ""
+  },
+  {
+   "name": "Fire Branch",
+   "base": "",
+   "intro": "",
+   "members": ["Solace", "Lunar", "Aurora", "Mirage", "Vitalis", "Firewall", "Lantern", "Quell", "Quench", "Nullfire"],
+   "notes": ""
+  },
+  {
+   "name": "Earth Branch",
+   "base": "",
+   "intro": "",
+   "members": ["Yew", "Cedar", "Verdant", "Sage", "Essence", "Venom", "Forge", "Life", "Mineral", "Crystalis", "Entoma", "Fauna", "Sauria", "Toxin"],
+   "notes": ""
+  },
+  {
+   "name": "Water Branch",
+   "base": "",
+   "intro": "",
+   "members": ["Tidal", "Current", "Clarity"],
+   "notes": ""
+  },
+  {
+   "name": "Air Branch",
+   "base": "",
+   "intro": "",
+   "members": ["Crosswind", "Resonance", "Harmony", "Aether", "Rift", "Prism", "Zephyr", "Draft", "Gale"],
+   "notes": ""
+  },
+  {
+   "name": "Idol Group",
+   "base": "Korea",
+   "intro": "",
+   "members": ["Muse", "Rhythm", "Melody", "Beat"],
+   "notes": ""
+  },
+  {
+   "name": "Zodiacs",
+   "base": "",
+   "intro": "",
+   "members": ["Ophiuchus", "Leo", "Aries", "Sagittarius", "Scorpio", "Pisces", "Cancer", "Aquarius", "Libra", "Gemini", "Taurus", "Virgo", "Capricorn"],
+   "notes": ""
+  },
+  {
+   "name": "Disciples",
+   "base": "",
+   "intro": "",
+   "members": ["Halo"],
+   "notes": ""
+  },
+  {
+   "name": "Fallen Stars",
+   "base": "",
+   "intro": "",
+   "members": ["Vacuum"],
+   "notes": ""
+  }
+ ],
+ "civilians": [
+  {
+   "name": "Civilians",
+   "base": "",
+   "intro": "",
+   "members": ["Luke Yeo", "Jayden Soh", "Daniel Low", "Claire Lim"],
+   "notes": "Age: 55\n\nOccupation: Team Supervisor at Lumasoft (Aurelia’s Supervisor)"
+  },
+  {
+   "name": "University",
+   "base": "",
+   "intro": "",
+   "members": ["Luna Neo", "Sophie Goh", "Christopher", "Jordan", "Jodae", "Sean Lim"],
+   "notes": ""
+  },
+  {
+   "name": "Lumina’s & Asher’s Biological Family",
+   "base": "",
+   "intro": "",
+   "members": ["Rose Tan", "Alvin Lee", "Leah Lee", "Kein Tang", "Matthew Tang"],
+   "notes": "Marcel Tang Jiā Lè 唐嘉乐    (Older Sister’s Second Son) (Age: 14)\n\nLiam Lee Jī Yǒng 李机永   (Older Brother) (Age: 36)\n\nCheryl Lim Jiā Huì 林佳慧   (Older Brother’s Wife) (Age: 36)\n\nNoah Lee Mǐn Yáng 李敏阳   (Older Brother’s Son) (Age: 12)\n\nNaomi Lee Mǐn Ān 李敏安    (Niece) (Age: 10)\n\nLucas Lee Jié Ruì 李捷瑞   (Asher)"
+  },
+  {
+   "name": "Asher’s Adoptive Family",
+   "base": "",
+   "intro": "Grace Sun Yǎ Líng 孙雅玲 (Mother) (Age: 64)\n\nAlvin Lim Wén Xiàn 林文羡 (Father - Deceased at 60) - Engineer",
+   "members": [],
+   "notes": ""
+  },
+  {
+   "name": "Sylvia’s Family",
+   "base": "",
+   "intro": "Serene Leung Jìng Wén 梁静雯  (Mother) (Age: 44)\n\nDesmond Ng Wěi Jiàn 吴伟健  (Father) (Age: 46)\n\nEthan Ng Yǔ Háng 吴宇航   (Younger Brother) (Age: 10)",
+   "members": [],
+   "notes": ""
+  },
+  {
+   "name": "Joe’s Family",
+   "base": "",
+   "intro": "Susan Ong Měi Zhēn 王美珍  (Mother) (Age: 60) - Principal of Nanyang Girls’\n\nRichard Tan Guó Liáng 陈国良 (Father) (Age: 62) - Specialist Cardiologist\n\nChloe Tan Nuǎn Qíng 陈暖晴   (Older Sister) (Age: 30) - Psychologist",
+   "members": [],
+   "notes": ""
+  },
+  {
+   "name": "Felix’s Family",
+   "base": "",
+   "intro": "Linda Koh Lì Huá 许丽华   (Mother) (Age: 55)\n\nRaymond Ang Zhì Míng 洪志明  (Father) (Age: 56)",
+   "members": [],
+   "notes": ""
+  },
+  {
+   "name": "Aurelia & Amelia Family",
+   "base": "",
+   "intro": "Joanne Ho Pèi Qí 何佩琪    (Mother) (Age: 54)\n\nKenneth Chua Jiàn Huá 蔡建华  (Father) (Age: 56)",
+   "members": [],
+   "notes": ""
+  },
+  {
+   "name": "Adrian’s Family",
+   "base": "",
+   "intro": "Irene Yeo Yáng Shū Fēn 杨淑芬 (Mother) (Age: 55)\n\nVincent Koh Dé Fú 许德福  (Father) (Age: 56)\n\nCheryl Koh Shī Hán 许诗涵  (Younger Sister) (Age: 18)",
+   "members": [],
+   "notes": ""
+  }
+ ],
+ "tabs": []
+}

@@ -114,6 +114,11 @@ img{max-width:100%}
 .ccard small{display:block;color:var(--muted);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ccard.gone{opacity:.72}
 .ccard.noprof{border-left-style:dashed;background:var(--surface2)}
+.chips[hidden],.filters select[hidden]{display:none}
+.ccard.civ{--c:var(--muted)}
+.ccard.civ .ava{--c:var(--accent)}
+.stat{color:var(--ink)}
+a.stat:hover{text-decoration:none;border-color:var(--accent)}
 @media (max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:10px}.ccard{flex-direction:column;text-align:center;padding:14px 8px}.ccard .t{width:100%}}
 
 /* ---------- Home ---------- */

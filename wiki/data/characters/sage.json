@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Sage",
  "names": ["Sage"],
  "type": "guardian",
- "group": "Guardian Healers",
+ "group": "Earth Branch",
  "base": "",
- "tab": "Characters",
+ "tab": "Earth Branch",
  "profile": {
   "Civilian Name": "Janice Low",
   "Guardian Name": "Luma Sage",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "Personality\nJanice is friendly, energetic, and considerably less patient than Tina.\nWhere Luma quietly orders someone to sit down, Sage will stare at Flora trying to sneak away and immediately say:\n“No.”\n“I didn't even say anything.”\n“You were thinking about it.”\nShe gets along surprisingly well with Flora because neither of them is particularly formal around people they trust.\nSage will laugh at Flora's jokes, argue with her during treatment, and occasionally threaten to wrap her completely in vines if she refuses to stay still.\nUnlike Solace, whose calmness can be intimidating, Sage's bedside manner is lively and conversational. She deliberately talks to injured civilians while treating them because she believes keeping someone mentally engaged helps prevent panic.\nSage keeps Flora's primary medical file and is ultimately responsible for her long-term Guardian health.\nBoth (Solace and Sage) have secondary access to the other's patient because Blossom and Flora are frequent mission partners.\nEither can perform examinations, diagnose injuries, prescribe recovery periods, or clear them for missions.\nFor serious cases, both healers may examine the same Guardian together.",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

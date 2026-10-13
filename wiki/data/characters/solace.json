@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Solace",
  "names": ["Solace"],
  "type": "guardian",
- "group": "Guardian Healers",
+ "group": "Fire Branch",
  "base": "",
- "tab": "Characters",
+ "tab": "Fire Branch",
  "profile": {
   "Civilian Name": "Tina Lim",
   "Guardian Name": "Luma Solace",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "Personality\nTina is calm, observant, and extremely difficult to panic. Years of working as both a doctor and a Guardian have made her very good at separating urgency from chaos.\nShe rarely raises her voice, which somehow makes it worse when she is genuinely angry.\nShe is warm toward civilians and younger Guardians, but becomes noticeably stricter with experienced Guardians who knowingly ignore their own injuries.\nBlossom is one of her most frequent offenders.\nTina has long since learned that telling Blossom, *“You need to rest,”* is ineffective.\nSo she tends to phrase things more clinically.\n“You may either sit down willingly, or I will make you sit down.”\nBlossom usually sits.\nSolace keeps Blossom's primary medical file and is ultimately responsible for her long-term Guardian health.\nBoth (Solace and Sage) have secondary access to the other's patient because Blossom and Flora are frequent mission partners.\nEither can perform examinations, diagnose injuries, prescribe recovery periods, or clear them for missions.\nFor serious cases, both healers may examine the same Guardian together.\nFor Blossom and Flora’s group, Luma Solace and Sage would temporarily handle Coffea, Fractal, Aster, Marigold, Clover, and any other disciples attached to them. They would keep records of injuries, monitor how awakening affects their bodies, track elemental development, and decide whether a disciple is medically fit for training or missions.\nOnce a disciple passes the full-fledged tests, they assign a designated Healer that they think will suit them.",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

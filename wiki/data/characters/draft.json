@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Draft",
  "names": ["Draft"],
  "type": "guardian",
  "group": "Air Branch",
  "base": "",
- "tab": "Other Characters",
+ "tab": "Air Branch",
  "profile": {
   "Civilian Name": "",
   "Guardian Name": "Luma Draft",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "cheerful, street-smart and slightly mischievous. Much less formal than Blossom or Autumn.\nFighting style: specializes in short, precise bursts of air rather than huge storms. She can rapidly change direction, silence her own movement, jump much farther than normal, knock objects off course, sense disturbances in nearby air, and give teammates brief boosts of speed.\nAstral Games strength: races, retrieval games, stealth events, tracking, aerial courses, and anything requiring someone to reach an objective quickly.",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Crosswind",
  "names": ["Crosswind"],
  "type": "guardian",
  "group": "Air Branch",
  "base": "",
- "tab": "Other Characters",
+ "tab": "Air Branch",
  "profile": {
   "Civilian Name": "Evelyn Tan",
   "Guardian Name": "Luma Crosswind",
@@ -70,6 +69,8 @@
    "During a rematch: Crosswind notices Blossom attempting a new manoeuvre. Rather than reacting impulsively, she adjusts her wind currents and forces Blossom into a difficult position. \"I've studied that movement. It won't work twice.\"",
    "After Blossom wins again: Crosswind approaches her, still catching her breath. \"I'm going to beat you someday.\" Blossom nods. \"I know.\" Crosswind pauses, briefly caught off guard by the genuine confidence in her response."
   ],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "A highly disciplined Air Guardian who dedicates herself to surpassing Blossom, believing that relentless effort and preparation can overcome even extraordinary natural talent.",
   "Quotes": [
    "\"I don't want you to go easy on me. I want to defeat you at your best.\"",

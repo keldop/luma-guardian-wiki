@@ -1,5 +1,4 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Clover",
  "names": ["Clover"],
  "type": "guardian",
@@ -7,7 +6,7 @@
  "base": "Singapore",
  "tab": "Characters",
  "profile": {
-  "Civilian Name": "Asher Lim Ruì Qí (林瑞祺)",
+  "Civilian Name": "Asher Lim Ruì Qí (林瑞祺); Lucas Lee Jié Ruì 李捷瑞 (Biological Name)",
   "Guardian Name": "Luma Clover",
   "Evolved Guardian Name": "",
   "Nickname": "",
@@ -71,6 +70,8 @@
    "When someone gives an unclear explanation, Asher immediately asks questions until he understands the reasoning. His directness can make him appear argumentative, even when he is genuinely trying to help.",
    "During a mission involving structural damage, Asher quickly identifies a safer approach based on his engineering experience, showing that his civilian skills are valuable even before he becomes an experienced Guardian."
   ],
+  "Fever Behaviour": "Asher becomes unusually affectionate and emotionally expressive toward everyone when feverish. He frequently seeks hugs, leans against whoever is nearby, and openly expresses his appreciation for those around him. His usual playful teasing is replaced by genuine sweetness, making him surprisingly endearing. He becomes less mindful of personal space and may even refuse to let go of someone he is hugging. Once recovered, he remembers little of his behaviour and becomes terribly embarrassed when others bring it up.",
+  "Intoxicated Behaviour": "Asher becomes extremely sociable, energetic, and affectionate when intoxicated. His usual playful personality becomes even more exaggerated, often initiating ridiculous games, hugging everyone, and enthusiastically declaring how much he loves them. He becomes particularly attached to Lumina, repeatedly reminding her that they're twins and insisting that she loves him, even when she refuses to admit it. His sense of personal space practically disappears, and he becomes increasingly dramatic whenever someone rejects his affection.",
   "Core Idea of character": "Lucky.",
   "Quotes": [],
   "Background": "Luma Clover is a Capricorn-born Guardian with Earth as his natural element and the missing fraternal twin of Luma Blossom. Believed to have died at birth, Asher grew up separately from his biological family and later became a structural engineer, unaware of his connection to Lumina or the Guardian world.\nIn December 2025, Asher's Earth Core self-awakened during a dangerous incident involving hostile creatures. Shortly afterward, an enemy forcibly introduced stored Fire magic originating from Blossom into his newly awakened Core, leaving him with an unstable Fire inheritance. He was found unconscious by Blossom and EmberFlora, who noticed his remarkable resemblance to Lumina. EmberFlora subsequently helped stabilise his Core during his recovery.\nAsher eventually learns about his Guardian abilities and his connection to Lumina. Under Blossom's mentorship, he begins developing his Earth magic while learning to manage his inherited Fire. He joins Wildflowers and gradually builds relationships with his newfound family and teammates, particularly Sylvia, with whom he later develops a romantic relationship.",

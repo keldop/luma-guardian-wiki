@@ -61,8 +61,8 @@ function chrome(active){
     <nav class="nav" id="nav" aria-label="Main">${links.map(([k,h,t])=>`<a href="${h}"${k===active?' aria-current="page"':''}>${t}</a>`).join('')}</nav>
     <form class="search" role="search" id="searchform" action="${BASE}characters.html">
       ${ICON.search}
-      <label class="sr" for="q">Search Guardians</label>
-      <input id="q" name="q" type="search" placeholder="Search Guardians…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sugg" aria-autocomplete="list">
+      <label class="sr" for="q">Search characters</label>
+      <input id="q" name="q" type="search" placeholder="Search characters…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sugg" aria-autocomplete="list">
       <ul class="sugg" id="sugg" role="listbox"></ul>
     </form>
     <button class="iconbtn" id="themebtn" aria-label="${isDark()?'Switch to light mode':'Switch to dark mode'}" title="Toggle dark mode">${ICON.sun}${ICON.moon}</button>
@@ -70,7 +70,7 @@ function chrome(active){
   document.body.prepend(head);
   const foot=document.createElement('footer');
   foot.className='foot';
-  foot.innerHTML=`Luma Guardian Wiki · Character data from <a href="${BASE}data/branches.json">branches.json</a> · <a href="${BASE}tree.html">Branch tree</a>`;
+  foot.innerHTML=`Luma Guardian Wiki · <a href="${BASE}characters.html">Characters</a> · <a href="${BASE}lore.html">Lore</a> · <a href="${BASE}tree.html">Branch tree</a>`;
   document.body.append(foot);
   $('#themebtn').addEventListener('click',()=>setTheme(isDark()?'light':'dark'));
   const mb=$('#menubtn'),nav=$('#nav');
@@ -78,15 +78,28 @@ function chrome(active){
   document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target)&&!mb.contains(e.target)){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');}});
 }
 
+// Everyone searchable: Guardians, plus civilians and doc-only Guardians from the character files.
+function everyone(data){
+  const out=data.guardians.slice(),seen=new Set();
+  for(const ref of (data.profiles||new Map()).values()){
+    if(seen.has(ref.file)) continue;
+    seen.add(ref.file);
+    if((ref.names||[ref.name]).some(n=>data.byName.has(String(n).toLowerCase()))) continue;
+    out.push({id:slug(ref.name),name:ref.name,element:ref.type==='civilian'?'None':(ref.element||'None'),
+      team:ref.type==='civilian'?(ref.subtitle||'Civilian'):(ref.group||''),path:'',portrait:ref.image||'',lore:{}});
+  }
+  return out;
+}
 function wireSearch(data){
   const input=$('#q'),list=$('#sugg');
+  const people=everyone(data);
   let sel=-1,items=[];
   const close=()=>{list.classList.remove('open');input.setAttribute('aria-expanded','false');sel=-1;};
   const render=()=>{
     const q=input.value.trim().toLowerCase();
     if(!q){close();return;}
     const starts=[],has=[];
-    for(const g of data.guardians){
+    for(const g of people){
       const n=g.name.toLowerCase();
       if(n.startsWith(q)) starts.push(g);
       else if(n.includes(q)||g.team.toLowerCase().includes(q)||g.path.toLowerCase().includes(q)) has.push(g);
@@ -94,7 +107,7 @@ function wireSearch(data){
     items=starts.concat(has).slice(0,8);
     sel=-1;
     list.innerHTML=items.length?items.map((g,i)=>`<li role="presentation"><a role="option" id="sg${i}" href="${charUrl(g)}" class="el-${g.element}">${avatar(g,26)}<span>${esc(g.name)}</span><small>${esc(g.team||g.element)}</small></a></li>`).join('')
-      :`<li class="muted" style="padding:8px 10px">No Guardian matches “${esc(input.value)}”.</li>`;
+      :`<li class="muted" style="padding:8px 10px">No one matches “${esc(input.value)}”.</li>`;
     list.classList.add('open');input.setAttribute('aria-expanded','true');
   };
   const mark=()=>list.querySelectorAll('a').forEach((a,i)=>{a.setAttribute('aria-selected',i===sel);if(i===sel){input.setAttribute('aria-activedescendant',a.id);a.scrollIntoView({block:'nearest'});}});
@@ -105,7 +118,7 @@ function wireSearch(data){
     else if(e.key==='ArrowUp'&&items.length){e.preventDefault();sel=(sel-1+items.length)%items.length;mark();}
     else if(e.key==='Escape'){close();}
     else if(e.key==='Enter'){
-      const exact=data.guardians.find(g=>g.name.toLowerCase()===input.value.trim().toLowerCase());
+      const exact=people.find(g=>g.name.toLowerCase()===input.value.trim().toLowerCase());
       const pick=sel>=0?items[sel]:exact;
       if(pick){e.preventDefault();location.href=charUrl(pick);}
     }

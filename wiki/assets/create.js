@@ -223,7 +223,7 @@ function renderOut(){
     </section>
     <section class="cr-pane">
       <header><h3>Doc</h3><div><button type="button" class="btn" id="cpdoc">Copy for Google Docs</button><button type="button" class="btn" id="cptxt">Copy as text</button></div></header>
-      <p class="muted cr-note">Paste under the right team heading in the story doc. Bold labels are kept when pasting into Google Docs.</p>
+      <p class="muted cr-note">Paste under the right team heading in the characters doc. Bold labels are kept when pasting into Google Docs.</p>
       <div class="cr-doc prose" tabindex="0">${docHtml(includeEmpty)}</div>
     </section>
   </div>`;

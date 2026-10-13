@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Current",
  "names": ["Current"],
  "type": "guardian",
  "group": "Water Branch",
  "base": "",
- "tab": "Other Characters",
+ "tab": "Water Branch",
  "profile": {
   "Civilian Name": "",
   "Guardian Name": "Luma Current",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "calm, practical, quick to understand tactical instructions\nSpecialty: redirecting water flow, momentum, projectiles, movement paths, and controlling space",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

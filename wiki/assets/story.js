@@ -47,6 +47,9 @@ async function load(){
   const r=await fetch('data/story.md',{cache:'no-cache'});
   if(!r.ok) throw new Error('data/story.md: '+r.status);
   const text=(await r.text()).replace(/\r\n?/g,'\n');
+  // From the characters doc: the teams, and tabs without write-ups (Civilians), built by tools/build-characters.ps1.
+  let people={teams:[],tabs:[]};
+  try{const p=await fetch('data/people.json',{cache:'no-cache'});if(p.ok) people=await p.json();}catch(e){}
   const parts=text.split(/^<!--\s*tab:\s*(.*?)\s*-->\s*$/m);
   const tabs=[],used=new Set();
   for(let i=1;i<parts.length;i+=2){
@@ -56,28 +59,14 @@ async function load(){
     used.add(slug);
     tabs.push({title,slug,md:tidy(parts[i+1]||'')});
   }
-  // One section per "Luma <Name>" heading. "Luma Flora / Luma EmberFlora" files under both names.
-  const chars=new Map();
-  for(const tab of tabs){
-    const lines=tab.md.split('\n');
-    for(let i=0;i<lines.length;i++){
-      const m=lines[i].match(/^(#{1,3})\s+(.*)$/);
-      if(!m) continue;
-      const names=lumaNames(m[2]);
-      if(!names.length) continue;
-      let j=i+1;
-      while(j<lines.length){const h=lines[j].match(/^(#{1,6})\s/);if(h&&h[1].length<=m[1].length) break;j++;}
-      const sec={tab,title:m[2],md:lines.slice(i+1,j).join('\n'),level:m[1].length};
-      for(const n of names) if(!chars.has(n.toLowerCase())) chars.set(n.toLowerCase(),sec);
-    }
+  for(const t of people.tabs||[]){
+    let slug=W.slug(t.title)||'tab';
+    while(used.has(slug)) slug+='-2';
+    used.add(slug);
+    tabs.push({title:t.title,slug,md:tidy(t.md||'')});
   }
-  STORY={tabs,chars,bySlug:new Map(tabs.map(t=>[t.slug,t])),byTitle:new Map(tabs.map(t=>[t.title.toLowerCase(),t]))};
+  STORY={tabs,teams:people.teams||[],civilians:people.civilians||[],bySlug:new Map(tabs.map(t=>[t.slug,t])),byTitle:new Map(tabs.map(t=>[t.title.toLowerCase(),t]))};
   return STORY;
-}
-
-// "Luma Flora / Luma EmberFlora" -> ["Flora","EmberFlora"]; "(Antagonist) Luma Yew" -> ["Yew"]; other headings -> [].
-function lumaNames(heading){
-  return heading.replace(/\(.*?\)/g,'').split('/').map(s=>(s.trim().match(/^Luma\s+(\S.*)$/i)||[])[1]).filter(Boolean).map(s=>s.trim());
 }
 
 /* ---------- Lore articles (data/lore-layout.json) ---------- */
@@ -109,49 +98,28 @@ function sectionOf(tab,name){
   return null;
 }
 
-// Team directory from the character tabs: "# Flower Sisters - Base in Singapore", its intro, then its "Luma X" members.
-function teamsFrom(story,tabNames){
-  const groups=[];
-  for(const name of tabNames){
-    const tab=story.byTitle.get(name.toLowerCase());if(!tab) continue;
-    let cur=null,mode='';
-    const start=title=>{
-      const m=title.match(/^(.*?)\s*[-–—]\s*Based?\s+in\s+(.*)$/i);
-      cur={name:(m?m[1]:title).trim(),base:m?m[2].trim():'',intro:'',members:[],tab:tab.title};
-      groups.push(cur);mode='intro';
-    };
-    for(const line of tab.md.split('\n')){
-      const h=line.match(/^(#{1,6})\s+(.*)$/);
-      if(h){
-        const names=lumaNames(h[2]);
-        if(names.length){if(!cur) start(tab.title);for(const n of names) if(!cur.members.includes(n)) cur.members.push(n);mode='member';}
-        else if(h[1].length===1) start(h[2]);
-        continue;
-      }
-      if(mode==='intro'&&cur) cur.intro+=line+'\n';
-    }
-  }
-  return groups.filter(g=>g.members.length);
-}
-
 let LORE=null;
 async function loadLore(){
   if(LORE) return LORE;
   const story=await load();
   let layout=null;
   try{const r=await fetch('data/lore-layout.json',{cache:'no-cache'});if(r.ok) layout=await r.json();}catch(e){}
-  layout=layout||{groups:[],characterTabs:[]};
-  const charTabs=layout.characterTabs||[];
-  const teams=teamsFrom(story,charTabs);
-  const usedTabs=new Set(charTabs.map(t=>t.toLowerCase()));
+  layout=layout||{groups:[]};
+  // Teams and civilian groups come ready-made from people.json (built from the characters doc).
+  const tidyGroups=list=>(list||[]).map(t=>({...t,intro:t.intro||'',members:t.members||[]}));
+  const dirs={teams:tidyGroups(story.teams),civilians:tidyGroups(story.civilians)};
+  const teams=dirs.teams;
+  const usedTabs=new Set();
   const articles=[],bySlug=new Map(),fromTab=new Map();
 
   const build=(a,group)=>{
     const parts=[];let special='';
     for(const p of a.parts||[]){
-      if(p.special==='teams'){
-        special='teams';
-        parts.push({title:'',md:teams.map(g=>`## ${g.name}\n\n${g.base?'Based in '+g.base+'.\n\n':''}${g.intro.trim()}\n\nMembers: ${g.members.map(n=>'Luma '+n).join(', ')}`).join('\n\n')});
+      if(dirs[p.special]){
+        // Directory pages; this text is only used by the Lore search.
+        special=p.special;
+        const pre=special==='teams'?'Luma ':'';
+        parts.push({title:'',md:dirs[special].map(g=>`## ${g.name}\n\n${g.base?'Based in '+g.base+'.\n\n':''}${g.intro.trim()}${g.members.length?`\n\nMembers: ${g.members.map(n=>pre+n).join(', ')}`:''}`).join('\n\n')});
         continue;
       }
       const tab=story.byTitle.get(String(p.tab||'').toLowerCase());if(!tab) continue;
@@ -174,13 +142,13 @@ async function loadLore(){
     if(group.articles.length) groups.push(group);
   }
   // Doc tabs nobody placed yet, so a new tab in the doc still shows up.
-  const rest={title:'More from the story',blurb:'Doc tabs that are not placed in a group yet (see data/lore-layout.json).',articles:[]};
+  const rest={title:'More from the story',blurb:'Other parts of the story.',articles:[]};
   for(const t of story.tabs) if(!usedTabs.has(t.title.toLowerCase())) build({slug:t.slug,title:t.title,parts:[{tab:t.title}]},rest);
   if(rest.articles.length) groups.push(rest);
   // Old links (lore.html?tab=characters) land on the team directory.
-  for(const t of charTabs){const tab=story.byTitle.get(t.toLowerCase());if(tab&&bySlug.has('teams')) fromTab.set(tab.slug,'teams');}
+  if(bySlug.has('teams')) for(const t of layout.characterTabs||[]) fromTab.set(W.slug(t),'teams');
 
-  LORE={story,groups,articles,bySlug,fromTab,teams};
+  LORE={story,groups,articles,bySlug,fromTab,teams,dirs};
   return LORE;
 }
 

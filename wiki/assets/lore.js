@@ -52,28 +52,38 @@ function pager(a){
 }
 const jump=()=>{if(location.hash){const t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t) t.scrollIntoView();}};
 
-// Team directory: each team's intro from the doc plus member cards linking to the profiles.
-async function teamsHtml(){
+// A card for anyone: a Guardian from branches.json, or a character file (doc-only Guardian or civilian).
+function personCard(n){
+  const gd=data.byName.get(n.toLowerCase());
+  if(gd) return W.card(gd);
+  const ref=data.profiles.get(n.toLowerCase());
+  const sub=ref?(ref.subtitle||(ref.type==='civilian'?'Civilian':'Guardian')):'No profile yet';
+  const img=ref&&ref.image?`<img src="${esc(W.asset(ref.image))}" alt="" loading="lazy">`:esc(n[0].toUpperCase());
+  return `<a class="ccard el-None${ref?'':' noprof'}" href="character.html?name=${encodeURIComponent(n)}" title="${esc(sub)}"><span class="ava el-None" style="--s:48px" aria-hidden="true">${img}</span><span class="t"><b>${esc(n)}</b><small>${esc(sub)}</small></span></a>`;
+}
+// Team or civilian directory: each group's intro from the doc (a family list, for families) plus member cards.
+async function directoryHtml(list){
   const out=[];
-  for(const g of lore.teams){
+  for(const g of list){
     const intro=g.intro.trim()?(await Story.render(g.intro,data)).innerHTML:'';
-    const cards=g.members.map(n=>{
-      const gd=data.byName.get(n.toLowerCase());
-      return gd?W.card(gd):`<a class="ccard noprof el-None" href="character.html?name=${encodeURIComponent(n)}"><span class="ava el-None" style="--s:48px" aria-hidden="true">${esc(n[0].toUpperCase())}</span><span class="t"><b>${esc(n)}</b><small>Story profile only</small></span></a>`;
-    }).join('');
-    out.push(`<h2 id="${W.slug(g.name)}" data-label="${esc(g.name)}">${esc(g.name)}${g.base?` <span class="pill">${esc(g.base)}</span>`:''}</h2>${intro}<div class="grid team-grid">${cards}</div>`);
+    const cards=g.members.map(personCard).join('');
+    // Names listed after the write-ups (family members without a profile yet).
+    const notes=g.notes&&g.notes.trim()?`${cards?'<h3 class="dir-more">Also in this group</h3>':''}${(await Story.render(g.notes,data)).innerHTML}`:'';
+    out.push(`<h2 id="${W.slug(g.name)}" data-label="${esc(g.name)}">${esc(g.name)}${g.base?` <span class="pill">${esc(g.base)}</span>`:''}</h2>${intro}${cards?`<div class="grid team-grid">${cards}</div>`:''}${notes}`);
   }
   return out.join('');
 }
+const LEADS={teams:"Every team and group in the story. Each Guardian's full write-up is on their profile page.",
+  civilians:'The people around the Guardians: co-workers, classmates and families. Click a name for their profile.'};
 
 async function showArticle(){
   document.title=`${art.title} · Lore · Luma Guardian Wiki`;
   shell(art.group.title,art.title,`<h1 class="lore-title">${esc(art.title)}</h1><div class="loading">Loading…</div>`);
   const box=main.querySelector('.lore-body');
   let body;
-  if(art.special==='teams'){
+  if(art.special){
     body=document.createElement('div');
-    body.innerHTML=`<p class="lead">Every team and group in the story. Each Guardian's full write-up is on their profile page.</p>`+await teamsHtml();
+    body.innerHTML=`<p class="lead">${esc(LEADS[art.special]||'')}</p>`+await directoryHtml(lore.dirs[art.special]);
   }else{
     body=await Story.render(art.md,data);
     // "Luma X" headings link to that Guardian's profile.
@@ -129,9 +139,10 @@ function showIndex(){
     <p class="muted" style="margin:0 0 6px">The story bible, organised by topic. Each Guardian's own write-up is on their <a href="characters.html">profile page</a>.</p>
     ${lore.groups.map(g=>`<section class="lore-sec"><h2>${esc(g.title)}</h2>${g.blurb?`<p class="muted">${esc(g.blurb)}</p>`:''}
       <div class="lore-cards">${g.articles.map(a=>{
-        const n=a.special==='teams'?lore.teams.length:(a.md.match(/^##\s/gm)||[]).length;
-        const s=a.special==='teams'?lore.teams.map(t=>t.name).join(', '):firstText(a.md);
-        return `<a class="lore-card" href="${url(a)}"><b>${esc(a.title)}</b><span>${esc(s.length>140?s.slice(0,137)+'…':s)}</span>${n?`<small>${n} ${a.special==='teams'?'group':'section'}${n===1?'':'s'}</small>`:''}</a>`;}).join('')}</div></section>`).join('')}`);
+        const d=a.special&&lore.dirs[a.special];
+        const n=d?d.length:(a.md.match(/^##\s/gm)||[]).length;
+        const s=d?d.map(t=>t.name).join(', '):firstText(a.md);
+        return `<a class="lore-card" href="${url(a)}"><b>${esc(a.title)}</b><span>${esc(s.length>140?s.slice(0,137)+'…':s)}</span>${n?`<small>${n} ${d?'group':'section'}${n===1?'':'s'}</small>`:''}</a>`;}).join('')}</div></section>`).join('')}`);
 }
 
 if(q) await showSearch(); else if(art) await showArticle(); else showIndex();

@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Verdant",
  "names": ["Verdant"],
  "type": "guardian",
- "group": "Others",
+ "group": "Earth Branch",
  "base": "",
- "tab": "Characters",
+ "tab": "Earth Branch",
  "profile": {
   "Civilian Name": "Katharina Lindner",
   "Guardian Name": "Luma Verdant",
@@ -71,6 +70,8 @@
    "Verdant frequently brings unusual plants or experimental materials into training sessions, occasionally causing Sylvia and Lumina to question whether they are attending a lesson or participating in another research project.",
    "Despite encouraging experimentation, she immediately stops an exercise when a disciple approaches their Core's limits, explaining that discovering what magic cannot safely do is also an important result."
   ],
+  "Fever Behaviour": "Verdant becomes unusually absent-minded and easily distracted when feverish. Her normally curious and experimental nature remains, but her thoughts become increasingly scattered, causing her to ramble about unfinished experiments or come up with ridiculous theories. She occasionally attempts to conduct experiments despite being visibly unwell and becomes frustrated when others confiscate her equipment or force her to rest.",
+  "Intoxicated Behaviour": "Verdant becomes extremely affectionate and loses all sense of personal boundaries when intoxicated. She enthusiastically hugs everyone within reach and frequently attempts to kiss them directly on the lips, regardless of whether they are male or female. She becomes completely shameless about expressing her affection, making her someone others instinctively avoid whenever alcohol is involved. Once she spots someone she wants to shower with affection, escaping her enthusiastic advances becomes a challenge.",
   "Core Idea of character": "A mentor who believes every Core deserves the freedom to discover its own potential.",
   "Quotes": [
    "\"Just because nobody has done it before doesn't mean it can't be done.\"",

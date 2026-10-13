@@ -1,5 +1,4 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Blossom",
  "names": ["Blossom"],
  "type": "guardian",
@@ -54,7 +53,7 @@
   "Relationship": "Single; Later develops a relationship with Luma Coffea.",
   "Family": "Fraternal Twin of Asher; Father is deceased. Has 2 older married siblings, each with 2 kids.",
   "Close bonds": "Coffea and Fractal (university friends, now disciples)",
-  "Rivals": "Luma Crosswind",
+  "Rivals": "Luma Lunar (friendly rival); Luma Crosswind (serious rival)",
   "Spirit Animal": "Black Cat",
   "Loves": "Animals (Cats especially), Sakura, Chocolate",
   "Likes": "Dancing (but doesn't dance; she would love to dance again one day)",
@@ -69,6 +68,8 @@
    "Sylvia wraps her arms around Lumina from behind while she's working. \"You're heavy,\" Lumina says flatly, still typing, and she doesn't move away. Later, when a disciple admits he hid an injury during training, Lumina's tone turns polite. \"Luma Coffea. Please sit down.\" She is smiling pleasantly. Behind her, Sylvia is already shaking her head at him, as if to say he should have told her.",
    "Lumina is afraid before every fight, and it never fully goes away. She simply learned to keep her face still and her voice steady, because her disciples and the civilians behind her are watching. To them, Blossom looks like someone who has never been afraid in her life. The fear only shows in small ways, like her hands trembling when she thinks no one is looking, or her going very quiet after a battle."
   ],
+  "Fever Behaviour": "Lumina becomes quieter, sleepier, and occasionally more childish when feverish. She grows unusually clingy toward people she trusts, especially Joe, but stubbornly insists she is fine. As her fever worsens, she becomes prone to hallucinations involving her father's passing, sometimes reliving the trauma and pleading for him not to leave. She may struggle to distinguish reality from her hallucinations and remember little once she recovers.",
+  "Intoxicated Behaviour": "Lumina becomes unusually childish, grumpy, and expressive when intoxicated. Unlike her normally composed and deadpan self, she complains about almost everything, takes offence at harmless remarks, and pouts when things do not go her way. She becomes noticeably more stubborn and argumentative, occasionally demanding affection while refusing to admit that she wants attention. Her usual emotional restraint disappears, making her surprisingly honest about her feelings.",
   "Core Idea of character": "Awakened by Earth and born from Fire, Blossom became the first Guardian whose flames could bloom.",
   "Quotes": [
    "“Please don’t call me a hero. I’m not fighting to be admired. I’m fighting so that, when this is over, everyone still has a home to return to.”",

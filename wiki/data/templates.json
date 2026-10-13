@@ -72,6 +72,8 @@
    {"label": "Theme Song", "section": "Personality", "hint": "“Song Name” by Artist Name"},
    {"label": "Personality", "section": "Personality", "type": "long", "hint": "One short summary paragraph"},
    {"label": "Personality Example", "section": "Personality", "type": "list"},
+   {"label": "Fever Behaviour", "section": "Personality", "type": "long", "hint": "How they act when they have a fever"},
+   {"label": "Intoxicated Behaviour", "section": "Personality", "type": "long", "hint": "How they act when drunk"},
    {"label": "Core Idea of character", "section": "Story", "hint": "One sentence"},
    {"label": "Quotes", "section": "Story", "type": "list"},
    {"label": "Background", "section": "Story", "type": "long", "hint": "Background story paragraphs. Keep it short."},
@@ -115,6 +117,8 @@
    {"label": "Theme Song", "section": "Personality", "hint": "“Song Name” by Artist Name"},
    {"label": "Personality", "section": "Personality", "type": "long", "hint": "One short summary paragraph"},
    {"label": "Personality Example", "section": "Personality", "type": "list"},
+   {"label": "Fever Behaviour", "section": "Personality", "type": "long", "hint": "How they act when they have a fever"},
+   {"label": "Intoxicated Behaviour", "section": "Personality", "type": "long", "hint": "How they act when drunk"},
    {"label": "Quotes", "section": "Story", "type": "list"},
    {"label": "Background", "section": "Story", "type": "long", "hint": "Background story paragraphs. Keep it short."}
   ]

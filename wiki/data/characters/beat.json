@@ -1,11 +1,10 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Beat",
  "names": ["Beat"],
  "type": "guardian",
  "group": "Idol Group",
  "base": "Korea",
- "tab": "Other Characters",
+ "tab": "Air Branch",
  "profile": {
   "Civilian Name": "",
   "Guardian Name": "Luma Beat",
@@ -66,6 +65,8 @@
   "Theme Song": "",
   "Personality": "",
   "Personality Example": [],
+  "Fever Behaviour": "",
+  "Intoxicated Behaviour": "",
   "Core Idea of character": "",
   "Quotes": [],
   "Background": "",

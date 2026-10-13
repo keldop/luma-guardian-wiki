@@ -1,6 +1,6 @@
 {
- "_help": "How the Lore pages are organised. Each group is a heading on the Lore page; each article is one page (lore.html?a=<slug>). An article is built from one or more parts: {\"tab\": \"Doc tab name\"} takes the whole tab, adding \"section\": \"Heading\" takes just that section of the tab, {\"special\": \"teams\"} builds the team directory from the character tabs. characterTabs are left out of Lore because each character has a wiki profile. Doc tabs not used anywhere here appear under 'More from the story' so nothing new is lost after a refresh.",
- "characterTabs": ["Characters", "Other Characters", "Zodiacs", "Disciples", "Fallen Stars"],
+ "_help": "How the Lore pages are organised. Each group is a heading on the Lore page; each article is one page (lore.html?a=<slug>). An article is built from one or more parts: {\"tab\": \"Doc tab name\"} takes the whole tab, adding \"section\": \"Heading\" takes just that section of the tab, {\"special\": \"teams\"} and {\"special\": \"civilians\"} build the team and civilian directories from data/people.json. characterTabs are left out of Lore because each character has a wiki profile. Doc tabs not used anywhere here appear under 'More from the story' so nothing new is lost after a refresh.",
+ "characterTabs": ["Characters", "Other Teams", "Fire Branch", "Earth Branch", "Water Branch", "Air Branch", "Zodiacs", "Disciples", "Fallen Stars"],
  "groups": [
   {
    "title": "The World",
@@ -55,11 +55,10 @@
   },
   {
    "title": "People",
-   "blurb": "Teams, the civilians around the Guardians, and who is paired with whom. Each Guardian's own write-up is on their profile.",
+   "blurb": "Teams and the civilians around the Guardians. Each Guardian's own write-up is on their profile.",
    "articles": [
     {"slug": "teams", "title": "Teams and Groups", "parts": [{"special": "teams"}]},
-    {"slug": "civilians", "title": "Civilians", "parts": [{"tab": "Civilians"}]},
-    {"slug": "pairings", "title": "Pairings", "parts": [{"tab": "Pairings"}]}
+    {"slug": "civilians", "title": "Civilians", "parts": [{"special": "civilians"}]}
    ]
   },
   {

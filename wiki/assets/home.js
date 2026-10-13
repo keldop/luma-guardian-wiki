@@ -6,6 +6,13 @@ const cfg=data.config,G=data.guardians;
 
 const count=(arr,key)=>{const m=new Map();for(const g of arr){const k=key(g);if(k)m.set(k,(m.get(k)||0)+1);}return [...m].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));};
 const teams=count(G,g=>W.groupKey(g.team));
+// Character files with no line in branches.json: civilians, and Guardians written up only in the doc.
+const docOnly={guardian:0,civilian:0},seenFiles=new Set();
+for(const ref of data.profiles.values()){
+  if(seenFiles.has(ref.file)) continue;
+  seenFiles.add(ref.file);
+  if(!(ref.names||[ref.name]).some(n=>data.byName.has(String(n).toLowerCase()))) docOnly[ref.type==='civilian'?'civilian':'guardian']++;
+}
 const bases=count(G,g=>g.base);
 const byEl=Object.fromEntries(W.ELEMENTS.map(e=>[e,G.filter(g=>g.element===e).length]));
 
@@ -21,17 +28,17 @@ document.getElementById('main').innerHTML=`
   <h1>${esc(cfg.title||'Luma Guardian Wiki')}</h1>
   <p>${esc(cfg.tagline||'The encyclopedia of the Luma Guardians: every Guardian, branch, team and stronghold across Fire, Earth, Water and Air.')}</p>
   <div class="row">
-    <a class="btn primary" href="characters.html">Browse Guardians</a>
+    <a class="btn primary" href="characters.html">Browse characters</a>
     <a class="btn" href="map.html">Open the map</a>
     <button class="btn" id="random" type="button">Random Guardian</button>
   </div>
 </section>
 
 <div class="stats">
-  <div class="stat"><b>${G.length}</b><span>Guardians</span></div>
-  <div class="stat"><b>${data.raw.branches?data.raw.branches.length:0}</b><span>Branches</span></div>
-  <div class="stat"><b>${teams.length}</b><span>Teams</span></div>
-  <div class="stat"><b>${bases.length}</b><span>Locations</span></div>
+  <a class="stat" href="characters.html?type=guardian"><b>${G.length+docOnly.guardian}</b><span>Guardians</span></a>
+  <a class="stat" href="characters.html?type=civilian"><b>${docOnly.civilian}</b><span>Civilians</span></a>
+  <a class="stat" href="tree.html"><b>${data.raw.branches?data.raw.branches.length:0}</b><span>Branches</span></a>
+  <a class="stat" href="lore.html?a=teams"><b>${new Set([...data.profiles.values()].filter(r=>r.type!=='civilian'&&r.group).map(r=>r.group)).size||teams.length}</b><span>Teams</span></a>
 </div>
 
 <div class="sec-h"><h2>The four elements</h2><a href="tree.html">See the branch tree →</a></div>

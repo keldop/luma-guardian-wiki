@@ -1,5 +1,4 @@
 {
- "_help": "Built from the story doc by tools/build-characters.ps1. Edit the Google Doc for profile text; only \"image\" and \"gallery\" are kept when this file is rebuilt. gallery items: {\"src\": \"images/characters/<name>/file.png\", \"caption\": \"...\"}.",
  "name": "Flora",
  "names": ["Flora", "EmberFlora"],
  "type": "guardian",
@@ -70,6 +69,8 @@
    "During training, she often encourages disciples through compliments and enthusiastic support. She may joke about their mistakes, but she also makes sure they understand what went wrong and how to improve.",
    "When a plant she has been caring for finally flowers, Sylvia proudly shows it to everyone in the house, regardless of whether they have already seen it several times."
   ],
+  "Fever Behaviour": "Sylvia becomes noticeably more childish, clingy, and affectionate when feverish. She constantly seeks attention and reassurance, often whining about not receiving enough love or affection, especially from Lumina. She becomes unusually pouty when ignored and may dramatically accuse others of not loving her enough. Despite her exhaustion, she stubbornly refuses to sleep unless she feels sufficiently pampered, often demanding hugs or cuddles before settling down.",
+  "Intoxicated Behaviour": "Sylvia becomes extremely affectionate, impulsive, and energetic when intoxicated. She frequently clings to those around her, especially Lumina, and dramatically complains about not receiving enough affection. Her excitement often leads to reckless decisions, such as swinging objects above her head or attempting to remove her clothes because she feels too warm. She becomes increasingly pouty when stopped and stubbornly refuses to settle down, often declaring that the party is far from over even when everyone else is exhausted.",
   "Core Idea of character": "Born from Earth, reborn through Flame. Luma EmberFlora.",
   "Quotes": [
    "“A Guardian isn’t the person who stands above everyone else. We’re supposed to stand beside them.”",

@@ -79,7 +79,7 @@ function list(){
     return ps.length?`<h2 style="font-size:15px;margin:14px 0 6px;display:flex;gap:8px;align-items:center"><span class="dot" style="--c:${esc(l.color)}"></span>${esc(l.name)}</h2><ul class="placelist">${ps.map(p=>`<li><button type="button" data-id="${esc(p.id)}"><span>${esc(p.name)}</span>${p.people.length?`<small>${p.people.length} Guardian${p.people.length>1?'s':''}</small>`:''}</button></li>`).join('')}</ul>`:'';
   }).join('');
   panel.innerHTML=`<h2>Locations</h2><p class="muted" style="margin:0;font-size:14px">${places.length} places · ${placed.size} Guardians placed</p>${groups||'<div class="empty">Turn on a layer above.</div>'}
-    ${unplaced.length?`<p class="muted" style="font-size:13px;margin-top:14px">Not on the map yet (add their base to <code>locations.json</code>): ${unplaced.map(g=>`<a href="${W.charUrl(g)}">${esc(g.name)}</a> (${esc(g.base)})`).join(', ')}</p>`:''}`;
+    ${unplaced.length?`<p class="muted" style="font-size:13px;margin-top:14px">Not on the map yet: ${unplaced.map(g=>`<a href="${W.charUrl(g)}">${esc(g.name)}</a> (${esc(g.base)})`).join(', ')}</p>`:''}`;
   panel.querySelectorAll('button[data-id]').forEach(b=>b.addEventListener('click',()=>select(places.find(p=>p.id===b.dataset.id),true)));
 }
 function select(p,fly){
