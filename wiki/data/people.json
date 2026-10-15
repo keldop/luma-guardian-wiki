@@ -31,16 +31,16 @@
   },
   {
    "name": "Celestials",
-   "base": "Japan",
+   "base": "Japan, Tokyo",
    "intro": "",
-   "members": ["Moon", "Sun", "Mist", "Cinder", "Meteor", "Thunder", "Selene", "Orion", "Space", "Reflection", "Cronus", "Eclipsa"],
+   "members": ["Moon", "Sun", "Mist", "Cinder", "Meteor", "Thunder", "Selene", "Orion", "Space", "Reflection", "Cronus", "Demise"],
    "notes": ""
   },
   {
    "name": "Elements",
    "base": "",
    "intro": "",
-   "members": ["Hydro", "Soil", "Blaze", "Aero"],
+   "members": ["Hydro", "Geo", "Pyro", "Aero"],
    "notes": ""
   },
   {
@@ -61,14 +61,14 @@
    "name": "Fire Branch",
    "base": "",
    "intro": "",
-   "members": ["Solace", "Lunar", "Aurora", "Mirage", "Vitalis", "Firewall", "Lantern", "Quell", "Quench", "Nullfire"],
+   "members": ["Solace", "Lunar", "Yew", "Radiance", "Mirage", "Optical", "Dream", "Vitalis", "Firewall", "Lantern", "Quell", "Quench", "Nullfire"],
    "notes": ""
   },
   {
    "name": "Earth Branch",
    "base": "",
    "intro": "",
-   "members": ["Yew", "Cedar", "Verdant", "Sage", "Essence", "Venom", "Forge", "Life", "Mineral", "Crystalis", "Entoma", "Fauna", "Sauria", "Toxin"],
+   "members": ["Cedar", "Verdant", "Sage", "Essence", "Venom", "Woodland", "Forge", "Life", "Mineral", "Crystalis", "Fauna", "Vertebrate", "Entoma", "Avian", "Sauria", "Toxin"],
    "notes": ""
   },
   {
@@ -119,8 +119,8 @@
    "name": "Civilians",
    "base": "",
    "intro": "",
-   "members": ["Luke Yeo", "Jayden Soh", "Daniel Low", "Claire Lim"],
-   "notes": "Age: 55\n\nOccupation: Team Supervisor at Lumasoft (Aurelia’s Supervisor)"
+   "members": ["Luke Yeo", "Jayden Soh", "Lily Ho", "Daniel Low", "Claire Lim"],
+   "notes": ""
   },
   {
    "name": "University",
@@ -134,50 +134,55 @@
    "base": "",
    "intro": "",
    "members": ["Rose Tan", "Alvin Lee", "Leah Lee", "Kein Tang", "Matthew Tang"],
-   "notes": "Marcel Tang Jiā Lè 唐嘉乐    (Older Sister’s Second Son) (Age: 14)\n\nLiam Lee Jī Yǒng 李机永   (Older Brother) (Age: 36)\n\nCheryl Lim Jiā Huì 林佳慧   (Older Brother’s Wife) (Age: 36)\n\nNoah Lee Mǐn Yáng 李敏阳   (Older Brother’s Son) (Age: 12)\n\nNaomi Lee Mǐn Ān 李敏安    (Niece) (Age: 10)\n\nLucas Lee Jié Ruì 李捷瑞   (Asher)"
+   "notes": "Marcel Tang; Táng Jiā Lè 唐嘉乐   (Older Sister’s Second Son) (Age: 14)\n\nLiam Lee; Lǐ Jī Yǒng 李机永   (Older Brother) (Age: 36)\n\nCheryl Lim; Lín Jiā Huì 林佳慧  (Older Brother’s Wife) (Age: 36)\n\nNoah Lee; Lǐ Mǐn Yáng 李敏阳  (Older Brother’s Son) (Age: 12)\n\nNaomi Lee; Lǐ Mǐn Ān 李敏安   (Niece) (Age: 10)\n\nLucas Lee; Lǐ Jié Ruì 李捷瑞   (Asher)"
   },
   {
    "name": "Asher’s Adoptive Family",
    "base": "",
-   "intro": "Grace Sun Yǎ Líng 孙雅玲 (Mother) (Age: 64)\n\nAlvin Lim Wén Xiàn 林文羡 (Father - Deceased at 60) - Engineer",
+   "intro": "Grace Sun; Sūn Yǎ Líng 孙雅玲 (Mother) (Age: 64)\n\nAlvin Lim; Lín Wén Xiàn 林文羡 (Father - Deceased at 60) - Engineer",
    "members": [],
    "notes": ""
   },
   {
    "name": "Sylvia’s Family",
    "base": "",
-   "intro": "Serene Leung Jìng Wén 梁静雯  (Mother) (Age: 44)\n\nDesmond Ng Wěi Jiàn 吴伟健  (Father) (Age: 46)\n\nEthan Ng Yǔ Háng 吴宇航   (Younger Brother) (Age: 10)",
+   "intro": "Serene Leung; Liáng Jìng Wén 梁静雯  (Mother) (Age: 44)\n\nDesmond Ng; Wú Wěi Jiàn 吴伟健   (Father) (Age: 46)\n\nEthan Ng; Wú Yǔ Háng 吴宇航   (Younger Brother) (Age: 10)",
    "members": [],
    "notes": ""
   },
   {
    "name": "Joe’s Family",
    "base": "",
-   "intro": "Susan Ong Měi Zhēn 王美珍  (Mother) (Age: 60) - Principal of Nanyang Girls’\n\nRichard Tan Guó Liáng 陈国良 (Father) (Age: 62) - Specialist Cardiologist\n\nChloe Tan Nuǎn Qíng 陈暖晴   (Older Sister) (Age: 30) - Psychologist",
+   "intro": "Susan Ong; Wáng Měi Zhēn 王美珍  (Mother) (Age: 60) - Principal of Nanyang Girls’\n\nRichard Tan; Chén Guó Liáng 陈国良 (Father) (Age: 62) - Specialist Cardiologist\n\nChloe Tan; Chén Nuǎn Qíng 陈暖晴   (Older Sister) (Age: 30) - Psychologist",
    "members": [],
    "notes": ""
   },
   {
    "name": "Felix’s Family",
    "base": "",
-   "intro": "Linda Koh Lì Huá 许丽华   (Mother) (Age: 55)\n\nRaymond Ang Zhì Míng 洪志明  (Father) (Age: 56)",
+   "intro": "Linda Koh; Xǔ Lì Huá 许丽华    (Mother) (Age: 55)\n\nRaymond Ang; Hóng Zhì Míng 洪志明  (Father) (Age: 56)",
    "members": [],
    "notes": ""
   },
   {
    "name": "Aurelia & Amelia Family",
    "base": "",
-   "intro": "Joanne Ho Pèi Qí 何佩琪    (Mother) (Age: 54)\n\nKenneth Chua Jiàn Huá 蔡建华  (Father) (Age: 56)",
+   "intro": "Joanne Ho; Hé Pèi Qí 何佩琪    (Mother) (Age: 54)\n\nKenneth Chua; Cài Jiàn Huá 蔡建华   (Father) (Age: 56)",
    "members": [],
    "notes": ""
   },
   {
    "name": "Adrian’s Family",
    "base": "",
-   "intro": "Irene Yeo Yáng Shū Fēn 杨淑芬 (Mother) (Age: 55)\n\nVincent Koh Dé Fú 许德福  (Father) (Age: 56)\n\nCheryl Koh Shī Hán 许诗涵  (Younger Sister) (Age: 18)",
+   "intro": "Irene Yeo; Yáng Shū Fēn 杨淑芬  (Mother) (Age: 55)\n\nVincent Koh; Xǔ Dé Fú 许德福  (Father) (Age: 56)\n\nCheryl Koh; Xǔ Shī Hán 许诗涵  (Younger Sister) (Age: 18)",
    "members": [],
    "notes": ""
   }
  ],
- "tabs": []
+ "tabs": [
+  {
+   "title": "Aliens",
+   "md": "Luma Cosmos - The Creator\n\nLuma Comet\n\nLuma Black Hole\n\nLuma Andromeda\n\nLuma Milky Way\n\nLuma Earth\n\nLuma Mars\n\nLuma Mercury\n\nLuma Venus\n\nLuma Jupiter\n\nLuma Neptune\n\nLuma Uranus\n\nLuma Saturn"
+  }
+ ]
 }

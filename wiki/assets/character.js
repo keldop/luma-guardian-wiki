@@ -114,6 +114,20 @@ async function render(g){
   /* ---------- infobox ---------- */
   const row=(k,v,raw)=>v?`<dt>${esc(k)}</dt><dd>${raw?v:inline(v,g)}</dd>`:'';
   const group=(name,rows)=>{const r=rows.join('');return r?`<h4>${name}</h4><dl>${r}</dl>`:'';};
+  // One name per line, split outside brackets so "(Family's and Luna's Nickname)" stays whole.
+  // Nicknames split on "," and ";". Full names only on ";": a comma there joins the English and Chinese
+  // forms of one name ("Lucas Lee, Lǐ Jié Ruì 李捷瑞").
+  const lines=(v,seps=',;')=>{
+    if(!v) return '';
+    const parts=[];let depth=0,cur='';
+    for(const ch of String(v)){
+      if('([（'.includes(ch)) depth++;
+      if(')]）'.includes(ch)) depth=Math.max(0,depth-1);
+      if(seps.includes(ch)&&!depth){parts.push(cur);cur='';} else cur+=ch;
+    }
+    parts.push(cur);
+    return parts.map(s=>s.trim()).filter(Boolean).map(s=>inline(s,g)).join('<br>');
+  };
   const infobox=`<aside class="infobox el-${el}" aria-label="${esc(title)} at a glance">
     <div class="ib-title">${esc(title)}</div>
     ${(()=>{
@@ -124,7 +138,7 @@ async function render(g){
     })()}
     ${civ?group('Biographical',[
       row('Alignment','Civilian',true),
-      row('Full name',P('Full Name')),row('Nickname',P('Nickname')),
+      row('Full name',lines(P('Full Name'),';'),true),row('Nickname',lines(P('Nickname')),true),
       row('Gender',P('Gender')),row('Sexuality',P('Sexuality')),
       row('Age',P('Age (counted as of 2025)')),row('Date of birth',P('Date of Birth')),
       row('Ethnicity',P('Ethnicity')),row('Zodiac',esc(P('Zodiac')),true),
@@ -136,7 +150,7 @@ async function render(g){
       row('Family',P('Family')),row('Close bonds',P('Close bonds'))
     ]):''}
     ${civ?'':group('Biographical',[
-      row('Civilian name',P('Civilian Name','Civilian Name')),row('Nickname',P('Nickname','Nickname')),
+      row('Civilian name',lines(P('Civilian Name','Civilian Name'),';'),true),row('Nickname',lines(P('Nickname','Nickname')),true),
       row('Gender',P('Gender','Gender')),row('Sexuality',P('Sexuality')),
       row('Age',P('Age (counted as of 2025)','Age')),row('Date of birth',P('Date of Birth','Date of Birth')),
       row('Ethnicity',P('Ethnicity','Ethnicity')),row('Zodiac',esc(g.zodiac||''),true),

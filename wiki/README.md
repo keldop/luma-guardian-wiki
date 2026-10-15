@@ -11,7 +11,7 @@ A fandom-style wiki that runs on GitHub Pages with no build step. It lives at `h
 | Guardian profile | `character.html?id=blossom` or `?name=Blossom` | One page for every Guardian: infobox, overview, story profile, branch and lineage, disciples, relationships |
 | Lore | `lore.html`, `?a=crystals`, `?q=astral` | The story doc organised by topic (World, Powers, Organisations, Crystals and Artefacts, Events, People, Behind the Story), a Teams and Groups directory, and search. Character write-ups are on the profiles, not here |
 | Map | `map.html`, `?place=singapore` | Guardian bases, guilds, LumaSoft branches and crystal sites |
-| Branch tree | `tree.html` | Element > Branch > Sub-branch diagrams. Click a box for a quick profile, View full info, or the Guardian's wiki page |
+| Branch tree | `tree.html` | Element > Branch > Sub-branch diagrams. Click a box for a quick profile with a button to the Guardian's wiki page |
 | Create a character | `create.html`, `?type=guardian` or `?type=civilian` | Pick Guardian or Civilian, fill in the template, press Generate: the character file (JSON) and a copy laid out like the story doc appear side by side, each with copy buttons |
 
 The moon/sun button switches dark and light mode on every page. The choice is remembered on that device. Every page works at phone width.
@@ -24,14 +24,14 @@ Every page follows the same pattern: a short `.html` file, its script in `assets
 | --- | --- |
 | `assets/` | `wiki.css`, `wiki.js` (header, search, theme toggle, data loading), `story.js` (story doc reader), one script per page, plus `tree.css` and `tree-colors.css` for the branch tree |
 | `data/` | All content: `branches.json`, `characters/` (one file per character), `templates.json`, `story.md`, `people.json`, `lore.json`, `lore-layout.json`, `locations.json`, `wiki.json` |
-| `tools/` | `update-story.ps1` (refresh the story), `build-characters.ps1` (rebuild `data/characters/`; run by `update-story.ps1`), `serve.ps1` (local preview) |
+| `tools/` | `update-story.ps1` (refresh the story), `build-characters.ps1` (rebuild `data/characters/`; run by `update-story.ps1`), `sync-branches.ps1` (align `branches.json` with the doc; run by `build-characters.ps1`), `tojson.ps1` (shared JSON writer), `serve.ps1` (local preview) |
 | `images/characters/<name>/` | Character pictures for galleries (create the folders as you need them) |
 
 ## Editing content
 
 | File | Holds | Edit it to |
 | --- | --- | --- |
-| `data/branches.json` | Guardians, branches, mentors, disciples, Zodiac roots | Add a Guardian and their wiki page and tree box appear |
+| `data/branches.json` | Guardians, branches, mentors, disciples, Zodiac roots, for the Branch tree and the Characters list | Kept in line with the characters doc automatically on every import (`tools/sync-branches.ps1`): the doc wins. Only add a Guardian here by hand when the doc has no write-up for them yet (like Valour) |
 | `data/story.md` | The story doc (Luma Guardian About): world, powers, organisations, events. Made by `tools/update-story.ps1` | Do not edit by hand. Edit the Google Doc, then refresh (below) |
 | `data/people.json` | From the characters doc (LG Characters): every team with its intro and members, and the civilian groups and family lists. Made by `tools/build-characters.ps1` | Do not edit by hand. Edit the Google Doc, then refresh (below) |
 | `data/characters/<name>.json` | One character each (Guardians and civilians), fields in the order of their template (Guardian or Civilian), built from the characters doc by `tools/build-characters.ps1`. `index.json` lists them all | Profile text: edit the Google Doc and re-import. **Gallery and portrait: edit here** (see below); they are kept on every rebuild |
@@ -48,7 +48,7 @@ Each profile page reads that character's file in `data/characters/` (matched by 
 
 - `branches`: one path per line, written as `Element-Branch-Subbranch`. Parents are created automatically. A path with no Guardian shows as a gray dashed box. The order of first-level branches sets their top-to-bottom order and shade.
 - `guardians`: one profile per Guardian with `name`, `path` (for example `Fire-Lumen-Moon-Blossom`) and optional rank, mentor, role, team, guild, zodiac, base, disciples, status, plus `sameAs` and `form` (`original` or `evolved`) to mark two names as the same person, like Flora and EmberFlora. A Guardian with an empty `path` goes to the No branch yet tab.
-- `zodiacRoots`: names that sit to the left of an element.
+- `zodiacRoots`: the Zodiacs of each element. The Branch tree draws them between the element and the branches of their disciples (Fire › Leo › Lumen › Moon).
 - `overrides`: `from-path => to-path`, for when the doc writes the same branch two ways.
 - `hiddenFields`: fields never shown.
 
@@ -87,7 +87,7 @@ If you have Markdown copies of the whole docs, where each tab starts with a `# T
 
 To keep a tab out of the wiki, put `[Hidden Tab]` anywhere in it (like the Pairings tab), or add its name to `storyExcludeTabs` in `data/wiki.json`.
 
-A new character also needs a line in `data/branches.json` to appear in the Guardians list and the Branch tree. Without it, they still get a profile page.
+Every import also updates `data/branches.json` from the doc (branch, mentor, rank, role, team, guild, zodiac, location, status, disciples) and adds any missing branches, so the Branch tree, the Characters list and the profiles always agree. A Guardian with no Branch Theme in the doc is placed under their mentor's branch. When a mentor moves but their disciples' Branch Themes still give the old place, the disciples follow the mentor (for example Crystalis followed Mineral under Geo). A renamed Guardian (Blaze → Pyro) loses their old entry and profile file, unless pictures were added to it.
 
 ## Privacy
 

@@ -60,8 +60,8 @@
 .detail dd{margin:0}
 .detail .hint{color:var(--muted)}
 .stdcard+.stdcard{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
-.stdcard .sh,.fh{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
-.stdcard .wikilink{display:inline-flex;align-items:center;min-height:40px;font-weight:600;font-size:14px;margin-left:6px}
+.stdcard .sh{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.stdcard .wikilink:hover{text-decoration:none}
 dl.std{display:grid;grid-template-columns:max-content 1fr;gap:4px 16px;margin:8px 0 10px}
 dl.std dt{color:var(--muted);font-size:13px}
 dl.std dd{margin:0;overflow-wrap:anywhere}
@@ -70,13 +70,6 @@ dl.std dd.unk{color:var(--muted);font-style:italic}
 .badge{font-size:12px;font-weight:600;border-radius:999px;padding:1px 10px;background:var(--lf,var(--surface2));color:var(--lt,var(--ink));border:1px solid var(--ls,var(--line))}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .badge{background:var(--df,var(--surface2));color:var(--dt,var(--ink));border-color:var(--ds,var(--line))}}
 :root[data-theme="dark"] .badge{background:var(--df,var(--surface2));color:var(--dt,var(--ink));border-color:var(--ds,var(--line))}
-
-/* Full-info dialog */
-dialog#full{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:20px 22px;width:min(640px,calc(100vw - 24px));max-height:calc(100vh - 40px)}
-dialog#full::backdrop{background:rgba(10,8,20,.55)}
-dialog#full h2{font-size:20px}
-dialog#full h4{margin:16px 0 2px;font-family:"Sora","Manrope",sans-serif;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.fclose{margin-top:16px;text-align:right}
 
 /* No-branch and check tabs */
 .groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}

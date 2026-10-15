@@ -1,13 +1,13 @@
 {
- "name": "Soil",
- "names": ["Soil"],
+ "name": "Geo",
+ "names": ["Geo"],
  "type": "guardian",
  "group": "Elements",
  "base": "",
  "tab": "Other Teams",
  "profile": {
   "Civilian Name": "",
-  "Guardian Name": "Luma Soil",
+  "Guardian Name": "Luma Geo",
   "Evolved Guardian Name": "",
   "Nickname": "",
   "Gender": "Male",
@@ -30,7 +30,7 @@
   "Awakening Type": "Awakened",
   "Original Element": "Earth",
   "Inherited Element": "",
-  "Branch Theme": "Earth-Soil",
+  "Branch Theme": "Earth-Geo",
   "Transformation Item": "",
   "Primary Role": "",
   "Passed Tests": "",
@@ -46,7 +46,7 @@
   "Full-Fledged Date": "",
   "Evolution Date": "",
   "Mentor": "Luma Taurus",
-  "Disciple": "Luma Lithos, Luma Tellus, Luma Dune, Luma Meteor",
+  "Disciple": "Luma Soil, Luma Lithos, Luma Dune, Luma Meteor, Luma Geometry",
   "Team": "Elements",
   "Guild": "",
   "Stationed at": "",
@@ -73,7 +73,9 @@
   "Transformation Phrase": "",
   "Awakening Speech": ""
  },
- "other": {},
+ "other": {
+  "Married to Luma Metria, Son": "Luma Geometry"
+ },
  "image": "",
  "gallery": []
 }

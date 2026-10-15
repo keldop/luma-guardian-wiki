@@ -1,4 +1,4 @@
-<#
+﻿<#
   Refreshes the wiki from the two Google Docs:
     - the story doc ("Luma Guardian About")  -> wiki/data/story.md       (Lore pages)
     - the characters doc ("LG Characters")  -> wiki/data/characters/ and wiki/data/people.json (profiles, teams, civilians)

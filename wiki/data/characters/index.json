@@ -201,7 +201,7 @@
    "type": "guardian",
    "file": "chroma.json",
    "group": "WildFlowers",
-   "element": null,
+   "element": "Air",
    "subtitle": "Support",
    "image": ""
   },
@@ -376,10 +376,10 @@
    "image": ""
   },
   {
-   "name": "Eclipsa",
-   "names": ["Eclipsa"],
+   "name": "Demise",
+   "names": ["Demise"],
    "type": "guardian",
-   "file": "eclipsa.json",
+   "file": "demise.json",
    "group": "Celestials",
    "element": "Earth",
    "subtitle": "Strategist",
@@ -396,20 +396,20 @@
    "image": ""
   },
   {
-   "name": "Soil",
-   "names": ["Soil"],
+   "name": "Geo",
+   "names": ["Geo"],
    "type": "guardian",
-   "file": "soil.json",
+   "file": "geo.json",
    "group": "Elements",
    "element": "Earth",
    "subtitle": "",
    "image": ""
   },
   {
-   "name": "Blaze",
-   "names": ["Blaze"],
+   "name": "Pyro",
+   "names": ["Pyro"],
    "type": "guardian",
-   "file": "blaze.json",
+   "file": "pyro.json",
    "group": "Elements",
    "element": "Fire",
    "subtitle": "",
@@ -506,10 +506,20 @@
    "image": ""
   },
   {
-   "name": "Aurora",
-   "names": ["Aurora"],
+   "name": "Yew",
+   "names": ["Yew"],
    "type": "guardian",
-   "file": "aurora.json",
+   "file": "yew.json",
+   "group": "Fire Branch",
+   "element": "Fire",
+   "subtitle": "Strategist (Incident Command)",
+   "image": ""
+  },
+  {
+   "name": "Radiance",
+   "names": ["Radiance"],
+   "type": "guardian",
+   "file": "radiance.json",
    "group": "Fire Branch",
    "element": "Fire",
    "subtitle": "Strategist",
@@ -523,6 +533,26 @@
    "group": "Fire Branch",
    "element": "Fire",
    "subtitle": "Strategist",
+   "image": ""
+  },
+  {
+   "name": "Optical",
+   "names": ["Optical"],
+   "type": "guardian",
+   "file": "optical.json",
+   "group": "Fire Branch",
+   "element": "Fire",
+   "subtitle": "Strategist",
+   "image": ""
+  },
+  {
+   "name": "Dream",
+   "names": ["Dream"],
+   "type": "guardian",
+   "file": "dream.json",
+   "group": "Fire Branch",
+   "element": "Fire",
+   "subtitle": "Support",
    "image": ""
   },
   {
@@ -586,16 +616,6 @@
    "image": ""
   },
   {
-   "name": "Yew",
-   "names": ["Yew"],
-   "type": "guardian",
-   "file": "yew.json",
-   "group": "Earth Branch",
-   "element": "Fire",
-   "subtitle": "Strategist (Incident Command)",
-   "image": ""
-  },
-  {
    "name": "Cedar",
    "names": ["Cedar"],
    "type": "guardian",
@@ -646,6 +666,16 @@
    "image": ""
   },
   {
+   "name": "Woodland",
+   "names": ["Woodland"],
+   "type": "guardian",
+   "file": "woodland.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "",
+   "image": ""
+  },
+  {
    "name": "Forge",
    "names": ["Forge"],
    "type": "guardian",
@@ -686,6 +716,26 @@
    "image": ""
   },
   {
+   "name": "Fauna",
+   "names": ["Fauna"],
+   "type": "guardian",
+   "file": "fauna.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "Strategist",
+   "image": ""
+  },
+  {
+   "name": "Vertebrate",
+   "names": ["Vertebrate"],
+   "type": "guardian",
+   "file": "vertebrate.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "",
+   "image": ""
+  },
+  {
    "name": "Entoma",
    "names": ["Entoma"],
    "type": "guardian",
@@ -696,10 +746,10 @@
    "image": ""
   },
   {
-   "name": "Fauna",
-   "names": ["Fauna"],
+   "name": "Avian",
+   "names": ["Avian"],
    "type": "guardian",
-   "file": "fauna.json",
+   "file": "avian.json",
    "group": "Earth Branch",
    "element": "Earth",
    "subtitle": "Strategist",
@@ -761,7 +811,7 @@
    "type": "guardian",
    "file": "crosswind.json",
    "group": "Air Branch",
-   "element": null,
+   "element": "Air",
    "subtitle": "Attacker",
    "image": ""
   },
@@ -811,7 +861,7 @@
    "type": "guardian",
    "file": "prism.json",
    "group": "Air Branch",
-   "element": null,
+   "element": "Air",
    "subtitle": "Support",
    "image": ""
   },
@@ -1002,7 +1052,7 @@
    "file": "virgo.json",
    "group": "Zodiacs",
    "element": "Earth",
-   "subtitle": "",
+   "subtitle": "Support (Researcher)",
    "image": ""
   },
   {
@@ -1032,7 +1082,7 @@
    "file": "luke-yeo.json",
    "group": "Civilians",
    "element": "",
-   "subtitle": "Team Supervisor at Lumasoft (Sylvia’s Supervisor)",
+   "subtitle": "Sylvia’s Supervisor at Lumasoft",
    "image": ""
   },
   {
@@ -1042,7 +1092,17 @@
    "file": "jayden-soh.json",
    "group": "Civilians",
    "element": "",
-   "subtitle": "Team Supervisor at Lumasoft (Joe and Felix’s Supervisor)",
+   "subtitle": "Joe’s & Felix’s Supervisor at Lumasoft",
+   "image": ""
+  },
+  {
+   "name": "Lily Ho",
+   "names": ["Lily Ho"],
+   "type": "civilian",
+   "file": "lily-ho.json",
+   "group": "Civilians",
+   "element": "",
+   "subtitle": "Aurelia’s Supervisor at Lumasoft",
    "image": ""
   },
   {
@@ -1052,7 +1112,7 @@
    "file": "daniel-low.json",
    "group": "Civilians",
    "element": "",
-   "subtitle": "Engineer at LumaSoft (Platform Operations Department)",
+   "subtitle": "Joe’s romantic rival for Lumina",
    "image": ""
   },
   {
@@ -1132,7 +1192,7 @@
    "file": "rose-tan.json",
    "group": "Lumina’s & Asher’s Biological Family",
    "element": "",
-   "subtitle": "Lumina’s and Asher’s Biological Mother",
+   "subtitle": "Biological Mother of Lumina and Asher",
    "image": ""
   },
   {
@@ -1142,7 +1202,7 @@
    "file": "alvin-lee.json",
    "group": "Lumina’s & Asher’s Biological Family",
    "element": "",
-   "subtitle": "Lumina’s and Asher’s Biological Father",
+   "subtitle": "Biological Father of Lumina and Asher",
    "image": ""
   },
   {
@@ -1152,7 +1212,7 @@
    "file": "leah-lee.json",
    "group": "Lumina’s & Asher’s Biological Family",
    "element": "",
-   "subtitle": "Lumina’s and Asher’s Biological Older Sister",
+   "subtitle": "Biological Older Sister of Lumina and Asher",
    "image": ""
   },
   {
@@ -1162,7 +1222,7 @@
    "file": "kein-tang.json",
    "group": "Lumina’s & Asher’s Biological Family",
    "element": "",
-   "subtitle": "Lumina’s and Asher’s Biological Older Sister’s Husband",
+   "subtitle": "Leah Lee’s Husband",
    "image": ""
   },
   {
@@ -1172,7 +1232,7 @@
    "file": "matthew-tang.json",
    "group": "Lumina’s & Asher’s Biological Family",
    "element": "",
-   "subtitle": "Lumina’s and Asher’s Biological Older Sister’s Eldest Son",
+   "subtitle": "Eldest Nephew of Lumina and Asher",
    "image": ""
   },
   {
@@ -1181,7 +1241,7 @@
    "type": "guardian",
    "file": "vacuum.json",
    "group": "Fallen Stars",
-   "element": null,
+   "element": "Air",
    "subtitle": "Attacker",
    "image": ""
   }

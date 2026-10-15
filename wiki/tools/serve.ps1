@@ -1,4 +1,4 @@
-<#
+﻿<#
   Serves the repo at http://localhost:8000 so the wiki can load its JSON files (double-clicking the HTML cannot).
       powershell -ExecutionPolicy Bypass -File wiki\tools\serve.ps1
   Then open http://localhost:8000/wiki/ . Press Ctrl+C to stop.

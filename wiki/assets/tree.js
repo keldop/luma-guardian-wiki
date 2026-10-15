@@ -152,9 +152,10 @@ function applyOverrides(entries,rules){
   return entries;
 }
 function mk(label,path){return{label,path:path||[label],kids:[],map:new Map(),g:[],inferred:false,z:[],zg:[]};}
+let SEQ=0;
 function child(n,label,inferred){
   const k=label.toLowerCase();let c=n.map.get(k);
-  if(!c){c=mk(label,n.path.concat(label));c.inferred=!!inferred;n.map.set(k,c);n.kids.push(c);}
+  if(!c){c=mk(label,n.path.concat(label));c.inferred=!!inferred;c.seq=SEQ++;n.map.set(k,c);n.kids.push(c);}
   return c;
 }
 function buildTrees(entries,opts){
@@ -179,6 +180,7 @@ function buildTrees(entries,opts){
   }
   ELEMENTS.forEach(el=>{
     const have=new Set(roots[el].z.map(z=>z.name.toLowerCase()));
+    roots[el].zorder=((opts.zodiac&&opts.zodiac[el])||[]).map(n=>String(n).toLowerCase());
     roots[el].zg=((opts.zodiac&&opts.zodiac[el])||[]).filter(n=>!have.has(String(n).toLowerCase()));
   });
   if(opts.infer){
@@ -206,7 +208,7 @@ function buildTrees(entries,opts){
     ELEMENTS.forEach(el=>{if(roots[el].map.has(d.toLowerCase())&&!roots[el].zmap.has(d.toLowerCase()))roots[el].zmap.set(d.toLowerCase(),z.name);});
   })));
   const size=n=>{n.size=1+n.kids.reduce((s,k)=>s+size(k),0);return n.size;};
-  const sortk=n=>{n.kids.sort((a,b)=>b.size-a.size);n.kids.forEach(sortk);};
+  const sortk=n=>{n.kids.sort((a,b)=>a.seq-b.seq);n.kids.forEach(sortk);};
   ELEMENTS.forEach(e=>{
     size(roots[e]);sortk(roots[e]);
     const r=x=>rank.has(e+'|'+x.label.toLowerCase())?rank.get(e+'|'+x.label.toLowerCase()):1e6;
@@ -244,20 +246,29 @@ function renderTree(root,el){
   const BW=116,BH=28,GAP=18,PITCH=BW+GAP,ROWH=36,PAD=20,MAXSLOT=7;
   const zs=root.z.map(e=>({name:e.name,g:[e]})).concat((root.zg||[]).map(n=>({name:n,none:true})));
   {const fi=n=>{const i=root.kids.findIndex(k=>(root.zmap&&root.zmap.get(k.label.toLowerCase()))===n);return i<0?1e6:i;};
-   zs.forEach((z,i)=>{z.o=fi(z.name)*1000+i;});zs.sort((a,b)=>a.o-b.o);}
-  const off=zs.length?1:0,elc='el-'+el.toLowerCase();
+   const zo=n=>{const i=(root.zorder||[]).indexOf(n.toLowerCase());return i<0?1e6:i;};
+   zs.forEach((z,i)=>{z.o=zo(z.name)*1e9+fi(z.name)*1000+i;});zs.sort((a,b)=>a.o-b.o);}
+  const elc='el-'+el.toLowerCase();
+  // The Zodiacs sit in the tree itself, between the element and the branches of their disciples:
+  // Fire > Leo > Lumen > Moon. Branches with no Zodiac mentor stay directly under the element.
+  const first=root.kids.slice();
+  first.forEach((k,i)=>{k.slot=i;});
+  const zodNodes=zs.map(z=>({label:z.name,zodiac:z,g:[],path:[el,z.name],
+    kids:first.filter(k=>root.zmap&&root.zmap.get(k.label.toLowerCase())===z.name)}));
+  const tree={label:el,g:root.g||[],path:[el],kids:zodNodes.concat(first.filter(k=>!zodNodes.some(z=>z.kids.includes(k))))};
   let row=0,maxD=0;
   const all=[];
   (function walk(n,d,sh,par){
-    n.d=d;n.sh=sh;n.par=par||null;maxD=Math.max(maxD,d);all.push(n);
+    n.d=d;n.par=par||null;maxD=Math.max(maxD,d);all.push(n);
+    // A branch's shade comes from its first-level branch (n.slot), whatever the depth.
+    n.sh=n.slot!==undefined?n.slot:sh;
     if(!n.kids.length){n.row=row++;}
-    else{n.kids.forEach((k,i)=>walk(k,d+1,d===0?i:sh,n));n.row=(n.kids[0].row+n.kids[n.kids.length-1].row)/2;}
-  })(root,0,-1);
-  zs.forEach((e,i)=>{e.row=root.row+i-(zs.length-1)/2;});
-  const minRow=Math.min(...all.map(n=>n.row),...zs.map(e=>e.row));
-  const maxRow=Math.max(...all.map(n=>n.row),...zs.map(e=>e.row));
-  const X=d=>PAD+(d+off)*PITCH,Y=r=>PAD+(r-minRow)*ROWH;
-  const W=PAD*2+(maxD+1+off)*PITCH-GAP,H=PAD*2+(maxRow-minRow)*ROWH+BH;
+    else{n.kids.forEach(k=>walk(k,d+1,n.sh,n));n.row=(n.kids[0].row+n.kids[n.kids.length-1].row)/2;}
+  })(tree,0,-1);
+  const minRow=Math.min(...all.map(n=>n.row));
+  const maxRow=Math.max(...all.map(n=>n.row));
+  const X=d=>PAD+d*PITCH,Y=r=>PAD+(r-minRow)*ROWH;
+  const W=PAD*2+(maxD+1)*PITCH-GAP,H=PAD*2+(maxRow-minRow)*ROWH+BH;
   const details={},nb=root.kids.length;
   let links='',nodes='',id=0;
   function box(x,y,label,cls,key,title,status){
@@ -269,19 +280,23 @@ function renderTree(root,el){
   function cardFor(g,n,zroot){
     const dis=g.disciples&&g.disciples.length?g.disciples.join(', '):(n&&n.kids.length?n.kids.map(k=>k.label).join(', '):'');
     return{name:g.name+(g.sameAs?(g.form==='evolved'?' (evolved form of '+g.sameAs+')':' (evolves into '+g.sameAs+')'):''),
-      branch:zroot?el+' (Zodiac root)':(g.path&&g.path.length?g.path.join(' \u203a '):unk('')),
+      branch:zroot?el+' (Zodiac)':(g.path&&g.path.length?g.path.join(' \u203a '):unk('')),
       civ:unk(g.info&&g.info['Civilian Name']),rank:unk(g.rank),role:unk(g.role),base:unk(g.base),mentor:zroot?'N.A.':unk(g.mentor&&!/^-+$/.test(g.mentor.trim())?g.mentor:((n&&n.par&&n.par.d>0)?(n.par.g.length?n.par.g[0].name:n.par.label):(n&&n.d===1?zodOf(n):'')||'')),disciples:(/disciple/i.test(g.rank||'')&&!/full/i.test(g.rank||''))?'N.A.':((dis||!g.noDisc)?unk(dis):'None'),status:g.status||''};
   }
-  const zodOf=n=>{const top=n.d>0?root.kids[n.sh]:null;return top&&root.zmap?root.zmap.get(top.label.toLowerCase()):null;};
+  const zodOf=n=>{const top=n.sh>=0?first[n.sh]:null;return top&&root.zmap?root.zmap.get(top.label.toLowerCase()):null;};
   function descGuardians(n){const out=[];(function w(m){m.g.forEach(g=>out.push(g.name));m.kids.forEach(w);})(n);return out;}
   all.forEach(n=>{
     const key=el+':'+(id++);
     const x=X(n.d),y=Y(n.row);
     if(n.d===0){
-      details[key]={title:el,sub:'Element root',rows:[['Branches',String(root.kids.length)],['Zodiac roots',zs.map(z=>z.name).join(', ')||'none']]};
+      details[key]={title:el,sub:'Element root',rows:[['Branches',String(root.kids.length)],['Zodiacs',zs.map(z=>z.name).join(', ')||'none']]};
       nodes+=box(x,y,el,'root '+elc,key,el);
+    }else if(n.zodiac){
+      const z=n.zodiac,zst=z.g?(z.g[0].status||''):'';
+      details[key]=z.none?{title:z.name,sub:'Zodiac of '+el,none:true,zodiac:true,by:[],cards:[{name:z.name,branch:el+' (Zodiac)',civ:BLANK,rank:BLANK,role:BLANK,base:BLANK,mentor:'N.A.',disciples:unk(n.kids.map(k=>k.label).join(', ')),status:''}]}:{title:z.name,sub:'Zodiac of '+el,g:z.g,cards:z.g.map(q=>cardFor(q,n,true))};
+      nodes+=box(x,y,z.name,'root '+elc+' z-'+slug(z.name)+(zst?' st-'+zst:'')+(z.none?' gray':''),key,z.name+' (Zodiac)'+(z.none?' (no profile yet)':'')+(zst?' ('+zst+')':''),zst);
     }else{
-      const has=n.g.length>0,top=root.kids[n.sh];
+      const has=n.g.length>0,top=first[n.sh];
       const zn=zodOf(n),st=has?(n.g.find(q=>q.status)||{}).status||'':'';
       if(has)details[key]={title:n.g.map(q=>q.name).join(' / '),sub:n.path.join(' > '),g:n.g,cards:n.g.map(q=>cardFor(q,n,false))};
       else{
@@ -289,7 +304,7 @@ function renderTree(root,el){
         details[key]={title:n.label,sub:n.path.join(' > '),none:true,inferred:n.inferred,by:descGuardians(n),
           cards:[{name:n.label,branch:n.path.join(' \u203a '),civ:BLANK,rank:BLANK,role:BLANK,base:BLANK,mentor:unk(pm),disciples:unk(n.kids.map(k=>k.label).join(', ')),status:''}]};
       }
-      nodes+=box(x,y,n.label,elc+' shade-'+(nb<2?0:Math.round(n.sh*MAXSLOT/(nb-1)))+' b-'+slug(top.label)+(zn?' z-'+slug(zn):'')+(zn&&n.d>=2?' gen-'+Math.min(n.d,5):'')+(st?' st-'+st:'')+(has?'':' gray'),key,n.label+(has?'':' (no profile yet)')+(st?' ('+st+')':''),st);
+      nodes+=box(x,y,n.label,elc+' shade-'+(nb<2?0:Math.round(n.sh*MAXSLOT/(nb-1)))+' b-'+slug(top.label)+(zn?' z-'+slug(zn):'')+(zn&&n.d>=3?' gen-'+Math.min(n.d-1,5):'')+(st?' st-'+st:'')+(has?'':' gray'),key,n.label+(has?'':' (no profile yet)')+(st?' ('+st+')':''),st);
     }
     if(n.kids.length){
       const sx=x+BW,mid=sx+GAP/2,sy=Y(n.row)+BH/2;
@@ -297,17 +312,6 @@ function renderTree(root,el){
       links+='<path class="link" d="M'+sx+' '+sy+' H'+mid+' M'+mid+' '+Math.min(...ys,sy)+' V'+Math.max(...ys,sy)+n.kids.map((k,i)=>' M'+mid+' '+ys[i]+' H'+X(k.d)).join('')+'"/>';
     }
   });
-  if(zs.length){
-    const rx=X(0),sx=PAD+BW,mid=sx+GAP/2,ry=Y(root.row)+BH/2;
-    const ys=zs.map(z=>Y(z.row)+BH/2);
-    links+='<path class="link" d="M'+rx+' '+ry+' H'+mid+' M'+mid+' '+Math.min(...ys,ry)+' V'+Math.max(...ys,ry)+ys.map(v=>' M'+sx+' '+v+' H'+mid).join('')+'"/>';
-    zs.forEach(z=>{
-      const key=el+':'+(id++);
-      const zst=z.g?(z.g[0].status||''):'';
-      details[key]=z.none?{title:z.name,sub:'Zodiac root of '+el,none:true,zodiac:true,by:[],cards:[{name:z.name,branch:el+' (Zodiac root)',civ:BLANK,rank:BLANK,role:BLANK,base:BLANK,mentor:'N.A.',disciples:BLANK,status:''}]}:{title:z.name,sub:'Zodiac root of '+el,g:z.g,cards:z.g.map(q=>cardFor(q,null,true))};
-      nodes+=box(PAD,Y(z.row),z.name,'root '+elc+' z-'+slug(z.name)+(zst?' st-'+zst:'')+(z.none?' gray':''),key,z.name+' (Zodiac root)'+(z.none?' (no profile yet)':'')+(zst?' ('+zst+')':''),zst);
-    });
-  }
   const byName=new Map();
   all.forEach(n=>n.g.forEach(g=>byName.set(g.name.toLowerCase(),n)));
   let alias='',hasAlias=false;
@@ -323,8 +327,7 @@ function renderTree(root,el){
     if(y2-y1>=22)alias+='<text class="aliaslabel" x="'+(cx+8)+'" y="'+((y1+y2)/2)+'" dominant-baseline="central">same person</text>';
   }));
   const svg='<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="group" aria-label="'+el+' branch tree">'+links+alias+nodes+'</svg>';
-  const zlist=zs.map(z=>z.name);
-  return{svg,details,hasAlias,zlist,unmapped:root.kids.some(k=>!root.zmap.has(k.label.toLowerCase()))};
+  return{svg,details,hasAlias};
 }
 // ==UI==
 const $=id=>document.getElementById(id);
@@ -380,13 +383,34 @@ function renderTabs(){
     return '<button class="tab" role="tab" type="button" data-tab="'+n+'" aria-selected="'+(S.tab===n)+'" style="--c:'+COLORS[n]+'"><span class="dot"></span>'+n+(c!==''?' <span class="n">'+c+'</span>':'')+'</button>';
   }).join('');
 }
-function dl(rows){return '<dl class="std">'+rows.map(r=>'<dt>'+r[0]+'</dt><dd'+(r[1]===BLANK?' class="unk"':'')+'>'+esc(r[1])+'</dd>').join('')+'</dl>';}
+// A row value can be {html: '...'} for ready-made markup (like the linked Branch line).
+function dl(rows){return '<dl class="std">'+rows.map(r=>'<dt>'+r[0]+'</dt><dd'+(r[1]===BLANK?' class="unk"':'')+'>'+(r[1]&&r[1].html!==undefined?r[1].html:esc(r[1]))+'</dd>').join('')+'</dl>';}
+// The wiki's character list, so names in the Branch line can link to profiles.
+let WIKI=null;
+if(window.Wiki) Wiki.load().then(d=>{WIKI=d;}).catch(()=>{});
+// "Fire › Lumen › Moon › Blossom": the element opens the Characters list, each name its wiki profile (when it has one).
+function branchLinks(text){
+  if(!text||text===BLANK) return text;
+  return {html:String(text).split(' › ').map(seg=>{
+    const s=seg.trim(),k=s.toLowerCase();
+    if(ELEMENTS.includes(s)) return '<a href="characters.html?element='+encodeURIComponent(s)+'">'+esc(s)+'</a>';
+    const g=WIKI&&WIKI.byName.get(k);
+    if(g) return '<a href="'+Wiki.charUrl(g)+'">'+esc(s)+'</a>';
+    if(WIKI&&WIKI.profiles.has(k)) return '<a href="character.html?name='+encodeURIComponent(s)+'">'+esc(s)+'</a>';
+    return esc(s);
+  }).join(' › ')};
+}
 function stdCard(c,hasG,k,i){
   const badge=c.status?'<span class="badge st-'+c.status+'">'+(c.status==='deceased'?'\u2020 Deceased':'R Retired')+'</span>':'';
   return '<div class="stdcard"><div class="sh"><h3>'+esc(c.name)+'</h3>'+badge+'</div>'+
-    dl([['Guardian Name',c.name.replace(/\s*\(.*\)$/,'')],['Branch',c.branch],['Rank',c.rank||BLANK],['Role',c.role||BLANK],['Stationed at',c.base],['Mentor',c.mentor],['Disciples',c.disciples]])+
+    dl([['Guardian Name',c.name.replace(/\s*\(.*\)$/,'')],['Branch',branchLinks(c.branch)],['Rank',c.rank||BLANK],['Role',c.role||BLANK],['Stationed at',c.base],['Mentor',c.mentor],['Disciples',c.disciples]])+
     (c.name.includes('(')?'<p class="same">'+esc(c.name.replace(/^.*\((.*)\)$/,'$1'))+'</p>':'')+
-    (hasG?'<button type="button" class="btn full" data-k="'+esc(k)+'" data-i="'+i+'">View full info</button><a class="wikilink" href="character.html?name='+encodeURIComponent(c.name.replace(/\s*\(.*\)$/,''))+'">Wiki page →</a>':'<p class="hint">No profile yet.</p>')+'</div>';
+    wikiButton(c.name.replace(/\s*\(.*\)$/,''),hasG)+'</div>';
+}
+// The card's button opens the Guardian's wiki profile, when they have one.
+function wikiButton(name,hasG){
+  const has=hasG||(WIKI&&(WIKI.byName.has(name.toLowerCase())||WIKI.profiles.has(name.toLowerCase())));
+  return has?'<a class="btn primary wikilink" href="character.html?name='+encodeURIComponent(name)+'">Open wiki page →</a>':'<p class="hint">No profile yet.</p>';
 }
 function detailHtml(d,k){
   if(!d)return '<span class="hint">Select a box to see the profile.</span>';
@@ -394,56 +418,31 @@ function detailHtml(d,k){
   const note=d.none&&!d.zodiac?(d.inferred?'Named as a disciple, but no profile in the doc yet.':'This branch is known, but no imported profile belongs to it yet.'):'';
   return (d.cards||[]).map((c,i)=>stdCard(c,!!(d.g&&d.g[i]),k,i)).join('')+(note?'<p class="hint">'+esc(note)+'</p>':'');
 }
-const OPTIONAL=new Set(['Nickname','Sexuality','Home Country','Hometown','Languages','Education','Appearance','Signature Ability','Weapon','Strengths','Weaknesses','Fear','Likes','Dislikes','Hobbies','MBTI','Catchphrase','Rivals','Theme Song','Likely Primary Role','Possible Future Role','Artefact','Artefact (Planned)','Civilian Occupation (To be)','Quotes','Close bonds']);
-const SECTIONS=[['Identity',['Civilian Name','Age','Date of Birth','Gender','Sexuality','Zodiac','Ethnicity','Nickname','Height','Weight','Blood Type','Home Country','Hometown','Languages','Education','Appearance']],['Guardian',['Guardian Rank','Awakening Type','Original Element','Inherited Element','Branch Theme','Transformation Item','Primary Role','Likely Primary Role','Possible Future Role','Passed Tests','Signature Ability','Weapon','Strengths','Weaknesses','Fear','Power Color','Artefact','Artefact (Planned)','Awakened Date','Awakened By','Full-Fledged Date']],['Affiliation',['Team','Guild']],['Personal',['Relationship','Family','Close bonds','Rivals','Personality','Spirit Animal','Civilian Occupation','Civilian Occupation (To be)','Likes','Dislikes','Hobbies','MBTI','Catchphrase','Theme Song','Quotes','Nickname']]];
-function openFull(k,i){
-  const d=S.details[k],g=d&&d.g&&d.g[i],c=d&&d.cards&&d.cards[i];
-  if(!g||!c)return;
-  const info=g.info||{},used=new Set();
-  const sec=(t,rows)=>'<section><h4>'+t+'</h4>'+dl(rows)+'</section>';
-  let h='<div class="fh"><h2>'+esc(g.name)+'</h2>'+(c.status?'<span class="badge st-'+c.status+'">'+(c.status==='deceased'?'\u2020 Deceased':'R Retired')+'</span>':'')+'</div>';
-  h+=sec('Overview',[['Branch',c.branch],['Stationed at',c.base],['Mentor',c.mentor],['Disciples',c.disciples],['Status',c.status?c.status[0].toUpperCase()+c.status.slice(1):'Active']]);
-  SECTIONS.forEach(([t,labels])=>{
-    const rows=labels.filter(l=>!used.has(l)&&(!OPTIONAL.has(l)||info[l])).map(l=>{used.add(l);return[l,info[l]||BLANK];});
-    if(rows.length)h+=sec(t,rows);
-  });
-  const rest=Object.keys(info).filter(l=>!used.has(l));
-  if(rest.length)h+=sec('Other',rest.map(l=>[l,info[l]]));
-  if(!Object.keys(info).length)h+='<p class="hint">No extra profile fields are stored for this Guardian yet.</p>';
-  const dlg=$('full');dlg.innerHTML=h+'<form method="dialog" class="fclose"><button class="btn primary">Close</button></form>';
-  if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
-}
-const slugz=x=>String(x).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-function legendHtml(zlist,unmapped,extra){
-  const gz=slugz((zlist&&zlist[0])||'leo');
-  const gen='<span><i class="sw has z-'+gz+'"></i><i class="sw has z-'+gz+' gen-2"></i><i class="sw has z-'+gz+' gen-3"></i><i class="sw has z-'+gz+' gen-4"></i>1st generation = Zodiac colour, then fading per generation</span>';
-  const zs=[...new Set(zlist)].map(n=>'<span><i class="sw has z-'+slugz(n)+'"></i>'+esc(n)+'</span>').join('');
-  return '<div class="legend"><span class="lg">Colour = Zodiac mentor:</span>'+zs+(unmapped?'<span><i class="sw has el-fire shade-2" style="--lf:#E4E1EE;--ls:#8A86A0"></i>No Zodiac mentor known</span>':'')+
-    gen+'<span><i class="sw has st-retired"></i>Retired (R)</span><span><i class="sw has st-deceased"></i>Deceased (\u2020)</span><span><i class="sw none"></i>Known branch, no profile yet</span>'+extra+'</div>';
+// The Zodiacs are drawn in the tree itself, so the key only explains status and gray boxes.
+function legendHtml(extra){
+  return '<div class="legend"><span><i class="sw has st-retired"></i>Retired (R)</span><span><i class="sw has st-deceased"></i>Deceased (\u2020)</span><span><i class="sw none"></i>Known branch, no profile yet</span>'+extra+'</div>';
 }
 function renderPanel(){
   const p=$('panel');
   if(!S.roots){p.innerHTML='<div class="card empty">branches.json could not be loaded.</div>';return;}
   const t=S.tab;
   if(t==='All'){
-    const det={};let blocks='',alias=false,zod=false;
+    const det={};let blocks='',alias=false;
     ELEMENTS.forEach(el=>{
       const root=S.roots[el];
       if(!root.kids.length&&!root.z.length&&!root.zg.length)return;
-      const r=renderTree(root,el);Object.assign(det,r.details);alias=alias||r.hasAlias;zod=zod||root.z.length>0||root.zg.length>0;
+      const r=renderTree(root,el);Object.assign(det,r.details);alias=alias||r.hasAlias;
       blocks+='<section class="elblock"><h2 class="elh" style="--c:'+COLORS[el]+'"><span class="dot"></span>'+el+'</h2><div class="card diagram">'+r.svg+'</div></section>';
     });
     S.details=det;
-    const zl=[],um=[];ELEMENTS.forEach(e=>{const r0=S.roots[e];if(r0.kids.length||r0.z.length||r0.zg.length){const x=renderTree(r0,e);zl.push(...x.zlist);um.push(x.unmapped);}});
-    p.innerHTML=legendHtml(zl,um.some(Boolean),(zod?'<span>Zodiac roots sit left of each element</span>':'')+(alias?'<span><i class="sw alias-sw"></i>Dashed line = same person</span>':''))+'<div class="detail sticky" id="detail">'+detailHtml(null)+'</div>'+(blocks||'<div class="card empty">No Guardians with a branch were found.</div>');
+    p.innerHTML=legendHtml(alias?'<span><i class="sw alias-sw"></i>Dashed line = same person</span>':'')+'<div class="detail sticky" id="detail">'+detailHtml(null)+'</div>'+(blocks||'<div class="card empty">No Guardians with a branch were found.</div>');
     return;
   }
   if(ELEMENTS.includes(t)){
     const root=S.roots[t];
     if(!root.kids.length&&!root.z.length&&!root.zg.length){p.innerHTML='<div class="card empty">No '+t+' Guardians with a branch were found.</div>';return;}
     const r=renderTree(root,t);S.details=r.details;
-    const ec='el-'+t.toLowerCase();
-    p.innerHTML=legendHtml(r.zlist,r.unmapped,(r.hasAlias?'<span><i class="sw alias-sw"></i>Dashed line = same person</span>':''))+'<div class="detail sticky" id="detail">'+detailHtml(null)+'</div><div class="card diagram">'+r.svg+'</div>';
+    p.innerHTML=legendHtml(r.hasAlias?'<span><i class="sw alias-sw"></i>Dashed line = same person</span>':'')+'<div class="detail sticky" id="detail">'+detailHtml(null)+'</div><div class="card diagram">'+r.svg+'</div>';
   }else if(t==='No branch yet'){
     const groups=[...ELEMENTS,'No element set'].map(g=>({g,items:S.noBranch.filter(e=>(e.element||'No element set')===g)})).filter(x=>x.items.length);
     if(!groups.length){p.innerHTML='<div class="card empty">Every Guardian has a branch.</div>';return;}
@@ -462,8 +461,7 @@ function pick(g){
   g.classList.add('sel');
   const d=$('detail');if(d)d.innerHTML=detailHtml(S.details[g.dataset.k],g.dataset.k);
 }
-$('panel').addEventListener('click',e=>{const f=e.target.closest('.full');if(f){openFull(f.dataset.k,+f.dataset.i);return;}pick(e.target.closest('.node'));});
-$('full').addEventListener('click',e=>{if(e.target===$('full'))$('full').close();});
+$('panel').addEventListener('click',e=>{pick(e.target.closest('.node'));});
 $('panel').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest&&e.target.closest('.node');if(g){e.preventDefault();pick(g);}}});
 (async function init(){
   $('hidegone').checked=lsGet('luma.hidegone.v1')==='1';

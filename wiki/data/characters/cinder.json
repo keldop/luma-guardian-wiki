@@ -3,7 +3,7 @@
  "names": ["Cinder"],
  "type": "guardian",
  "group": "Celestials",
- "base": "Japan",
+ "base": "Japan, Tokyo",
  "tab": "Other Teams",
  "profile": {
   "Civilian Name": "",
@@ -30,7 +30,7 @@
   "Awakening Type": "Awakened",
   "Original Element": "Fire",
   "Inherited Element": "",
-  "Branch Theme": "Fire-Blaze-Cinder",
+  "Branch Theme": "Fire-Pyro-Cinder",
   "Transformation Item": "",
   "Primary Role": "Attacker",
   "Passed Tests": "Attacker, Strategist",

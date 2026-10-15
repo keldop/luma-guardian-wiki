@@ -3,7 +3,7 @@
  "names": ["Cronus"],
  "type": "guardian",
  "group": "Celestials",
- "base": "Japan",
+ "base": "Japan, Tokyo",
  "tab": "Other Teams",
  "profile": {
   "Civilian Name": "",
@@ -46,7 +46,7 @@
   "Full-Fledged Date": "",
   "Evolution Date": "",
   "Mentor": "Luma Hydro",
-  "Disciple": "Luma Lag",
+  "Disciple": "Luma Fossil, Luma Lag",
   "Team": "Celestials",
   "Guild": "",
   "Stationed at": "",

@@ -1,4 +1,4 @@
-<#
+﻿<#
   Builds the wiki's character data from a cleaned copy of the characters doc (LG Characters):
     - data/characters/<name>.json  one per "Luma <Name>" write-up, fields in the order of the Guardian template
     - data/characters/index.json   the list of them
@@ -176,33 +176,7 @@ for ($t = 1; $t -lt $parts.Count; $t += 2) {
     if (-not $found) { $looseTabs.Add([ordered]@{ title = $tab; md = $parts[$t + 1].Trim() }) }
 }
 
-# Windows PowerShell's ConvertTo-Json indents oddly and turns one-item lists into strings, so write it by hand.
-function ToJson($v, [string]$pad = '') {
-    $in = $pad + ' '
-    if ($null -eq $v) { return 'null' }
-    if ($v -is [string]) {
-        $s = $v -replace '\\', '\\' -replace '"', '\"' -replace "`r", '' -replace "`n", '\n' -replace "`t", '\t'
-        return '"' + $s + '"'
-    }
-    if ($v -is [bool]) { return $v.ToString().ToLower() }
-    if ($v -is [ValueType]) { return [string]$v }
-    if ($v -is [System.Management.Automation.PSCustomObject]) {
-        $d = [ordered]@{}; foreach ($p in $v.PSObject.Properties) { $d[$p.Name] = $p.Value }; $v = $d
-    }
-    if ($v -is [System.Collections.IDictionary]) {
-        if (-not $v.Count) { return '{}' }
-        return "{`n" + (($v.Keys | ForEach-Object { $in + (ToJson ([string]$_)) + ': ' + (ToJson $v[$_] $in) }) -join ",`n") + "`n$pad}"
-    }
-    if ($v -is [System.Collections.IEnumerable]) {
-        $items = @($v)
-        if (-not $items.Count) { return '[]' }
-        if (@($items | Where-Object { $_ -isnot [string] }).Count -eq 0 -and ($items -join '').Length -lt 120) {
-            return '[' + (($items | ForEach-Object { ToJson $_ }) -join ', ') + ']'
-        }
-        return "[`n" + (($items | ForEach-Object { $in + (ToJson $_ $in) }) -join ",`n") + "`n$pad]"
-    }
-    return [string]$v
-}
+. (Join-Path $PSScriptRoot 'tojson.ps1')
 function Slug([string]$s) { (($s.Normalize([Text.NormalizationForm]::FormD) -replace '\p{Mn}', '').ToLower() -replace '[^a-z0-9]+', '-').Trim('-') }
 
 $dir = Join-Path $wiki 'data\characters'
@@ -265,3 +239,6 @@ $people = [ordered]@{
 }
 [IO.File]::WriteAllText((Join-Path $wiki 'data\people.json'), (ToJson $people) + "`n", $utf8)
 Write-Host "Wrote data\people.json : $(@($people.teams).Count) teams, $($civList.Count) civilian groups, $($looseTabs.Count) other tab(s)."
+
+# Keep branches.json (Branch tree, Characters list) in line with the doc.
+& (Join-Path $PSScriptRoot 'sync-branches.ps1')

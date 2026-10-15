@@ -3,10 +3,10 @@
  "names": ["Mist"],
  "type": "guardian",
  "group": "Celestials",
- "base": "Japan",
+ "base": "Japan, Tokyo",
  "tab": "Other Teams",
  "profile": {
-  "Civilian Name": "Ami",
+  "Civilian Name": "Amy; Ami",
   "Guardian Name": "Luma Mist",
   "Evolved Guardian Name": "",
   "Nickname": "",

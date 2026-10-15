@@ -3,7 +3,7 @@
  "names": ["Sun"],
  "type": "guardian",
  "group": "Celestials",
- "base": "Japan",
+ "base": "Japan, Tokyo",
  "tab": "Other Teams",
  "profile": {
   "Civilian Name": "",
@@ -46,7 +46,7 @@
   "Full-Fledged Date": "",
   "Evolution Date": "",
   "Mentor": "Luma Lumen; Luma Umbra is unofficial.",
-  "Disciple": "",
+  "Disciple": "Luma Solar, Luma Aurora, Luma Dawn, Luma Dusk, Luma Eclipse & Luma Twilight",
   "Team": "Celestials",
   "Guild": "",
   "Stationed at": "",

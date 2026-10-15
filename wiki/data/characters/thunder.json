@@ -3,7 +3,7 @@
  "names": ["Thunder"],
  "type": "guardian",
  "group": "Celestials",
- "base": "Japan",
+ "base": "Japan, Tokyo",
  "tab": "Other Teams",
  "profile": {
   "Civilian Name": "",
