@@ -43,11 +43,16 @@ const ICON={
   moon:'<svg class="theme-ico-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>',
   menu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
 };
-// Classical element triangles.
+// Element icons: flame, droplet, mountains, wind.
+const GLYPH={
+  Fire:'M12 2.5c.6 3.2 2.7 5 4.4 6.9A7.3 7.3 0 0 1 12 21.5a7.1 7.1 0 0 1-7-7.2c0-2.6 1.3-4.6 3-6 .2 2 1 3.3 2.3 4C10 9 10.7 5.3 12 2.5Z M12 21.5a3 3 0 0 1-3-3c0-1.8 1.4-2.8 3-4.5 1.6 1.7 3 2.7 3 4.5a3 3 0 0 1-3 3Z',
+  Water:'M12 2.8C9.3 7 5.5 10.6 5.5 14.6a6.5 6.5 0 0 0 13 0c0-4-3.8-7.6-6.5-11.8Z M8.7 14.8a3.4 3.4 0 0 0 3.1 3.4',
+  Earth:'M2 20 9 7l4.2 7.6L15.5 11 22 20Z M7.2 10.3 9 12l1.6-1.4',
+  Air:'M3 8.5h11a3 3 0 1 0-3-3 M3 12.5h16a3 3 0 1 1-3 3 M3 16.5h7'
+};
 function glyph(el){
-  const up='M12 3 22 20H2Z',dn='M12 21 2 4h20Z';
-  const p=el==='Fire'?up:el==='Water'?dn:el==='Air'?up+' M5.5 14h13':el==='Earth'?dn+' M5.5 10h13':'M12 3a9 9 0 1 0 0.01 0Z';
-  return `<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="${p}"/></svg>`;
+  const p=GLYPH[el]||'M12 3a9 9 0 1 0 0.01 0Z';
+  return `<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${p}"/></svg>`;
 }
 
 /* ---------- header / footer ---------- */
