@@ -23,10 +23,10 @@
    "notes": ""
   },
   {
-   "name": "Seasons",
+   "name": "Horizons",
    "base": "Singapore",
    "intro": "",
-   "members": ["Summer", "Spring", "Winter", "Autumn"],
+   "members": ["Mangrove", "Skyline", "Current", "Beacon", "Remedy"],
    "notes": ""
   },
   {
@@ -34,6 +34,13 @@
    "base": "Japan, Tokyo",
    "intro": "",
    "members": ["Moon", "Sun", "Mist", "Cinder", "Meteor", "Thunder", "Selene", "Orion", "Space", "Reflection", "Cronus", "Demise"],
+   "notes": ""
+  },
+  {
+   "name": "Seasons",
+   "base": "South Korea, Seoul",
+   "intro": "",
+   "members": ["Summer", "Spring", "Winter", "Autumn"],
    "notes": ""
   },
   {
@@ -68,14 +75,14 @@
    "name": "Earth Branch",
    "base": "",
    "intro": "",
-   "members": ["Cedar", "Verdant", "Sage", "Essence", "Venom", "Woodland", "Forge", "Life", "Mineral", "Crystalis", "Fauna", "Vertebrate", "Entoma", "Avian", "Sauria", "Toxin"],
+   "members": ["Cedar", "Verdant", "Sage", "Essence", "Venom", "Woodland", "Forge", "Life", "Mineral", "Crystalis", "Fauna", "Vertebrate", "Entoma", "Avian", "Neognathae", "Sauria", "Toxin"],
    "notes": ""
   },
   {
    "name": "Water Branch",
    "base": "",
    "intro": "",
-   "members": ["Tidal", "Current", "Clarity"],
+   "members": ["Tidal", "Clarity"],
    "notes": ""
   },
   {

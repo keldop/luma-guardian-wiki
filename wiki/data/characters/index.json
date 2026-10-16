@@ -226,43 +226,53 @@
    "image": ""
   },
   {
-   "name": "Summer",
-   "names": ["Summer"],
+   "name": "Mangrove",
+   "names": ["Mangrove"],
    "type": "guardian",
-   "file": "summer.json",
-   "group": "Seasons",
-   "element": "Fire",
-   "subtitle": "Attacker",
-   "image": ""
-  },
-  {
-   "name": "Spring",
-   "names": ["Spring"],
-   "type": "guardian",
-   "file": "spring.json",
-   "group": "Seasons",
-   "element": "Air",
-   "subtitle": "Support (Healer)",
-   "image": ""
-  },
-  {
-   "name": "Winter",
-   "names": ["Winter"],
-   "type": "guardian",
-   "file": "winter.json",
-   "group": "Seasons",
-   "element": "Water",
+   "file": "mangrove.json",
+   "group": "Horizons",
+   "element": "Earth",
    "subtitle": "Support (Barrier)",
    "image": ""
   },
   {
-   "name": "Autumn",
-   "names": ["Autumn"],
+   "name": "Skyline",
+   "names": ["Skyline"],
    "type": "guardian",
-   "file": "autumn.json",
-   "group": "Seasons",
+   "file": "skyline.json",
+   "group": "Horizons",
+   "element": "Air",
+   "subtitle": "Shadow",
+   "image": ""
+  },
+  {
+   "name": "Current",
+   "names": ["Current"],
+   "type": "guardian",
+   "file": "current.json",
+   "group": "Horizons",
+   "element": "Water",
+   "subtitle": "Attacker",
+   "image": ""
+  },
+  {
+   "name": "Beacon",
+   "names": ["Beacon"],
+   "type": "guardian",
+   "file": "beacon.json",
+   "group": "Horizons",
+   "element": "Fire",
+   "subtitle": "Support",
+   "image": ""
+  },
+  {
+   "name": "Remedy",
+   "names": ["Remedy"],
+   "type": "guardian",
+   "file": "remedy.json",
+   "group": "Horizons",
    "element": "Earth",
-   "subtitle": "Strategist",
+   "subtitle": "Support (Field Healer)",
    "image": ""
   },
   {
@@ -381,6 +391,46 @@
    "type": "guardian",
    "file": "demise.json",
    "group": "Celestials",
+   "element": "Earth",
+   "subtitle": "Strategist",
+   "image": ""
+  },
+  {
+   "name": "Summer",
+   "names": ["Summer"],
+   "type": "guardian",
+   "file": "summer.json",
+   "group": "Seasons",
+   "element": "Fire",
+   "subtitle": "Attacker",
+   "image": ""
+  },
+  {
+   "name": "Spring",
+   "names": ["Spring"],
+   "type": "guardian",
+   "file": "spring.json",
+   "group": "Seasons",
+   "element": "Air",
+   "subtitle": "Support (Healer)",
+   "image": ""
+  },
+  {
+   "name": "Winter",
+   "names": ["Winter"],
+   "type": "guardian",
+   "file": "winter.json",
+   "group": "Seasons",
+   "element": "Water",
+   "subtitle": "Support (Barrier)",
+   "image": ""
+  },
+  {
+   "name": "Autumn",
+   "names": ["Autumn"],
+   "type": "guardian",
+   "file": "autumn.json",
+   "group": "Seasons",
    "element": "Earth",
    "subtitle": "Strategist",
    "image": ""
@@ -756,6 +806,16 @@
    "image": ""
   },
   {
+   "name": "Neognathae",
+   "names": ["Neognathae"],
+   "type": "guardian",
+   "file": "neognathae.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "Strategist",
+   "image": ""
+  },
+  {
    "name": "Sauria",
    "names": ["Sauria"],
    "type": "guardian",
@@ -783,16 +843,6 @@
    "group": "Water Branch",
    "element": "Water",
    "subtitle": "Attacker",
-   "image": ""
-  },
-  {
-   "name": "Current",
-   "names": ["Current"],
-   "type": "guardian",
-   "file": "current.json",
-   "group": "Water Branch",
-   "element": "Water",
-   "subtitle": "Support",
    "image": ""
   },
   {
