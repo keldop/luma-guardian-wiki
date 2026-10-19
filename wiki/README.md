@@ -107,4 +107,4 @@ then open http://localhost:8000/ .
 
 ## Libraries
 
-Loaded from cdnjs at fixed versions: Leaflet 1.9.4 (map), marked 12.0.2 and DOMPurify 3.1.6 (story text). Map tiles are © OpenStreetMap contributors.
+Loaded at fixed versions: Leaflet 1.9.4 and MapLibre GL 4.7.1 (map, from cdnjs), maplibre-gl-leaflet 0.0.22 (from unpkg), marked 12.0.2 and DOMPurify 3.1.6 (story text, from cdnjs). The map style is OpenFreeMap Positron (no API key, no shop icons), with Esri Light Gray Canvas as a fallback. Map data © OpenStreetMap contributors.

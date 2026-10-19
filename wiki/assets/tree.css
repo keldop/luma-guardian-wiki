@@ -31,6 +31,8 @@
 .node{cursor:pointer}
 .node rect{fill:var(--lf,var(--surface2));stroke:var(--ls,var(--line));stroke-width:1}
 .node text{fill:var(--lt,var(--ink));font-family:"Manrope",system-ui,sans-serif;font-size:13px;font-weight:600;pointer-events:none}
+.node text .age{font-weight:500;opacity:.75}
+.legend .agekey{font-weight:600}
 .node.gray rect{fill:var(--lf-gray);stroke:var(--ls-gray);stroke-dasharray:4 3}
 .node.gray text{fill:var(--lt-gray)}
 .node.sel rect{stroke-width:2.5}

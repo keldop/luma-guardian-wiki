@@ -271,10 +271,12 @@ function renderTree(root,el){
   const W=PAD*2+(maxD+1)*PITCH-GAP,H=PAD*2+(maxRow-minRow)*ROWH+BH;
   const details={},nb=root.kids.length;
   let links='',nodes='',id=0;
-  function box(x,y,label,cls,key,title,status){
-    const long=label.length>13?' textLength="'+(BW-16)+'" lengthAdjust="spacingAndGlyphs"':'';
+  // Age from the profile's "Age" line: its first number, e.g. "1000; physically appears around 45" -> 1000.
+  const ageOf=g=>{const i=(g&&g.info)||{},k=Object.keys(i).find(k=>/^age\b/i.test(k)),m=k&&String(i[k]).match(/\d+/);return m?m[0]:'';};
+  function box(x,y,label,cls,key,title,status,age){
+    const long=(label.length+(age?age.length+3:0))>13?' textLength="'+(BW-16)+'" lengthAdjust="spacingAndGlyphs"':'';
     const mark=status?'<circle class="markbg" cx="'+(x+BW-3)+'" cy="'+(y+3)+'" r="8"/><text class="mark" x="'+(x+BW-3)+'" y="'+(y+3.5)+'" text-anchor="middle" dominant-baseline="central">'+(status==='deceased'?'\u2020':'R')+'</text>':'';
-    return '<g class="node '+cls+'" data-k="'+key+'" tabindex="0" role="button" aria-label="'+esc(title)+'"><title>'+esc(title)+'</title><rect x="'+x+'" y="'+y+'" width="'+BW+'" height="'+BH+'" rx="6"/><text x="'+(x+BW/2)+'" y="'+(y+BH/2)+'" text-anchor="middle" dominant-baseline="central"'+long+'>'+esc(label)+'</text>'+mark+'</g>';
+    return '<g class="node '+cls+'" data-k="'+key+'" tabindex="0" role="button" aria-label="'+esc(title)+'"><title>'+esc(title)+'</title><rect x="'+x+'" y="'+y+'" width="'+BW+'" height="'+BH+'" rx="6"/><text x="'+(x+BW/2)+'" y="'+(y+BH/2)+'" text-anchor="middle" dominant-baseline="central"'+long+'>'+esc(label)+(age?'<tspan class="age"> ('+age+')</tspan>':'')+'</text>'+mark+'</g>';
   }
   const unk=v=>{v=String(v==null?'':v).replace(/\bLuma\s+/g,'').replace(/[;,\s]+$/,'').trim();return(!v||/^-+$/.test(v))?BLANK:v;};
   function cardFor(g,n,zroot){
@@ -294,7 +296,7 @@ function renderTree(root,el){
     }else if(n.zodiac){
       const z=n.zodiac,zst=z.g?(z.g[0].status||''):'';
       details[key]=z.none?{title:z.name,sub:'Zodiac of '+el,none:true,zodiac:true,by:[],cards:[{name:z.name,branch:el+' (Zodiac)',civ:BLANK,rank:BLANK,role:BLANK,base:BLANK,mentor:'N.A.',disciples:unk(n.kids.map(k=>k.label).join(', ')),status:''}]}:{title:z.name,sub:'Zodiac of '+el,g:z.g,cards:z.g.map(q=>cardFor(q,n,true))};
-      nodes+=box(x,y,z.name,'root '+elc+' z-'+slug(z.name)+(zst?' st-'+zst:'')+(z.none?' gray':''),key,z.name+' (Zodiac)'+(z.none?' (no profile yet)':'')+(zst?' ('+zst+')':''),zst);
+      nodes+=box(x,y,z.name,'root '+elc+' z-'+slug(z.name)+(zst?' st-'+zst:'')+(z.none?' gray':''),key,z.name+' (Zodiac)'+(z.none?' (no profile yet)':'')+(zst?' ('+zst+')':''),zst,z.g?ageOf(z.g[0]):'');
     }else{
       const has=n.g.length>0,top=first[n.sh];
       const zn=zodOf(n),st=has?(n.g.find(q=>q.status)||{}).status||'':'';
@@ -304,7 +306,7 @@ function renderTree(root,el){
         details[key]={title:n.label,sub:n.path.join(' > '),none:true,inferred:n.inferred,by:descGuardians(n),
           cards:[{name:n.label,branch:n.path.join(' \u203a '),civ:BLANK,rank:BLANK,role:BLANK,base:BLANK,mentor:unk(pm),disciples:unk(n.kids.map(k=>k.label).join(', ')),status:''}]};
       }
-      nodes+=box(x,y,n.label,elc+' shade-'+(nb<2?0:Math.round(n.sh*MAXSLOT/(nb-1)))+' b-'+slug(top.label)+(zn?' z-'+slug(zn):'')+(zn&&n.d>=3?' gen-'+Math.min(n.d-1,5):'')+(st?' st-'+st:'')+(has?'':' gray'),key,n.label+(has?'':' (no profile yet)')+(st?' ('+st+')':''),st);
+      nodes+=box(x,y,n.label,elc+' shade-'+(nb<2?0:Math.round(n.sh*MAXSLOT/(nb-1)))+' b-'+slug(top.label)+(zn?' z-'+slug(zn):'')+(zn&&n.d>=3?' gen-'+Math.min(n.d-1,5):'')+(st?' st-'+st:'')+(has?'':' gray'),key,n.label+(has?'':' (no profile yet)')+(st?' ('+st+')':''),st,has?ageOf(n.g[0]):'');
     }
     if(n.kids.length){
       const sx=x+BW,mid=sx+GAP/2,sy=Y(n.row)+BH/2;
@@ -347,14 +349,9 @@ function sortAll(silent){
   const rules=parseOverrides((CFG.overrides||[]).join('\n'));
   applyOverrides(entries,rules);
   const t=buildTrees(entries,{infer:$('infer').checked,branches:CFG.branches,zodiac:CFG.zodiacRoots});
-  if($('hidegone').checked){
-    const gone=q=>q.status==='deceased'||q.status==='retired';
-    const prune=n=>{n.kids=n.kids.filter(k=>{prune(k);return !(k.g.length&&k.g.every(gone)&&!k.kids.length);});};
-    ELEMENTS.forEach(el=>{prune(t.roots[el]);t.roots[el].z=t.roots[el].z.filter(z=>!gone(z));});
-  }
   S.multiSrc=new Set(entries.map(e=>e.source)).size>1;S.entries=entries;S.roots=t.roots;S.noBranch=t.noBranch;S.warnings=collectWarnings(entries,t.roots,t.noBranch);
   if(!silent)setStatus(imported.length?'Sorted '+entries.length+' Guardians: branches.json plus '+S.files.length+' imported file'+(S.files.length===1?'':'s')+'.':entries.length?'Showing '+entries.length+' Guardians from branches.json.':'Showing the branches in branches.json. Import your doc to light them up.');
-  lsSet('luma.infer.v1',$('infer').checked?'1':'0');lsSet('luma.hidegone.v1',$('hidegone').checked?'1':'0');
+  lsSet('luma.infer.v1',$('infer').checked?'1':'0');
   renderTabs();renderPanel();return true;
 }
 async function loadConfig(){
@@ -420,7 +417,7 @@ function detailHtml(d,k){
 }
 // The Zodiacs are drawn in the tree itself, so the key only explains status and gray boxes.
 function legendHtml(extra){
-  return '<div class="legend"><span><i class="sw has st-retired"></i>Retired (R)</span><span><i class="sw has st-deceased"></i>Deceased (\u2020)</span><span><i class="sw none"></i>Known branch, no profile yet</span>'+extra+'</div>';
+  return '<div class="legend"><span><b class="agekey">Name (age)</b> = age counted as of 2025</span><span><i class="sw has st-retired"></i>Retired (R)</span><span><i class="sw has st-deceased"></i>Deceased (\u2020)</span><span><i class="sw none"></i>Known branch, no profile yet</span>'+extra+'</div>';
 }
 function renderPanel(){
   const p=$('panel');
@@ -451,7 +448,7 @@ function renderPanel(){
     p.innerHTML=S.warnings.length?'<p class="note">These are places where the doc disagrees with itself. Nothing is changed automatically beyond your overrides.</p><ul class="warns">'+S.warnings.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul>':'<div class="card empty">No conflicts found.</div>';
   }
 }
-['infer','hidegone'].forEach(id=>$(id).addEventListener('change',()=>sortAll(true)));
+$('infer').addEventListener('change',()=>sortAll(true));
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;S.tab=b.dataset.tab;renderTabs();renderPanel();});
 function pick(g){
   if(!g)return;
@@ -464,7 +461,6 @@ function pick(g){
 $('panel').addEventListener('click',e=>{pick(e.target.closest('.node'));});
 $('panel').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest&&e.target.closest('.node');if(g){e.preventDefault();pick(g);}}});
 (async function init(){
-  $('hidegone').checked=lsGet('luma.hidegone.v1')==='1';
   {const v=lsGet('luma.infer.v1');$('infer').checked=v===null||v===undefined||v===''?true:v==='1';}
   renderTabs();renderPanel();
   await loadConfig();

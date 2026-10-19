@@ -45,8 +45,17 @@ if(imageMode){
   map.fitBounds(bounds);
 }else{
   map=L.map('map',{worldCopyJump:true,minZoom:2,zoomSnap:0.5}).setView([22,40],2);
-  // Dark mode recolours these tiles with a CSS filter (see .leaflet-tile-pane in wiki.css).
-  tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+  // OpenFreeMap Positron: OpenStreetMap streets and place names without shop and business icons, zooms to building level.
+  // Falls back to Esri Light Gray Canvas (zooms less far) if MapLibre did not load.
+  // Dark mode recolours either map with a CSS filter (see .leaflet-tile-pane in wiki.css).
+  if(L.maplibreGL&&window.maplibregl){
+    map.setMaxZoom(19);
+    tiles=L.maplibreGL({style:'https://tiles.openfreemap.org/styles/positron',attribution:'<a href="https://openfreemap.org">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+  }else{
+    const esri='https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_';
+    tiles=L.tileLayer(esri+'Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'}).addTo(map);
+    L.tileLayer(esri+'Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
+  }
 }
 const at=p=>imageMode?[(loc.size||[0,1400])[1]-p.y,p.x]:[p.lat,p.lng];
 

@@ -62,6 +62,8 @@ $pathOf = @{}
 foreach ($g in $b.guardians) { if ($g.path) { $pathOf[$g.name.ToLower()] = $g.path } }
 
 # Pass 1: branch paths from the doc's Branch Theme.
+$zodiacs = @{}
+foreach ($el in $b.zodiacRoots.PSObject.Properties) { foreach ($z in @($el.Value)) { $zodiacs[[string]$z.ToLower()] = $true } }
 $plan = @()
 foreach ($c in $files) {
     $p = $c.profile
@@ -71,6 +73,8 @@ foreach ($c in $files) {
     # A theme ending in a word that is nobody's name (Demise: "Earth-Life-Extinct") is the branch's own name.
     $last = if ($theme) { $theme.Split('-')[-1] } else { '' }
     if ($theme -and $theme.Contains('-') -and -not ($c.names | Where-Object { $_ -ieq $last }) -and ($files | Where-Object { $_.names -contains $last })) { $theme = "$theme-$name" }
+    # Zodiacs are the roots of their element: "Fire-Leo" stays "Fire", and their disciples stay where they are.
+    if ($theme -and $zodiacs[$name.ToLower()]) { $theme = $theme.Split('-')[0] }
     $plan += , @($c, $theme)
 }
 foreach ($pair in $plan) { $c, $theme = $pair; if ($theme) { foreach ($n in $c.names) { if (-not $pathOf[$n.ToLower()] -or $n -ieq $c.name) { $pathOf[$n.ToLower()] = $theme } } } }
