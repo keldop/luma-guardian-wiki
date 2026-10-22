@@ -140,6 +140,13 @@ for ($t = 1; $t -lt $parts.Count; $t += 2) {
             $field = $null; continue
         }
         $m = [regex]::Match($line, $fieldRe)
+        # "Age (at the time of his death):" is not the age counted as of 2025: it becomes its own "Age at Death".
+        if ($m.Success -and $m.Groups[1].Value.Trim() -ieq 'Age' -and $line -match '^\s*Age\s*\([^)]*\bdeath\b') {
+            $field = 'other:Age at Death'
+            if (-not $cur.other.Contains('Age at Death')) { $cur.other['Age at Death'] = @() }
+            if ($m.Groups[2].Value.Trim()) { $cur.other['Age at Death'] += $m.Groups[2].Value.Trim() }
+            continue
+        }
         $key = if ($m.Success) { $cur.T.alias[$m.Groups[1].Value.Trim().ToLower()] } else { $null }
         # The same label again (like each victim's "Gender:" in a list) belongs to the text above it.
         if ($key -and $cur.labeled.ContainsKey($key)) {

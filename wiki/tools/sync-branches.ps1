@@ -85,6 +85,14 @@ foreach ($pair in $plan) {
     $m = [regex]::Match([string]$c.profile.Mentor, 'Luma\s+([A-Z][A-Za-z]+(?:\s[A-Z][a-z]+)?)')
     if ($m.Success -and $pathOf[$m.Groups[1].Value.ToLower()]) { $pathOf[$c.name.ToLower()] = $pathOf[$m.Groups[1].Value.ToLower()] + '-' + $c.name }
 }
+# No Branch Theme and no mentor with a branch: the one branch in the list named after them (Breeze, who was a
+# disciple without a profile under Zephyr, keeps Air-Aero-Zephyr-Breeze once their profile is written).
+foreach ($pair in $plan) {
+    $c, $theme = $pair
+    if ($theme -or $pathOf[$c.name.ToLower()]) { continue }
+    $own = @($b.branches | Where-Object { ([string]$_).Split('-')[-1] -ieq $c.name })
+    if ($own.Count -eq 1) { $pathOf[$c.name.ToLower()] = [string]$own[0] }
+}
 
 # Branches that were not updated in the doc when their mentor moved follow the mentor.
 $followed = New-Object System.Collections.Generic.List[string]

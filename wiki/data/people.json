@@ -68,14 +68,36 @@
    "name": "Fire Branch",
    "base": "",
    "intro": "",
-   "members": ["Solace", "Lunar", "Yew", "Radiance", "Mirage", "Optical", "Dream", "Vitalis", "Firewall", "Lantern", "Quell", "Quench", "Nullfire"],
+   "members": ["Solace", "Lunar", "Yew", "Radiance", "Mirage", "Optical", "Dream", "Vitalis", "Firewall", "Lantern", "Quell", "Quench", "Nullfire", "Prism", "Fuel", "Haven"],
    "notes": ""
   },
   {
    "name": "Earth Branch",
    "base": "",
    "intro": "",
-   "members": ["Cedar", "Verdant", "Sage", "Essence", "Venom", "Woodland", "Forge", "Life", "Mineral", "Crystalis", "Fauna", "Vertebrate", "Entoma", "Avian", "Neognathae", "Sauria", "Toxin"],
+   "members": [
+    "Cedar",
+    "Verdant",
+    "Sage",
+    "Essence",
+    "Venom",
+    "Woodland",
+    "Willow",
+    "Forge",
+    "Life",
+    "Mineral",
+    "Crystalis",
+    "Fauna",
+    "Vertebrate",
+    "Entoma",
+    "Avian",
+    "Neognathae",
+    "Sauria",
+    "Microbia",
+    "Symbiosis",
+    "Colony",
+    "Toxin"
+   ],
    "notes": ""
   },
   {
@@ -89,7 +111,7 @@
    "name": "Air Branch",
    "base": "",
    "intro": "",
-   "members": ["Crosswind", "Resonance", "Harmony", "Aether", "Rift", "Prism", "Zephyr", "Draft", "Gale"],
+   "members": ["Crosswind", "Resonance", "Harmony", "Aether", "Rift", "Zephyr", "Draft", "Gale", "Breeze", "Atmos", "Whisper", "Chime"],
    "notes": ""
   },
   {

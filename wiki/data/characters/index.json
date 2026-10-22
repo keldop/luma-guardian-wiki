@@ -666,6 +666,36 @@
    "image": ""
   },
   {
+   "name": "Prism",
+   "names": ["Prism"],
+   "type": "guardian",
+   "file": "prism.json",
+   "group": "Fire Branch",
+   "element": "Fire",
+   "subtitle": "Support",
+   "image": ""
+  },
+  {
+   "name": "Fuel",
+   "names": ["Fuel"],
+   "type": "guardian",
+   "file": "fuel.json",
+   "group": "Fire Branch",
+   "element": "Fire",
+   "subtitle": "Support (Field Healer)",
+   "image": ""
+  },
+  {
+   "name": "Haven",
+   "names": ["Haven"],
+   "type": "guardian",
+   "file": "haven.json",
+   "group": "Fire Branch",
+   "element": null,
+   "subtitle": "",
+   "image": ""
+  },
+  {
    "name": "Cedar",
    "names": ["Cedar"],
    "type": "guardian",
@@ -720,6 +750,16 @@
    "names": ["Woodland"],
    "type": "guardian",
    "file": "woodland.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "",
+   "image": ""
+  },
+  {
+   "name": "Willow",
+   "names": ["Willow"],
+   "type": "guardian",
+   "file": "willow.json",
    "group": "Earth Branch",
    "element": "Earth",
    "subtitle": "",
@@ -826,6 +866,36 @@
    "image": ""
   },
   {
+   "name": "Microbia",
+   "names": ["Microbia"],
+   "type": "guardian",
+   "file": "microbia.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "Support (Researcher)",
+   "image": ""
+  },
+  {
+   "name": "Symbiosis",
+   "names": ["Symbiosis"],
+   "type": "guardian",
+   "file": "symbiosis.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "Support (Researcher)",
+   "image": ""
+  },
+  {
+   "name": "Colony",
+   "names": ["Colony"],
+   "type": "guardian",
+   "file": "colony.json",
+   "group": "Earth Branch",
+   "element": "Earth",
+   "subtitle": "Planned – Support",
+   "image": ""
+  },
+  {
    "name": "Toxin",
    "names": ["Toxin"],
    "type": "guardian",
@@ -906,16 +976,6 @@
    "image": ""
   },
   {
-   "name": "Prism",
-   "names": ["Prism"],
-   "type": "guardian",
-   "file": "prism.json",
-   "group": "Air Branch",
-   "element": "Air",
-   "subtitle": "Support",
-   "image": ""
-  },
-  {
    "name": "Zephyr",
    "names": ["Zephyr"],
    "type": "guardian",
@@ -943,6 +1003,46 @@
    "group": "Air Branch",
    "element": "Air",
    "subtitle": "Attacker",
+   "image": ""
+  },
+  {
+   "name": "Breeze",
+   "names": ["Breeze"],
+   "type": "guardian",
+   "file": "breeze.json",
+   "group": "Air Branch",
+   "element": null,
+   "subtitle": "",
+   "image": ""
+  },
+  {
+   "name": "Atmos",
+   "names": ["Atmos"],
+   "type": "guardian",
+   "file": "atmos.json",
+   "group": "Air Branch",
+   "element": "Air",
+   "subtitle": "Support",
+   "image": ""
+  },
+  {
+   "name": "Whisper",
+   "names": ["Whisper"],
+   "type": "guardian",
+   "file": "whisper.json",
+   "group": "Air Branch",
+   "element": "Air",
+   "subtitle": "Support",
+   "image": ""
+  },
+  {
+   "name": "Chime",
+   "names": ["Chime"],
+   "type": "guardian",
+   "file": "chime.json",
+   "group": "Air Branch",
+   "element": "Air",
+   "subtitle": "",
    "image": ""
   },
   {

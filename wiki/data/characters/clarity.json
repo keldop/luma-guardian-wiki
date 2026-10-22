@@ -10,7 +10,7 @@
   "Guardian Name": "",
   "Evolved Guardian Name": "",
   "Nickname": "",
-  "Gender": "",
+  "Gender": "Female",
   "Sexuality": "",
   "Age (counted as of 2025)": "",
   "Date of Birth": "",
@@ -74,7 +74,8 @@
   "Awakening Speech": ""
  },
  "other": {
-  "Role": "Support (Healer)"
+  "Role": "Support (Healer)\nSupport (Healer)\nQuietly generous and well-liked by the community.",
+  "Branch": "Water-Hydro-Mist-Dew"
  },
  "image": "",
  "gallery": []

@@ -91,6 +91,10 @@ async function render(g){
   const gstatus=P('Guardian Status');
   if(gstatus){const k=gstatus.split(/[\s—–,;(-]/)[0].toLowerCase();g.status=k==='active'?'':k;}
   const base=P('Stationed at','Based at')||g.base||(c&&c.base)||'';
+  // "Age (at the time of his death)" in the doc. Deceased: the age at death in Biographical, the age counted as of 2025
+  // under Other information. Alive: the age as of 2025 in Biographical.
+  const deathAge=[].concat((c&&c.other&&c.other['Age at Death'])||[]).join('; ').trim();
+  const dead=g.status==='deceased';
   const el=g.element,lore=g.lore||{};
   const was=g.status==='deceased'?'was':'is';
   const title=g.name;
@@ -140,7 +144,7 @@ async function render(g){
       row('Alignment','Civilian',true),
       row('Full name',lines(P('Full Name'),';'),true),row('Nickname',lines(P('Nickname')),true),
       row('Gender',P('Gender')),row('Sexuality',P('Sexuality')),
-      row('Age',P('Age (counted as of 2025)')),row('Date of birth',P('Date of Birth')),
+      dead?row('Age at death',deathAge):row('Age',P('Age (counted as of 2025)')),row('Date of birth',P('Date of Birth')),
       row('Ethnicity',P('Ethnicity')),row('Zodiac',esc(P('Zodiac')),true),
       row('Home country',P('Home Country')),row('Hometown',P('Hometown')),
       row('Languages',P('Languages')),row('Education',P('Education')),
@@ -152,7 +156,7 @@ async function render(g){
     ${civ?'':group('Biographical',[
       row('Civilian name',lines(P('Civilian Name','Civilian Name'),';'),true),row('Nickname',lines(P('Nickname','Nickname')),true),
       row('Gender',P('Gender','Gender')),row('Sexuality',P('Sexuality')),
-      row('Age',P('Age (counted as of 2025)','Age')),row('Date of birth',P('Date of Birth','Date of Birth')),
+      dead?row('Age at death',deathAge):row('Age',P('Age (counted as of 2025)','Age')),row('Date of birth',P('Date of Birth','Date of Birth')),
       row('Ethnicity',P('Ethnicity','Ethnicity')),row('Zodiac',esc(g.zodiac||''),true),
       row('Home country',P('Home Country')),row('Hometown',P('Hometown')),
       row('Languages',P('Languages')),row('Education',P('Education')),
@@ -239,7 +243,8 @@ async function render(g){
   for(const s of (lore.sections||[])) add(W.slug(s.title),s.title,W.markup(s.text||'',data));
   add('trivia','Trivia',lore.trivia&&W.markup(lore.trivia,data));
   // Labels in the doc that the template does not have, then anything only branches.json knows.
-  const extra=Object.entries((c&&c.other)||{});
+  const extra=Object.entries((c&&c.other)||{}).filter(([k])=>k!=='Age at Death');
+  if(dead){const a=P('Age (counted as of 2025)','Age');if(a)extra.unshift(['Age (counted as of 2025)',a]);}
   if(!c){
     const shown=new Set(['guardian rank','primary role','team','guild','zodiac','branch theme','original element','based at','likely primary role','possible future role']);
     for(const [k,v] of Object.entries(g.info)) if(!shown.has(k.toLowerCase())&&!(k in pf)) extra.push([k,v]);

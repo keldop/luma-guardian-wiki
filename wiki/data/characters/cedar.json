@@ -12,7 +12,7 @@
   "Nickname": "",
   "Gender": "Male",
   "Sexuality": "",
-  "Age (counted as of 2025)": "370 at the time of his death; physically appeared around 55",
+  "Age (counted as of 2025)": "495",
   "Date of Birth": "4 January 1530",
   "Ethnicity": "",
   "Zodiac": "Capricorn",
@@ -73,7 +73,9 @@
   "Transformation Phrase": "",
   "Awakening Speech": ""
  },
- "other": {},
+ "other": {
+  "Age at Death": "370; physically appeared around 55"
+ },
  "image": "",
  "gallery": []
 }
